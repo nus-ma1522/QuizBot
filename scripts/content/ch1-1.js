@@ -1,119 +1,198 @@
 const dialogueSystem = {
   start: {
+    type: "plain",
+    content: "Let's begin by recalling what you've learned earlier. Consider the equations: \\( x + y = 2 \\) and \\( x - y = 0 \\).",
+    next: "q1",
+    delay: 1900  // Total delay: ~2400ms
+  },
+
+  q1: {
+    type: "dialogue",
+    content: "Do you still remember what such equations are called?",
+    options: {
+      0: "Simultaneous equations",
+      1: "Linear equations",
+      2: "I'm not sure"
+    },
+    respondToIdx: {
+      0: "q1a",
+      1: "q1b",
+      2: "q2"
+    },
+    delay: 300  // Total: 800ms
+  },
+
+  q1a: {
+    type: "plain",
+    content: "Correct! But to be precise, they're simultaneous linear equations.",
+    next: "q2",
+    delay: 900  // Total: ~1400ms
+  },
+
+  q1b: {
+    type: "plain",
+    content: "That's correct!",
+    next: "q2",
+    delay: 0  // Total: 500ms
+  },
+
+  q2: {
+    type: "plain",
+    content: "They are called systems of linear equations (or linear systems), which involve multiple variables and equations.",
+    next: "q3",
+    delay: 2200  // Total: ~2700ms
+  },
+
+  q3: {
+    type: "plain",
+    content: "Here are their definitions:",
+    next: "q4",
+    delay: 1100
+  },
+
+  q4: {
+    type: "image",
+    content: "def_linear_eqn.png",
+    important: true,
+    next: "q5",
+    delay: 500
+  },
+
+  q5: {
+    type: "image",
+    content: "def_linear_system.png",
+    important: true,
+    next: "q6",
+    delay: 500
+  },
+
+  q6: {
+    type: "plain",
+    content: "Now, take a look at the following equations. Try to identify their properties.",
+    next: "q7",
+    delay: 1800
+  },
+
+  q7: {
+    type: "mcq",
+    content: "Which of these are linear equations? (Select all that apply)",
+    options: {
+      0: "\\( 2x + y = 3 \\)",
+      1: "\\( x^2 + y + z = 5 \\)",
+      2: "\\( x + 3y + 2z = 0 \\)",
+      3: "\\( y = \\sin(x) \\)",
+      4: "\\( x + 1 = 1 - y \\)"
+    },
+    answersIdx: new Set([0, 2, 4]),
+    next: "q8",
+    delay: 500
+  },
+
+  q8: {
+    type: "mcq",
+    content: "Which of these are linear and in standard form?",
+    options: {
+      0: "\\( 2x + y = 3 \\)",
+      1: "\\( x + 3y + 2z = 0 \\)",
+      2: "\\( x + 1 = 1 - y \\)"
+    },
+    answersIdx: new Set([0, 1]),
+    next: "q9",
+    delay: 300
+  },
+
+  q9: {
+    type: "mcq",
+    content: "Which of these are homogeneous linear equations?",
+    options: {
+      0: "\\( 2x + y = 3 \\)",
+      1: "\\( x + 3y + 2z = 0 \\)",
+      2: "\\( x + 1 = 1 - y \\)"
+    },
+    answersIdx: new Set([1, 2]),
+    next: "q10",
+    delay: 400
+  },
+
+  q10: {
     type: "image",
     content: "cipher_pitiful.png",
-    next: "p0",
-    delay: 1000
+    next: "q11",
+    delay: 500
   },
-  p0: {
+
+  q11: {
     type: "plain",
-    content: "Hello there! Let's see what you remember from our session on systems of linear equations.",
-    next: "p1",
-    delay: 1000
+    content: "Oops! I forgot to send you some definitions earlier...",
+    next: "q12",
+    delay: 2100
   },
-  p1: {
+
+  q12: {
+    type: "image",
+    content: "def_standard_form.png",
+    important: true,
+    next: "q13",
+    delay: 500
+  },
+
+  q13: {
+    type: "image",
+    content: "def_homogeneous_systems.png",
+    important: true,
+    next: "q14",
+    delay: 500
+  },
+
+  q14: {
     type: "plain",
-    content: "Now that we've seen some examples of linear equations, let's test your knowledge!",
-    next: "p2",
-    delay: 1000
+    content: "Now, it's time to do some actual work!",
+    next: "q15",
+    delay: 1200
   },
-  p2: {
-    type: "mcq",
-    content: "Of the following, which are linear equations? (select all that apply)",
+
+  q15: {
+    type: "single-mcq",
+    content: "What is the solution of: \\( x - y = 0 \\); \\( x + y = 2 \\)?",
     options: {
-      0: "The equation of a line: \\( y = mx + c \\)",
-      1: "A degree 2 polynomial: \\( x^2 + x + 1 = 0 \\)"
+      0: "\\( x = 1 \\), \\( y = 1 \\)",
+      1: "Infinitely many solutions",
+      2: "No solution"
     },
     answersIdx: new Set([0]),
-    respondToIdx: {
-      0: "p2e1",
-      1: "p2e2"
-    },
-    next: "p3",
-    delay: 1200
+    next: "q16",
+    delay: 600
   },
-  p2e1: {
-    type: "plain",
-    content: "Option 1: ✅ Correct! It is a linear equation where \\( x \\) and \\( y \\) are variables and \\( c \\) is the constant. You can express it in standard form as \\( -mx + y = c \\).",
-    delay: 1000
-  },
-  p2e2: {
-    type: "plain",
-    content: "Option 2: ❌ Not quite. This isn't linear because it includes \\( x^2 \\). However, through substitution methods, this can be linearized!",
-    delay: 1000
-  },
-  p3: {
-    type: "plain",
-    content: "Also, you've seen some systems with an equal number of variables and equations.",
-    next: "p4",
-    delay: 800
-  },
-  p4: {
-    type: "plain",
-    content: "Certain ones produce a unique solution, while others give infinite or even none. Let's explore the conditions!",
-    next: "p5",
-    delay: 1000
-  },
-  p5: {
-    type: "dialogue",
-    content: "When will a system give infinite solutions?",
-    options: {
-      0: "I can't say for sure...",
-      1: "When one of the equations can be expressed as a combination of the others"
-    },
-    respondToIdx: {
-      0: "p6a",
-      1: "p6b"
-    },
-    delay: 1200
-  },
-  p6a: {
-    type: "plain",
-    content: "I understand your confusion. It depends on the relationships between the equations. Time to break it down!",
-    next: "p7",
-    delay: 1000
-  },
-  p6b: {
-    type: "plain",
-    content: "✅ That’s right! If one equation is a linear combination of the others, the system can have infinite solutions.",
-    next: "p7",
-    delay: 1000
-  },
-  p7: {
+
+  q16: {
     type: "single-mcq",
-    content: "Let’s visualise why in 2D! Consider the equation \\( x + y = 1 \\). Is the line induced by this equation unique?",
+    content: "What is the solution of: \\( x + 2y = 5 \\); \\( 2x + 4y = 10 \\)?",
     options: {
-      0: "Yes", 
-      1: "No"
+      0: "\\( x = 1 \\), \\( y = 2 \\)",
+      1: "Infinitely many solutions",
+      2: "No solution"
     },
     answersIdx: new Set([1]),
-    respondToIdx: {
-      0: "p7e1",
-      1: "p7e2"
+    next: "q17",
+    delay: 600
+  },
+
+  q17: {
+    type: "single-mcq",
+    content: "What is the solution of: \\( x + 2y = 5 \\); \\( 2x + 4y = 8 \\)?",
+    options: {
+      0: "\\( x = 1 \\), \\( y = 2 \\)",
+      1: "Infinitely many solutions",
+      2: "No solution"
     },
-    next: "p8",
-    delay: 1000
-  },
-  p7e1: {
-    type: "plain",
-    content: "Not quite! Consider \\( 2x + 2y = 2 \\). It gives rise to the same line! So multiple equations can describe the same line.",
-    delay: 1000
-  },
-  p7e2: {
-    type: "plain",
-    content: "Correct! There can be multiple equations like \\( 2x + 2y = 2 \\) that represent the same line.",
-    delay: 1000
-  },
-  p8: {
-    type: "text",
-    content: "hello.",
-    answers: new Set(["sus amogus"]),
+    answersIdx: new Set([2]),
     next: "end",
-    delay: 1000
+    delay: 600
   },
+
   end: {
-    type: "end",
-    content: "🎯 Great progress! In the next chapter, we'll look into solving linear systems.",
-    delay: 1200
+    type: "plain",
+    content: "🎯 That wraps up our review of linear systems! Great job!",
+    delay: 1000
   }
 };
