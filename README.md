@@ -10,9 +10,9 @@
 - Multiple content types:
   - ✅ Text-based messages
   - 🖼️ Images
-  - 🧠 MCQs (multi/single select)
+  - 🧠 MCQs (multi/single-select)
   - 💬 Dialogue-style choices
-  - ⌨️ Free-text answer input
+  - ⌨️ Text answers
 - 📊 Automatic scoring system
 - ⭐ Star messages for later review
 - 📸 Image zoom and interaction
@@ -42,7 +42,7 @@ const dialogueSystem = {
     },
 
     // Correct answers (MCQ and text)
-    answersIdx: new Set([0, 2]),     // For MCQ/single-mcq (based on option indices)
+    answersIdx: new Set([0, 2]),     // For MCQs (based on option indices)
     answers: new Set(["word", "phrase"]),  // For text-based answers
 
     // Branching logic for dialogue / optional for MCQ feedback
@@ -57,7 +57,7 @@ const dialogueSystem = {
     // Next message in sequence
     next: "nextNodeId",  // Not needed if dialogue node
 
-    // Optional delay before this message (ms)
+    // Optional delay after this message (ms)
     delay: 1000
   },
   ...
