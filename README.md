@@ -30,7 +30,7 @@ Each quiz is stored as a JS object named `dialogueSystem` inside a `.js` file in
 Each **node** represents one step/message in the conversation. Here's the full schema:
 
 ```js
-{
+const dialogueSystem = {
   id: {
     type: "plain" | "image" | "dialogue" | "mcq" | "single-mcq" | "text",
     content: "Message text or image filename (e.g., 'plot1.png')",
@@ -59,6 +59,7 @@ Each **node** represents one step/message in the conversation. Here's the full s
 
     // Optional delay before this message (ms)
     delay: 1000
-  }
+  },
+  ...
 }
 ```
