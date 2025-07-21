@@ -39,9 +39,10 @@ function processNextMessage() {
   setTimeout(processNextMessage, 100);
 }
 
-function addMessage(content, sender = 'bot', styleClass = '', isImage = false) {
+function addMessage(content, sender = 'bot', isImportant = false, isImage = false) {
   const msgWrapper = document.createElement('div');
   msgWrapper.className = `message ${sender}`;
+
   const avatar = document.createElement('img');
   avatar.className = 'avatar';
   avatar.src = botAvatar;
@@ -51,25 +52,15 @@ function addMessage(content, sender = 'bot', styleClass = '', isImage = false) {
   let msgContent;
 
   if (isImage) {
-    msgContent = document.createElement('div');
-    msgContent.className = 'image-wrapper';
-    img = createImageMessage(content, true); // true = show star
-    
-    // Enable zoom on click
-    img.addEventListener('click', () => {
-      document.getElementById('imageModal').style.display = 'block';
-      document.getElementById('zoomedImage').src = content;
-    });
-
-    msgContent.appendChild(img);
-
-    const key = content.trim(); // Use image path as key
+    // Use createImageMessage with star visibility based on isImportant
+    msgContent = createImageMessage(content, true, isImportant);
+    const key = content.trim();
     if (!messageHistory.includes(key)) {
       messageHistory.push(key);
     }
   } else {
     msgContent = document.createElement('div');
-    msgContent.className = `bubble ${styleClass}`;
+    msgContent.className = `bubble`;
     msgContent.innerHTML = content;
     renderMathInElement(msgContent);
 
@@ -78,12 +69,16 @@ function addMessage(content, sender = 'bot', styleClass = '', isImage = false) {
       if (!messageHistory.includes(key)) {
         messageHistory.push(key);
       }
+
       const star = document.createElement('span');
       star.textContent = '★';
       star.className = 'star-icon';
-      if (importantMessages.has(key)) {
+
+      if (importantMessages.has(key) || isImportant) {
         star.classList.add('active');
+        importantMessages.add(key);
       }
+
       star.addEventListener('click', () => {
         if (importantMessages.has(key)) {
           importantMessages.delete(key);
@@ -93,6 +88,7 @@ function addMessage(content, sender = 'bot', styleClass = '', isImage = false) {
           star.classList.add('active');
         }
       });
+
       msgContent.appendChild(star);
     }
   }
@@ -105,36 +101,39 @@ function addMessage(content, sender = 'bot', styleClass = '', isImage = false) {
   return msgContent;
 }
 
-function createImageMessage(content, showStar = true) {
+function createImageMessage(content, showStar = true, isImportant = false) {
   const wrapper = document.createElement('div');
   wrapper.className = 'image-wrapper';
 
   const img = document.createElement('img');
-  img.src = content;
+  img.src = `images/${content}`;
   img.className = 'sticker-image';
 
   // Enable zoom
   img.addEventListener('click', () => {
     document.getElementById('imageModal').style.display = 'block';
-    document.getElementById('zoomedImage').src = content;
+    document.getElementById('zoomedImage').src = `images/${content}`;
   });
 
   wrapper.appendChild(img);
 
   if (showStar) {
     const key = content.trim();
-    if (!messageHistory.includes(key)) messageHistory.push(key);
+    if (!messageHistory.includes(key)) {
+      messageHistory.push(key);
+    }
 
     const star = document.createElement('span');
     star.textContent = '★';
     star.className = 'star-icon';
 
-    if (importantMessages.has(key)) {
+    if (importantMessages.has(key) || isImportant) {
       star.classList.add('active');
+      importantMessages.add(key);
     }
 
     star.addEventListener('click', (e) => {
-      e.stopPropagation();
+      e.stopPropagation(); // prevent zoom trigger
       if (importantMessages.has(key)) {
         importantMessages.delete(key);
         star.classList.remove('active');
@@ -178,10 +177,9 @@ function renderContent(nodeId, dialogueSystem) {
 
   setTimeout(() => {
     if (node.type === "image") {
-      const imagePath = `images/${node.content}`;
-      addMessage(imagePath, 'bot', '', true);
+      addMessage(node.content, 'bot', node.important, true);
     } else {
-      addMessage(node.content, 'bot');
+      addMessage(node.content, 'bot', node.important);
     }
 
     chatInput.style.display = 'none';
