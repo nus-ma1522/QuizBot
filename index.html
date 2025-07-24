@@ -17,7 +17,7 @@
     <div class="chat-header">
       <button id="backToChat" class="header-btn" style="display:none;">🔙</button>
       <span id="chatTitle">Kerfus</span>
-      <button id="viewImportantBtn" class="header-btn">⭐</button>
+      <button id="viewImportant" class="header-btn">⭐</button>
     </div>
 
     <div class="chat-body">
@@ -41,10 +41,14 @@
     </div>
   </div>
 
-  <div id="imageModal" class="image-modal">
-    <span id="closeImageModal" class="image-modal-close">&times;</span>
-    <img class="image-modal-content" id="zoomedImage" />
+  <div id="modal" class="modal">
+    <span id="closeModal" class="modal-close">&times;</span>
+    <div class="modal-content" id="modalContent">
+      <img id="zoomedImage" class="zoomed-image" />
+    </div>
   </div>
+
+  <div id="embedPreloadContainer" style="display: none;"></div>
 
   <script src="scripts/main.js"></script>
   <script>

@@ -6,6 +6,7 @@ Required and Optional Fields:
 1. type (string) — One of the following six message types:
    - "plain"        → Standard text message.
    - "image"        → Image message (loads from the `images/` folder).
+   - "embed"        → Pop-up embed from URL.
    - "dialogue"     → Dialogue-based user options.
    - "mcq"          → Multiple-select MCQ (can select more than one).
    - "single-mcq"   → Single-select MCQ (only one correct option).
@@ -47,6 +48,11 @@ Required and Optional Fields:
    - Maximum score awarded for correctly answering the node.
    - Scoring is skipped if this is undefined.
 
+11. embedPreview (string) - [Optional for "embed"]
+   - Preview text for the pop-up embed, replaces 'Click to open embed'
+
+12. preload (boolean) - [Optional for "embed"]
+   - Preloads the embed, and the same embed will be reused for future messages with same URL and preload=true.
 */
 
 
@@ -54,7 +60,15 @@ const dialogueSystem = {
   start: {
     type: "image",
     content: "cipher_pitiful.png",
+    next: "idk",
+    delay: 1000
+  },
+  idk: {
+    type: "embed",
+    content: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    embedPreview: "Listen to some music",
     next: "p0",
+    preload: true,
     delay: 1000
   },
   p0: {
