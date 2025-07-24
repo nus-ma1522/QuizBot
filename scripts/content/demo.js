@@ -6,6 +6,7 @@ Required and Optional Fields:
 1. type (string) — One of the following six message types:
    - "plain"        → Standard text message.
    - "image"        → Image message (loads from the `images/` folder).
+   - "embed"        → Pop-up embed from URL.
    - "dialogue"     → Dialogue-based user options.
    - "mcq"          → Multiple-select MCQ (can select more than one).
    - "single-mcq"   → Single-select MCQ (only one correct option).
@@ -23,27 +24,35 @@ Required and Optional Fields:
      - final message nodes,
      - intermediate response messages.
 
-4. delay (number) — [Optional]
+4. important (boolean) - [Optional]
+   - If true, pre-emptively marks a message as important (can be viewed in Starred)
+
+5. delay (number) — [Optional]
    - Additional delay in milliseconds before showing this node (defaults to 500ms base delay).
 
-5. options (object) — [Required for "dialogue", "mcq", and "single-mcq"]
+6. options (object) — [Required for "dialogue", "mcq", and "single-mcq"]
    - A dictionary mapping option keys (typically numbers) to display labels.
 
-6. answersIdx (Set<number>) — [Required for "mcq" and "single-mcq"]
+7. answersIdx (Set<number>) — [Required for "mcq" and "single-mcq"]
    - A `Set` containing the keys of correct answers.
 
-7. respondToIdx (object) — [Required for "dialogue", optional for "mcq"/"single-mcq"]
+8. respondToIdx (object) — [Required for "dialogue", optional for "mcq"/"single-mcq"]
    - A mapping of selected option keys to follow-up node IDs.
    - For "dialogue", this is mandatory and determines branching.
    - For MCQ types, it optionally provides feedback nodes for selected options.
 
-8. answers (Set<string>) — [Required for "text"]
+9. answers (Set<string>) — [Required for "text"]
    - A set of accepted correct text answers (case- and space-insensitive matching is applied).
 
-9. marks (number) — [Optional for "mcq", "single-mcq", and "text"]
+10. marks (number) — [Optional for "mcq", "single-mcq", and "text"]
    - Maximum score awarded for correctly answering the node.
    - Scoring is skipped if this is undefined.
 
+11. embedPreview (string) - [Optional for "embed"]
+   - Preview text for the pop-up embed, replaces 'Click to open embed'
+
+12. preload (boolean) - [Optional for "embed"]
+   - Preloads the embed, and the same embed will be reused for future messages with same URL and preload=true.
 */
 
 
@@ -51,7 +60,15 @@ const dialogueSystem = {
   start: {
     type: "image",
     content: "cipher_pitiful.png",
+    next: "idk",
+    delay: 1000
+  },
+  idk: {
+    type: "embed",
+    content: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    embedPreview: "Listen to some music",
     next: "p0",
+    preload: true,
     delay: 1000
   },
   p0: {
@@ -62,8 +79,9 @@ const dialogueSystem = {
   },
   p1: {
     type: "plain",
-    content: "This has doubled dela a a a a a a a a a a a a a a a a a a a a a a a a a a a y.",
+    content: "This is starred and has doubled delay.",
     next: "p2",
+    important: true,
     delay: 2500
   },
   p2: {
