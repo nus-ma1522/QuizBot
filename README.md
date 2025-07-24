@@ -10,6 +10,7 @@
 - Multiple content types:
   - ✅ Text-based messages
   - 🖼️ Images
+  - 📟 Embeds
   - 🧠 MCQs (multi/single-select)
   - 💬 Dialogue-style choices
   - ⌨️ Text answers
@@ -32,8 +33,8 @@ Each **node** represents one step/message in the conversation. Here's the full s
 ```js
 const dialogueSystem = {
   id: {
-    type: "plain" | "image" | "dialogue" | "mcq" | "single-mcq" | "text",
-    content: "Message text or image filename (e.g., 'plot1.png')",
+    type: "plain" | "image" | "dialogue" | "mcq" | "single-mcq" | "text" | "embed",
+    content: "Message text / image filename (e.g., 'plot1.png') / embed URL (e.g., 'https://www.desmos.com/calculator')",
 
     // Only for options-based questions
     options: {
@@ -53,6 +54,12 @@ const dialogueSystem = {
 
     // Optional scoring
     marks: 1,
+
+    // Preview for pop-up embed messages
+    embedPreview: "Click to open Desmos",
+
+    // Pre-emptively message as important
+    important: true,
 
     // Next message in sequence
     next: "nextNodeId",  // Not needed if dialogue node
