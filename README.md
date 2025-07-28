@@ -56,7 +56,10 @@ const dialogueSystem = {
     marks: 1,
 
     // Preview for pop-up embed messages
-    embedPreview: "Click to open Desmos",
+    previewText: "Click to open Desmos",
+    
+    // Preload and save embed state for future use
+    preload: true
 
     // Pre-emptively message as important
     important: true,
