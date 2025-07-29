@@ -288,6 +288,7 @@ function createTexMessage(nodeId, dialogueSystem, inChatView = true) {
 }
 
 function addSystemMessage(msg) {
+  lastSender = '';
   const div = document.createElement('div');
   div.className = 'system-message';
   div.textContent = msg;
@@ -309,11 +310,19 @@ function hideInput() {
     chatInputContainer.style.display = 'none';
   }, 300);
   isInputVisible = false;
+  adjustChatBoxPadding();
 }
 
 function showInModal(element) {
   modalContent.appendChild(element);
   modal.style.display = 'flex';
+}
+
+function adjustChatBoxPadding() {
+  const isExpanded = chatInputContainer.classList.contains('expanded');
+  const expandedHeight = chatInput.offsetHeight + 20; // input + toggle bar
+  chatBox.style.paddingBottom = isExpanded ? `${expandedHeight}px` : '20px';
+  chatBox.scrollTop = chatBox.scrollHeight; // ensure latest message stays in view
 }
 
 toggleInputBtn.addEventListener('click', () => {
@@ -323,6 +332,7 @@ toggleInputBtn.addEventListener('click', () => {
       chatInputContainer.classList.add('expanded');
   }
   isInputVisible = !isInputVisible;
+  adjustChatBoxPadding();
 });
 
 function renderMessage(nodeId, dialogueSystem) {

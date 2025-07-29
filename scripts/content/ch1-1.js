@@ -1,299 +1,392 @@
 const dialogueSystem = {
   start: {
     type: "plain",
-    content: "Let's begin by recalling what you've learned in school. Consider the equations: \\( x + y = 2 \\) and \\( x - y = 0 \\).",
-    next: "p1",
+    content: "Let's recall what we’ve learned before:<br>" +
+    "\\(x + y = 2\\) and \\(x - y = 0\\).",
+    next: "q1"
   },
 
-  p1: {
+  q1: {
     type: "dialogue",
-    content: "Do you still remember what such equations are called?",
+    content: "Do you still remember what these are called?",
     options: {
       0: "Simultaneous equations",
       1: "Linear equations",
-      2: "I'm not sure"
+      2: "I’m not sure"
     },
     respondToIdx: {
-      0: "p1a",
-      1: "p1b",
-      2: "p2"
+      0: "q1a",
+      1: "q1a",
+      2: "q1a"
     }
   },
 
-  p1a: {
+  q1a: {
     type: "plain",
-    content: "Correct! ☝️🤓 But to be precise, they're simultaneous linear equations.",
-    next: "p2"
+    content: "These are called simultaneous equations — two or more equations with the same variables, with a shared solution.<br>" +
+    "They’re also linear equations since each equation forms a straight line.",
+    next: "def_linear_eqn"
   },
 
-  p1b: {
-    type: "plain",
-    content: "That's correct!",
-    next: "p2"
-  },
-
-  p2: {
-    type: "plain",
-    content: "They are called systems of linear equations (or linear systems), which involve multiple variables and equations.",
-    next: "p3"
-  },
-
-  p3: {
-    type: "plain",
-    content: "I'll send their definitions over, so you can refer to them anytime!",
-    next: "p4"
-  },
-
-  p4: {
-    type: "image",
-    content: "images/def_linear_eqn.png",
+  def_linear_eqn: {
+    type: "tex",
+    content: "$$ \\textbf{\\Large Linear Equations} \\\\ $$" +
+      "$ \\text{A linear equation with } n \\text{ variables can be expressed as:} \\\\$" +
+      "$$ a_1 x_1 + a_2 x_2 + \\ldots + a_n x_n = b $$" +
+      "$\\text{• } x_1, x_2, \\ldots, x_n \\text{ are called the variables.} \\\\$" +
+      "$\\text{• } a_1, a_2, \\ldots, a_n \\text{ are the coefficients, each corresponding to a variable.} \\\\$" +
+      "$\\text{• } b \\text{ is the constant, independent of any variable.} $",
+    previewText: "Definition: Linear Equations",
     important: true,
-    next: "p5"
+    systemMessage: "You may view starred messages by clicking on the star icon on the top right corner.",
+    next: "q2"
   },
 
-  p5: {
-    type: "image",
-    content: "images/def_linear_system.png",
-    important: true,
-    next: "p6",
-    systemMessage: "You may view starred messages by clicking on the star icon on the top right corner."
-  },
-
-  p6: {
-    type: "plain",
-    content: "Now, take a look at the following equations and try to identify their properties.",
-    next: "p7"
-  },
-
-  p7: {
+  q2: {
     type: "mcq",
-    content: "Which of these are linear equations? (Select all that apply)",
+    content: "Vibe check! Which of the following equations are linear? (Select all that apply)",
     options: {
-      0: "\\( x + (y + x) = 3 \\)",
-      1: "\\( x^2 + y + z = 5 \\)",
-      2: "\\( x + 3y + 2z = 0 \\)",
-      3: "\\( y = \\sin(x) \\)",
-      4: "\\( x + 1 = 1 - y \\)"
+      0: "<b>a</b>. \\(x + y = 1\\)",
+      1: "<b>b</b>. \\(x + x^2 = y\\)",
+      2: "<b>c</b>. \\(\\sin(x) + \\cos(y) = 1\\)",
+      3: "<b>d</b>. \\(x + \\sin^2(x) + \\cos^2(x) = y\\)"
     },
-    answersIdx: new Set([0, 2, 4]),
-    next: "p8"
+    answersIdx: new Set([0, 3]),
+    next: "q2a"
   },
 
-  p8: {
-    type: "mcq",
-    content: "Which of these are linear and in standard form?",
-    options: {
-      0: "\\( x + (y + x) = 3 \\)",
-      1: "\\( x + 3y + 2z = 0 \\)",
-      2: "\\( x + 1 = 1 - y \\)"
-    },
-    answersIdx: new Set([1]),
-    next: "p9"
-  },
-
-  p9: {
-    type: "mcq",
-    content: "Which of these are homogeneous linear equations?",
-    options: {
-      0: "\\( x + (y + x) = 3 \\)",
-      1: "\\( x + 3y + 2z = 0 \\)",
-      2: "\\( x + 1 = 1 - y \\)"
-    },
-    answersIdx: new Set([1, 2]),
-    next: "p10"
-  },
-
-  p10: {
-    type: "image",
-    content: "images/cipher_pitiful.png",
-    sticker: true,
-    next: "p11"
-  },
-
-  p11: {
+  q2a: {
     type: "plain",
-    content: "Oops! I forgot to send you some definitions earlier... Don't worry if you got them wrong!",
-    next: "p12"
+    content: "<b>b</b> & <b>c</b> contain nonlinear terms like \\(x^2\\), \\(\\sin(x)\\), etc.<br>" + 
+    "For <b>d</b>, by using the identity \\( \\sin^2(x) + \\cos^2(x) = 1\\), it can be simplified to \\( x - y = -1 \\).",
+    next: "q3"
   },
 
-  p12: {
-    type: "image",
-    content: "images/def_standard_form.png",
-    important: true,
-    next: "p13"
+  q3: {
+    type: "dialogue",
+    content: "Time for a quick recap. How would you solve the following?<br>" +
+    "\\(x + y = 2 \\\\ x - y = 0\\)",
+    options: {
+      0: "Substitution method (eg. Use the substitution \\(y = 2 - x\\) in \\( \\text{Eq.2} \\), and so on)",
+      1: "Elimination method (eg. Eliminate \\( y \\) using \\( \\text{Eq.1 + Eq.2} \\), and so on)",
+      2: "Graphical method (Find the point(s) of intersection between the lines)"
+    },
+    respondToIdx: {
+      0: "q3a",
+      1: "q3a",
+      2: "q3a"
+    }
   },
 
-  p13: {
-    type: "image",
-    content: "images/def_homogeneous_system.png",
-    important: true,
-    next: "p14"
-  },
-
-  p14: {
+  q3a: {
     type: "plain",
-    content: "Now, get ready~ It's time to do some actual work!",
-    next: "p14a"
+    content: "☝️🤓 Umm actually, all 3 methods work!<br>But for now, let’s try the graphical method:",
+    next: "graph2d"
   },
 
-  p14a: {
+  graph2d: {
     type: "embed",
     content: "https://www.desmos.com/calculator/jmmn4dlzhf",
-    previewText: "Here's a tool to visualize (Desmos)",
+    previewText: "Visualize the intersection on Desmos",
     previewImage: "images/desmos_thumbnail.jpg",
     preload: true,
     important: true,
-    next: "p15"
+    next: "q4"
   },
 
-  p15: {
+  q4: {
     type: "single-mcq",
-    content: "What is the solution of: \\( x - y = 0 \\) and \\( x + y = 2 \\)?",
+    content: "For the previous question, how many points of intersection do you see?",
     options: {
-      0: "\\( x = 1 \\), \\( y = 1 \\)",
-      1: "Infinitely many solutions",
-      2: "No solution"
+      0: "One point",
+      1: "No points",
+      2: "Infinitely many points"
     },
     answersIdx: new Set([0]),
-    next: "p15a"
+    systemMessage: "Note: enable equations 1, 2 on the Desmos page",
+    next: "q4a"
   },
 
-  p15a: {
+  q4a: {
     type: "plain",
-    content: "If you've noticed, the solution is basically the point of intersection!",
-    next: "p16"
+    content: "There’s one point of intersection — that’s the solution to the system.<br>" +
+    "We say this system is <b>consistent</b> because a solution exists!",
+    next: "q5"
   },
 
-  p16: {
+  q5: {
     type: "single-mcq",
-    content: "What is the solution of: \\( x + 2y = 5 \\) and \\( 2x + 4y = 8 \\)?",
+    content: "Now try these:<br>" +
+    "\\(x + 2y = 5 \\\\ 2x + 4y = 10\\)<br>" +
+    "How many points of intersection are there?",
     options: {
-      0: "\\( x = 1 \\), \\( y = 2 \\)",
-      1: "Infinitely many solutions",
-      2: "No solution"
+      0: "One point",
+      1: "No points",
+      2: "Infinitely many points"
     },
     answersIdx: new Set([2]),
-    next: "p16a"
+    systemMessage: "Note: enable equations 3, 4 on the Desmos page",
+    next: "q5a"
   },
 
-  p16a: {
-    type: "dialogue",
-    content: "What did you see this time? Spill it!",
-    options: {
-      0: "The lines are parallel, and they don't intercept"
-    },
-    respondToIdx: {
-      0: "p16b"
-    }
-  },
-
-  p16b: {
+  q5a: {
     type: "plain",
-    content: "RIGHT ON POINT. In fact, modifying the constant \\( b \\) in any of the above equations still keeps its 'direction'.",
-    next: "p16c"
+    content: "These represent the <b>same line</b>! Notice that each point in this line is a possible solution.<br>" +
+    "This means infinitely many solutions exist, which is still consistent ✅",
+    next: "q6"
   },
 
-  p16c: {
-    type: "plain",
-    content: "Which means the issue of having no solution was caused by a bad set of constants \\( b_1, b_2, \\ldots, b_n \\)!",
-    next: "p16d"
-  },
-
-  p16d: {
-    type: "plain",
-    content: "Next time you get an unsolvable (inconsistent) system, you know who's to blame (hehe)",
-    next: "p17"
-  },
-
-  p17: {
+  q6: {
     type: "single-mcq",
-    content: "What is the solution of: \\( x + 2y = 5 \\) and \\( 2x + 4y = 10 \\)?",
+    content: "What abou:<br>" +
+    "\\(x + 2y = 5 \\\\ 2x + 4y = 8\\)<br>" +
+    "How many points of intersection are there?",
     options: {
-      0: "\\( x = 1 \\), \\( y = 2 \\)",
-      1: "Infinitely many solutions",
-      2: "No solution"
+      0: "One point",
+      1: "No points",
+      2: "Infinitely many points"
     },
     answersIdx: new Set([1]),
-    respondToIdx: {
-      0: "p17q"
-    },
-    next: "p17a"
+    systemMessage: "Note: enable equations 3, 5 on the Desmos page",
+    next: "q6a"
   },
 
-  p17q: {
+  q6a: {
     type: "plain",
-    content: "☝️🤓 Um, technically that's not 100% wrong, since it captures only one of many solutions."
+    content: "These lines are parallel — no point of intersection.<br>"+
+    "This system is <b>inconsistent</b>, which means there is no solution.",
+    next: "q7"
   },
 
-  p17a: {
-    type: "dialogue",
-    content: "This time, did you notice anything different in the graph?",
+  q7: {
+    type: "single-mcq",
+    content: "Now, it's time to spice things up~ What if we had 3 variables and equations:<br>" + 
+    "\\(x + y + z = 6 \\\\ 2x - y + z = 1 \\\\ x + 2y - z = 4\\)<br>"+
+    "What do the individual equations represent?",
     options: {
-      0: "What? I only saw 1 line this time!",
-      1: "Both equations produce the same line"
+      0: "Lines",
+      1: "Planes",
+      2: "Cubes"
     },
-    respondToIdx: {
-      0: "p17b",
-      1: "p17b"
-    }
+    answersIdx: new Set([1]),
+    next: "q7a"
   },
 
-  p17b: {
+  q7a: {
     type: "plain",
-    content: "Mhm! Also notice that one equation is a multiple of the other!",
-    next: "p18"
+    content: "In 3D, each equation represents a <b>plane</b>!<br>" + 
+    "The solution will be the point(s) of intersection across all 3 planes.",
+    next: "graph3d"
   },
 
-  p18: {
-    type: "dialogue",
-    content: "If a linear system has infinite solutions, how will you express the solution?",
-    options: {
-      0: "I will write them all down... One by one...",
-      1: "Use arbitrary values",
-      2: "I have no idea."
-    },
-    respondToIdx: {
-      0: "p18a",
-      1: "p18b",
-      2: "p18b"
-    }
-  },
-
-  p18a: {
-    type: "plain",
-    content: "WHAT?!! That's not feasible!",
-    next: "p18b"
-  },
-
-  p18b: {
-    type: "plain",
-    content: "We can use parameters, symbols representing arbitrary values. For example, \\( s \\in \\mathbb{R} \\) represents an arbitrary real number.",
-    next: "p18c"
-  },
-
-  p18c: {
-    type: "plain",
-    content: "Oh, also, don't reuse an existing letter for it! 😱 Else your answer would make no sense!",
-    next: "p18d"
-  },
-
-  p18d: {
-    type: "plain",
-    content: "We'll use the previous example: \\( x + 2y = 5 \\) and \\( 2x + 4y = 10 \\). If we parameterize \\( y \\), that is, using the substitution \\( y = s \\), we get \\( x + 2s = 5 \\).",
-    next: "p18e"
-  },
-
-  p18e: {
-    type: "plain",
-    content: "Finally, we get \\( x = 5 - 2s, y = s, s \\in \\mathbb{R} \\), which represents all solutions.",
-    next: "p19"
-  },
-
-  p19: {
-    type: "image",
-    content: "images/solution_types.png",
+  graph3d: {
+    type: "embed",
+    content: "https://www.desmos.com/3d/mkajwxzm7n",
+    previewText: "Open Desmos (now in 3D)",
+    previewImage: "images/desmos_thumbnail.jpg",
+    preload: true,
     important: true,
-    next: "p20"
-  }
+    next: "q8"
+  },
 
+  q8: {
+    type: "single-mcq",
+    content: "For the system above, how many points of intersection do you see?",
+    options: {
+      0: "One point",
+      1: "No points",
+      2: "Infinitely many points"
+    },
+    answersIdx: new Set([0]),
+    systemMessage: "Note: enable equations 1-3 on the Desmos page",
+    next: "q8a"
+  },
+
+  q8a: {
+    type: "single-mcq",
+    content: "Is this system consistent?",
+    options: {
+      0: "Consistent",
+      1: "Inconsistent"
+    },
+    answersIdx: new Set([0]),
+    next: "q9"
+  },
+
+  q9: {
+    type: "plain",
+    content: "It’s <b>consistent</b> because <b>all three planes intersect</b>, at one common point.",
+    next: "q10"
+  },
+
+  q10: {
+    type: "single-mcq",
+    content: "How about:<br>" + 
+    "\\(x + y + z = 1 \\\\ x - y + z = -1 \\\\ 2x + 2z = -3\\)<br>" +
+    "How many points of intersection do you see?",
+    options: {
+      0: "One point",
+      1: "No points",
+      2: "Infinitely many points"
+    },
+    answersIdx: new Set([1]),
+    systemMessage: "Note: enable equations 4-6 on the Desmos page",
+    next: "q10a"
+  },
+
+  q10a: {
+    type: "single-mcq",
+    content: "Is this system consistent?",
+    options: {
+      0: "Consistent",
+      1: "Inconsistent"
+    },
+    answersIdx: new Set([1]),
+    next: "q10b"
+  },
+
+  q10b: {
+    type: "plain",
+    content: "In this case, there isn't a single point that touches all three planes.<br>" + 
+    "Which means, this system is <b>inconsistent</b>!",
+    next: "q11"
+  },
+
+  q11: {
+    type: "plain",
+    content: "Sometimes in 3D, two planes intersect along a line (or even an entire plane).<br>" + 
+    "The following system is an example:<br>" + 
+    "\\(x + y + z = 1 \\\\ x - y + z = -1 \\\\ 2x + 2z = 0\\)<br>",
+    systemMessage: "Note: enable equations 4, 5, 7 on the Desmos page",
+    next: "q12"
+  },
+
+  q12: {
+    type: "single-mcq",
+    content: "To find a solution, we can pick any point in the line of intersection.<br>" +
+    "But, what if we want to find the solution that captures all possible solutions — the <b>general solution</b>?<br>" + 
+    "First, we will have to use something called <b>parameters</b>!<br>" + 
+    "Parameters are arbitrary values, and the number of parameters we use correspond to the degrees of freedom of all possible solutions.<br>" +
+    "Take a quick guess, how many parameters should we use?",
+    options: {
+      0: "0",
+      1: "1",
+      2: "2",
+      3: "3"
+    },
+    answersIdx: new Set([1]),
+    next: "q12a"
+  },
+
+  q12a: {
+    type: "plain",
+    content: "As the solution lies across a line, it has a single degree of freedom.<br>" +
+    "So, we only need 1 parameter!",
+    next: "q12b"
+  },
+
+  q12b: {
+    type: "dialogue",
+    content: "Solving for the above, we get \\(x = -s, y = 1, z = s\\).<br>" +
+    "Try adjusting \\(s\\) — the dot always lies on the intersection line.",
+    systemMessage: "Note: additionally enable equation 8 on the Desmos page",
+    options: {
+      0: "Wait, how did we get here?"
+    },
+    respondToIdx: {0: "q12c"} 
+  },
+
+  q12c: {
+    type: "plain",
+    content: "Umm, forgive me for not going through the process earlier!",
+    next: "q12d"
+  },
+
+  q12d: {
+    type: "dialogue",
+    content: "First, let's choose a variable to 'free up', or parameterize:<br>" +
+    "\\(x + y + z = 1 \\\\ x - y + z = -1 \\\\ 2x + 2z = 0\\)",
+    options: {
+      0: "Choose \\(x\\)",
+      1: "Choose \\(y\\)",
+      2: "Choose \\(z\\)"
+    },
+    respondToIdx: {
+      0: "q12dx",
+      1: "q12dy",
+      2: "q12dz"
+    }
+  },
+
+  q12dx: {
+    type: "plain",
+    content: "First, we use the substitution \\(x = s\\).<br>" +
+    "Next, we get \\(2x + 2z = 2s + 2z = 0 \\implies z = -s\\).<br>" + 
+    "Finally, we get \\(x + y + z = s + y - s = 1 \\implies y = 1\\).<br>" +
+    "The solution is \\(x = s, y = 1, z = -s\\).",
+    next: "q12e"
+  },
+
+  q12dz: {
+    type: "plain",
+    content: "First, we use the substitution \\(z = s\\).<br>" +
+    "Next, we get \\(2x + 2z = 2x + 2s = 0 \\implies x = -s\\).<br>" + 
+    "Finally, we get \\(x + y + z = -s + y + s = 1 \\implies y = 1\\).<br>" +
+    "The solution is \\(x = -s, y = 1, z = s\\).",
+    next: "q12e"
+  },
+
+  q12dy: {
+    type: "plain",
+    content: "First, we use the substitution \\(y = s\\).<br>" +
+    "Next, we get \\(x + y + z = x + s + z = 1\\).<br>" + 
+    "Then, we get \\(x - y + z = x - s + z = -1\\).<br>" +
+    "Wait, something's not right! It seems \\( s = 1 \\), but we know that it can't be a fixed value!",
+    next: "q12dy1"
+  },
+
+  q12dy1: {
+    type: "image",
+    content: "images/cipher_pitiful.png",
+    sticker: true,
+    next: "q12dy2"
+  },
+
+  q12dy2: {
+    type: "plain",
+    content: "Sorry about that! Let's try again with a different variable!",
+    next: "q12d"
+  },
+
+  q12e: {
+    type: "dialogue",
+    content: "Are you satisfied with my explanation?",
+    options: {
+      0: "I wanna try again!",
+      1: "Yes, let's proceed"
+    },
+    respondToIdx: {
+      0: "q12d",
+      1: "q13"
+    }
+  },
+
+  q13: {
+    type: "plain",
+    content: "Whether it's 2D, 3D, or 99D — linear systems are just collections of linear equations.<br>" +
+    "The goal is always the same: to find all the values that satisfy <b>every equation at once</b>.",
+    next: "def_system"
+  },
+
+  def_system: {
+    type: "image",
+    content: "images/def_linear_system.png",
+    important: true,
+    next: "end"
+  },
+
+  end: {
+    type: "end",
+    content: "That’s a wrap! 🎓<br>Feel free to revisit any starred definitions anytime."
+  }
 };
