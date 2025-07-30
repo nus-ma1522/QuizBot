@@ -28,17 +28,38 @@ const dialogueSystem = {
     next: "def_linear_eqn"
   },
 
+
   def_linear_eqn: {
     type: "tex",
     content: "$$ \\textbf{\\Large Linear Equations} \\\\ $$" +
-      "$ \\text{A linear equation with } n \\text{ variables can be expressed as:} \\\\$" +
-      "$$ a_1 x_1 + a_2 x_2 + \\ldots + a_n x_n = b $$" +
-      "$\\text{• } x_1, x_2, \\ldots, x_n \\text{ are called the variables.} \\\\$" +
-      "$\\text{• } a_1, a_2, \\ldots, a_n \\text{ are the coefficients, each corresponding to a variable.} \\\\$" +
-      "$\\text{• } b \\text{ is the constant, independent of any variable.} $",
-    previewText: "Definition: Linear Equations",
+      "$ \\text{A linear equation with } n \\text{ variables in standard form has the form:} \\\\$" +
+      "$$ a_1 x_1 + a_2 x_2 + \\cdots + a_n x_n = b $$" +
+      "$ \\text{• } a_1, a_2, \\ldots, a_n \\text{ are known constants, called the coefficients.} \\\\$" +
+      "$ \\text{• } b \\text{ is called the constant} \\\\$" +
+      "$ \\text{• } x_1, x_2, \\ldots, x_n \\text{ are variables} \\\\ \\text{ } \\\\$" +
+      "$ \\text{The linear equation is homogeneous if } b = 0 \\text{, i.e.} \\\\$" +
+      "$$ a_1 x_1 + a_2 x_2 + \\cdots + a_n x_n = 0 \\\\ \\text{ } $$" +
+      "$$ \\textbf{\\Large Linear Systems} \\\\ $$" +
+      "$ \\text{A system of linear equations, or a linear system consists of a finite number} \\\\$" +
+      "$ \\text{of linear equations. In general, a linear system with } n \\text{ variables and } m \\\\$" +
+      "$ \\text{equations in standard form is written as:} \\\\$" +
+      "$$ \\begin{cases}" +
+      "a_{11} x_1 + a_{12} x_2 + \\cdots + a_{1n} x_n = b_1 \\\\" +
+      "a_{21} x_1 + a_{22} x_2 + \\cdots + a_{2n} x_n = b_2 \\\\" +
+      "\\hphantom{mmmmmmnnn} \\vdots \\\\" +
+      "a_{m1} x_1 + a_{m2} x_2 + \\cdots + a_{mn} x_n = b_m" +
+      "\\end{cases} $$" +
+      "$ \\text{The linear system is homogeneous if } b_1 = b_2 = \\ldots = b_m = 0 \\text{,} \\\\$" +
+      "$ \\text{that is, all the linear equations are homogeneous.} \\\\ \\text{ } \\\\$" +
+      "$$ \\textbf{Solutions to a linear system} $$" +
+      "$ \\text{Given a linear system, we say that:} \\\\$" +
+      "$$ x_1 = c_1, x_2 = c_2, \\ldots, x_n = c_n $$" +
+      "$ \\text{is a solution to the linear system if the equations are simultaneously} \\\\$" +
+      "$ \\text{satisfied after making the substitution.} $",
+    previewText: "Definition: Linear Equations and Systems",
+    previewImage: "images/cooking.png",
     important: true,
-    systemMessage: "You may view starred messages by clicking on the star icon on the top right corner.",
+    systemMessage: "You may view starred messages anytime by clicking on the star icon on the top right corner.",
     next: "q2"
   },
 
@@ -58,13 +79,13 @@ const dialogueSystem = {
   q2a: {
     type: "plain",
     content: "<b>b</b> & <b>c</b> contain nonlinear terms like \\(x^2\\), \\(\\sin(x)\\), etc.<br>" + 
-    "For <b>d</b>, by using the identity \\( \\sin^2(x) + \\cos^2(x) = 1\\), it can be simplified to \\( x - y = -1 \\).",
+    "<b>d</b> is a trick option: by using the identity \\( \\sin^2(x) + \\cos^2(x) = 1\\), it can be simplified to \\( x - y = -1 \\).",
     next: "q3"
   },
 
   q3: {
     type: "dialogue",
-    content: "Time for a quick recap. How would you solve the following?<br>" +
+    content: "Time for a quick recap. How would you solve the following:<br>" +
     "\\(x + y = 2 \\\\ x - y = 0\\)",
     options: {
       0: "Substitution method (eg. Use the substitution \\(y = 2 - x\\) in \\( \\text{Eq.2} \\), and so on)",
@@ -80,7 +101,7 @@ const dialogueSystem = {
 
   q3a: {
     type: "plain",
-    content: "☝️🤓 Umm actually, all 3 methods work!<br>But for now, let’s try the graphical method:",
+    content: "☝️🤓 Umm actually, all 3 methods work!<br>But for now, let’s approach it graphically:",
     next: "graph2d"
   },
 
@@ -182,7 +203,7 @@ const dialogueSystem = {
   graph3d: {
     type: "embed",
     content: "https://www.desmos.com/3d/mkajwxzm7n",
-    previewText: "Open Desmos (now in 3D)",
+    previewText: "Visualize the intersection on Desmos (now in 3D)",
     previewImage: "images/desmos_thumbnail.jpg",
     preload: true,
     important: true,
@@ -215,7 +236,8 @@ const dialogueSystem = {
 
   q9: {
     type: "plain",
-    content: "It’s <b>consistent</b> because <b>all three planes intersect</b>, at one common point.",
+    content: "It’s <b>consistent</b> because <b>all three planes intersect!</b><br>" +
+    "(to be precise, they intersect at a single point)",
     next: "q10"
   },
 
@@ -254,7 +276,7 @@ const dialogueSystem = {
 
   q11: {
     type: "plain",
-    content: "Sometimes in 3D, two planes intersect along a line (or even an entire plane).<br>" + 
+    content: "Sometimes in 3D, the planes may intersect along a line. (or even an entire plane!)<br>" + 
     "The following system is an example:<br>" + 
     "\\(x + y + z = 1 \\\\ x - y + z = -1 \\\\ 2x + 2z = 0\\)<br>",
     systemMessage: "Note: enable equations 4, 5, 7 on the Desmos page",
@@ -355,6 +377,7 @@ const dialogueSystem = {
   q12dy2: {
     type: "plain",
     content: "Sorry about that! Let's try again with a different variable!",
+    systemMessage: "You will learn more about this condition in Chapter 3",
     next: "q12d"
   },
 
@@ -375,13 +398,6 @@ const dialogueSystem = {
     type: "plain",
     content: "Whether it's 2D, 3D, or 99D — linear systems are just collections of linear equations.<br>" +
     "The goal is always the same: to find all the values that satisfy <b>every equation at once</b>.",
-    next: "def_system"
-  },
-
-  def_system: {
-    type: "image",
-    content: "images/def_linear_system.png",
-    important: true,
     next: "end"
   },
 
