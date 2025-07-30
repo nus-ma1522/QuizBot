@@ -405,8 +405,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(245, 245, 245, 0.5); /* ✅ translucent layer */
-  border-radius: 12px;
+  background-color: rgba(245, 245, 245, 0.65);
   z-index: 1;
   pointer-events: none;
 }
@@ -471,10 +470,14 @@ body {
   padding: 40px;
   border-radius: 8px;
   font-family: 'KaTeX_Main';
-  font-size: 20px;
+  font-size: clamp(14px, 2.8vw, 24px);
   max-width: 90vw;
   max-height: 80vh;
   overflow: auto;
+}
+
+.katex {
+  font-size: 1.18em;
 }
 
 /* Ensure font size in latex-script is consistent */

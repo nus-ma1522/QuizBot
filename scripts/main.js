@@ -395,10 +395,11 @@ function renderMCQOptions(optionsObj, type) {
 }
 
 function submitTextAnswer(dialogueSystem) {
+  const answer = userText.value.trim();
+  if (!answer) return;
   hideInput();
 
   setTimeout(() => {
-    const answer = userText.value.trim();
     const userBubble = addUserMessage(answer);
     userText.value = "";
     const node = dialogueSystem[currentNode];
@@ -431,11 +432,12 @@ function submitTextAnswer(dialogueSystem) {
 }
 
 function submitMCQAnswer(dialogueSystem) {
+  const selectedEls = Array.from(document.querySelectorAll('.option-item.selected'));
+  if (!selectedEls.length) return;
+
   hideInput();
 
   setTimeout(() => {
-    const selectedEls = Array.from(document.querySelectorAll('.option-item.selected'));
-    if (!selectedEls.length) return;
     const selectedKeys = selectedEls.map(el => el.dataset.key);
 
     const node = dialogueSystem[currentNode];
