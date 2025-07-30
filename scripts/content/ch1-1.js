@@ -152,14 +152,14 @@ const dialogueSystem = {
 
   q5a: {
     type: "plain",
-    content: "These represent the <b>same line</b>! Notice that each point in this line is a possible solution.<br>" +
+    content: "The equations represent the <b>same line</b>! Due to the overlap, every point in this line is a possible solution.<br>" +
     "This means infinitely many solutions exist, which is still consistent ✅",
     next: "q6"
   },
 
   q6: {
     type: "single-mcq",
-    content: "What abou:<br>" +
+    content: "What about:<br>" +
     "\\(x + 2y = 5 \\\\ 2x + 4y = 8\\)<br>" +
     "How many points of intersection are there?",
     options: {

@@ -320,9 +320,14 @@ function showInModal(element) {
 
 function adjustChatBoxPadding() {
   const isExpanded = chatInputContainer.classList.contains('expanded');
-  const expandedHeight = chatInput.offsetHeight + 20; // input + toggle bar
-  chatBox.style.paddingBottom = isExpanded ? `${expandedHeight}px` : '20px';
-  chatBox.scrollTop = chatBox.scrollHeight; // ensure latest message stays in view
+  const expandedHeight = chatInput.offsetHeight + 44; // input + toggle bar
+  if (isExpanded) {
+    chatBox.style.paddingBottom = `${expandedHeight}px`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+  } else {
+    chatBox.style.paddingBottom = '44px';
+  }
+  chatBox.style.paddingBottom = isExpanded ? `${expandedHeight}px` : '44px';
 }
 
 toggleInputBtn.addEventListener('click', () => {
