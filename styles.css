@@ -98,7 +98,8 @@ body {
 .message {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 12px;
+  margin-top: 6px;
+  margin-bottom: 6px;
   max-width: 100%;
 }
 
@@ -235,7 +236,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  max-height: calc(50vh + 32px);
+  max-height: calc(50vh + 56px);
   display: none;
   flex-direction: column;
   transition: all 0.3s ease;
@@ -244,7 +245,7 @@ body {
 }
 
 #chatInputContainer.show {
-  transform: translateY(calc(100% - 32px));
+  transform: translateY(calc(100% - 56px));
 }
 
 #chatInputContainer.expanded {
@@ -265,8 +266,8 @@ body {
 .toggle-input-btn {
   margin: auto;
   top: 0px;
-  width: 20vw;
-  height: 32px;
+  width: 50vw;
+  height: 56px;
   background: #ccc;
   border-radius: 12px 12px 0 0;
   cursor: pointer;
@@ -470,7 +471,7 @@ body {
   padding: 40px;
   border-radius: 8px;
   font-family: 'KaTeX_Main';
-  font-size: clamp(14px, 2.8vw, 24px);
+  font-size: clamp(12px, 2.4vw, 24px);
   max-width: 90vw;
   max-height: 80vh;
   overflow: auto;
