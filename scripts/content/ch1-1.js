@@ -1,14 +1,14 @@
 const dialogueSystem = {
   start: {
     type: "plain",
-    content: "Let's recall what we’ve learned before:<br>" +
-    "\\(x + y = 2\\) and \\(x - y = 0\\).",
+    content: "Try to recall what we’ve learned previously in school:<br>" +
+    "\\(x + y = 2\\) and \\(x = y\\).",
     next: "q1"
   },
 
   q1: {
     type: "dialogue",
-    content: "Do you still remember what these are called?",
+    content: "Seem familiar? Do you still remember what these are called?",
     options: {
       0: "Simultaneous equations",
       1: "Linear equations",
@@ -57,7 +57,7 @@ const dialogueSystem = {
       "$ \\text{is a solution to the linear system if the equations are simultaneously} \\\\$" +
       "$ \\text{satisfied after making the substitution.} $",
     previewText: "Definition: Linear Equations and Systems",
-    previewImage: "images/cooking.png",
+    previewImage: "images/cooked.png",
     important: true,
     systemMessage: "You may view starred messages anytime by clicking on the star icon on the top right corner.",
     next: "q2"
@@ -79,6 +79,7 @@ const dialogueSystem = {
   q2a: {
     type: "plain",
     content: "<b>b</b> & <b>c</b> contain nonlinear terms like \\(x^2\\), \\(\\sin(x)\\), etc.<br>" + 
+    "In fact, <b>c</b> can be linearized through substitution (\\(u = \\sin(x), v = \\cos(y)\\)) as the new variables are independent of each other.<br>" +
     "<b>d</b> is a trick option: by using the identity \\( \\sin^2(x) + \\cos^2(x) = 1\\), it can be simplified to \\( x - y = -1 \\).",
     next: "q3"
   },
@@ -101,7 +102,7 @@ const dialogueSystem = {
 
   q3a: {
     type: "plain",
-    content: "☝️🤓 Umm actually, all 3 methods work!<br>But for now, let’s approach it graphically:",
+    content: "☝️🤓 Umm actually, all 3 methods will work!<br>But for now, let’s approach it graphically:",
     next: "graph2d"
   },
 
@@ -152,7 +153,7 @@ const dialogueSystem = {
 
   q5a: {
     type: "plain",
-    content: "The equations represent the <b>same line</b>! Due to the overlap, every point in this line is a possible solution.<br>" +
+    content: "The equations represent the <b>same line</b>! Due to the overlap, every point across this line is a possible solution.<br>" +
     "This means infinitely many solutions exist, which is still consistent ✅",
     next: "q6"
   },
@@ -174,14 +175,14 @@ const dialogueSystem = {
 
   q6a: {
     type: "plain",
-    content: "These lines are parallel — no point of intersection.<br>"+
+    content: "These lines are parallel, with no point of intersection.<br>"+
     "This system is <b>inconsistent</b>, which means there is no solution.",
     next: "q7"
   },
 
   q7: {
     type: "single-mcq",
-    content: "Now, it's time to spice things up~ What if we had 3 variables and equations:<br>" + 
+    content: "Now, it's time to spice things up! What if we had 3 variables and equations:<br>" + 
     "\\(x + y + z = 6 \\\\ 2x - y + z = 1 \\\\ x + 2y - z = 4\\)<br>"+
     "What do the individual equations represent?",
     options: {
@@ -195,8 +196,9 @@ const dialogueSystem = {
 
   q7a: {
     type: "plain",
-    content: "In 3D, each equation represents a <b>plane</b>!<br>" + 
-    "The solution will be the point(s) of intersection across all 3 planes.",
+    content: "Since we now have 3 variables, we can visualize the system in 3 dimensions.<br>" +
+    "In 3D, each equation represents a <b>plane</b>!<br>" + 
+    "The solution will be the point(s) of intersection across all 3 planes (equations).",
     next: "graph3d"
   },
 
@@ -284,12 +286,30 @@ const dialogueSystem = {
   },
 
   q12: {
-    type: "single-mcq",
-    content: "To find a solution, we can pick any point in the line of intersection.<br>" +
+    type: "plain",
+    content: "To find a solution, we can just pick any point across the line of intersection.<br>" +
     "But, what if we want to find the solution that captures all possible solutions — the <b>general solution</b>?<br>" + 
     "First, we will have to use something called <b>parameters</b>!<br>" + 
-    "Parameters are arbitrary values, and the number of parameters we use correspond to the degrees of freedom of all possible solutions.<br>" +
-    "Take a quick guess, how many parameters should we use?",
+    "Parameters are arbitrary values, and the number of parameters we use correspond to the dimension of the general solution.<br>" +
+    "This may be confusing, so here's a visual guide to aid with understanding:",
+    next: "q12a"
+  },
+
+  q12a: {
+    type: "image",
+    content: "images/param_illustration.png",
+    next: "q12a1"
+  },
+
+  q12a1: {
+    type: "plain",
+    content: "To form the general solution, we need any point that is a valid solution",
+    next: "q12b"
+  },
+
+  q12b: {
+    type: "single-mcq",
+    content: "Have a quick guess, how many parameters should we use?",
     options: {
       0: "0",
       1: "1",
@@ -297,34 +317,34 @@ const dialogueSystem = {
       3: "3"
     },
     answersIdx: new Set([1]),
-    next: "q12a"
+    next: "q12c"
   },
 
-  q12a: {
+  q12c: {
     type: "plain",
     content: "As the solution lies across a line, it has a single degree of freedom.<br>" +
     "So, we only need 1 parameter!",
-    next: "q12b"
+    next: "q12d"
   },
 
-  q12b: {
+  q12d: {
     type: "dialogue",
     content: "Solving for the above, we get \\(x = -s, y = 1, z = s\\).<br>" +
     "Try adjusting \\(s\\) — the dot always lies on the intersection line.",
     systemMessage: "Note: additionally enable equation 8 on the Desmos page",
     options: {
-      0: "Wait, how did we get here?"
+      0: "Wait, how did we get the solution?"
     },
     respondToIdx: {0: "q12c"} 
   },
 
-  q12c: {
+  q12e: {
     type: "plain",
-    content: "Umm, forgive me for not going through the process earlier!",
+    content: "🥺Umm, forgive me for not going through the process earlier!",
     next: "q12d"
   },
 
-  q12d: {
+  q12f: {
     type: "dialogue",
     content: "First, let's choose a variable to 'free up', or parameterize:<br>" +
     "\\(x + y + z = 1 \\\\ x - y + z = -1 \\\\ 2x + 2z = 0\\)",
@@ -334,31 +354,31 @@ const dialogueSystem = {
       2: "Choose \\(z\\)"
     },
     respondToIdx: {
-      0: "q12dx",
-      1: "q12dy",
-      2: "q12dz"
+      0: "q12fx",
+      1: "q12fy",
+      2: "q12fz"
     }
   },
 
-  q12dx: {
+  q12fx: {
     type: "plain",
     content: "First, we use the substitution \\(x = s\\).<br>" +
     "Next, we get \\(2x + 2z = 2s + 2z = 0 \\implies z = -s\\).<br>" + 
     "Finally, we get \\(x + y + z = s + y - s = 1 \\implies y = 1\\).<br>" +
     "The solution is \\(x = s, y = 1, z = -s\\).",
-    next: "q12e"
+    next: "q12g"
   },
 
-  q12dz: {
+  q12fz: {
     type: "plain",
     content: "First, we use the substitution \\(z = s\\).<br>" +
     "Next, we get \\(2x + 2z = 2x + 2s = 0 \\implies x = -s\\).<br>" + 
     "Finally, we get \\(x + y + z = -s + y + s = 1 \\implies y = 1\\).<br>" +
     "The solution is \\(x = -s, y = 1, z = s\\).",
-    next: "q12e"
+    next: "q12g"
   },
 
-  q12dy: {
+  q12fy: {
     type: "plain",
     content: "First, we use the substitution \\(y = s\\).<br>" +
     "Next, we get \\(x + y + z = x + s + z = 1\\).<br>" + 
@@ -367,21 +387,21 @@ const dialogueSystem = {
     next: "q12dy1"
   },
 
-  q12dy1: {
+  q12fy1: {
     type: "image",
     content: "images/cipher_pitiful.png",
     sticker: true,
-    next: "q12dy2"
+    next: "q12fy2"
   },
 
-  q12dy2: {
+  q12fy2: {
     type: "plain",
     content: "Sorry about that! Let's try again with a different variable!",
     systemMessage: "You will learn more about this condition in Chapter 3",
-    next: "q12d"
+    next: "q12f"
   },
 
-  q12e: {
+  q12g: {
     type: "dialogue",
     content: "Are you satisfied with my explanation?",
     options: {
@@ -389,7 +409,7 @@ const dialogueSystem = {
       1: "Yes, let's proceed"
     },
     respondToIdx: {
-      0: "q12d",
+      0: "q12f",
       1: "q13"
     }
   },
@@ -406,3 +426,20 @@ const dialogueSystem = {
     content: "That’s a wrap! 🎓<br>Feel free to revisit any starred definitions anytime."
   }
 };
+
+const compulsoryMessages = [
+  "def_linear_eqn"
+];
+
+const checkpoints = [
+  {
+    id: "start",
+    label: "Start from beginning",
+    showCompulsoryMessages: 0
+  },
+  {
+    id: "q2",
+    label: "Skip beginning",
+    showCompulsoryMessages: 1
+  },
+];
