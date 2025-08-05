@@ -71,13 +71,16 @@ function initializeQuiz() {
       selector.style.display = 'none';
       container.style.display = 'flex';
 
-      addSystemMessage("🧠 Simulation started");
+      addSystemMessage("Loading message history...");
 
       for (let i = 0; i < showCompulsoryMessages; i++) {
           addBotMessage(compulsoryMessages[i]);
       }
+
+      addSystemMessage("🧠 If you encounter any doubts, do clarify them on Telegram! 🧠");
     
       renderMessage(id);
+      chatBox.scrollTop = chatBox.scrollHeight;
     });
     buttons.appendChild(btn);
   });
@@ -102,7 +105,7 @@ function addUserMessage(content) {
   const msgContent = document.createElement('div');
   msgContent.className = 'bubble';
   msgContent.innerHTML = content.trim();
-  renderMathInElement(msgContent);
+  renderTex(msgContent);
 
   msgWrapper.appendChild(msgContent);
   chatBox.appendChild(msgWrapper);
@@ -138,7 +141,7 @@ function addBotMessage(nodeId) {
     msgContent = document.createElement('div');
     msgContent.className = 'bubble';
     msgContent.innerHTML = node.content.trim();
-    renderMathInElement(msgContent);
+    renderTex(msgContent);
 
     const star = document.createElement('span');
     star.textContent = '★';
@@ -239,7 +242,6 @@ function createEmbedMessage(nodeId, inChatView = true) {
       preloaded.style.display = 'flex';
       modal.style.display = 'flex';
     } else {
-      // fallback: create it dynamically
       const iframe = document.createElement('iframe');
       iframe.src = url;
       iframe.className = 'embed-frame';
@@ -279,61 +281,77 @@ function createEmbedMessage(nodeId, inChatView = true) {
 
 function createTexMessage(nodeId, inChatView = true) {
   const wrapper = document.createElement('div');
-  wrapper.className = 'message-wrapper'; // Reusing layout style
+  wrapper.className = 'message-wrapper';
 
   const node = dialogueSystem[nodeId];
+  const content = node.content.trim();
 
-  const preview = document.createElement('div');
-  preview.className = 'preview-thumbnail'; // Makes it look like a PDF block
-  if (node.previewImage) preview.style.backgroundImage = `url(${node.previewImage.trim()})`;
+  // Use placeholder as real test container
+  const placeholder = document.createElement('div');
+  placeholder.className = 'tex-message';
+  placeholder.style.visibility = 'hidden';
+  wrapper.appendChild(placeholder);
 
-  const previewText = document.createElement('span');
-  previewText.textContent = (node.previewText ?? "Click to open page").trim();
-  preview.appendChild(previewText);
+  const inlineTex = document.createElement('div');
+  inlineTex.className = 'tex-content';
+  inlineTex.innerHTML = content;
+  renderTex(inlineTex);
 
-  preview.addEventListener('click', () => {
-    const div = document.createElement('div');
-    div.className = 'latex-script';
-    div.innerHTML = node.content.trim();
-  
-    renderMathInElement(div, {
-      delimiters: [
-        { left: "$$", right: "$$", display: true },
-        { left: "\\[", right: "\\]", display: true },
-        { left: "$", right: "$", display: false },
-        { left: "\\(", right: "\\)", display: false }
-      ],
-      throwOnError: false
-    });
-  
-    showInModal(div);
-  });
+  placeholder.appendChild(inlineTex);
 
-  wrapper.appendChild(preview);
+  setTimeout(() => {
+    const causesOverflow =
+      placeholder.scrollWidth > placeholder.clientWidth ||
+      placeholder.scrollHeight > placeholder.clientHeight;
 
-  if (inChatView) {
-    const star = document.createElement('span');
-    star.textContent = '★';
-    star.className = 'star-icon';
+    const inner = document.createElement('div');
 
-    if (importantMessages.has(nodeId) || node.important) {
-      star.classList.add('active');
-      importantMessages.add(nodeId);
+    if (!causesOverflow) {
+      inner.className = 'tex-message';
+      inner.appendChild(inlineTex);
+    } else {
+      inner.className = 'preview-thumbnail';
+      if (node.previewImage) {
+        inner.style.backgroundImage = `url(${node.previewImage.trim()})`;
+      }
+      const label = document.createElement('span');
+      label.textContent = (node.previewText ?? "Click to open page").trim();
+      inner.appendChild(label);
     }
 
-    star.addEventListener('click', e => {
-      e.stopPropagation();
-      if (importantMessages.has(nodeId)) {
-        importantMessages.delete(nodeId);
-        star.classList.remove('active');
-      } else {
-        importantMessages.add(nodeId);
-        star.classList.add('active');
-      }
+    // Allow popup on click
+    inner.addEventListener('click', () => {
+      const script = document.createElement('div');
+      script.className = 'latex-script';
+      script.innerHTML = content;
+      renderTex(script);
+      showInModal(script);
     });
 
-    wrapper.appendChild(star);
-  }
+    wrapper.replaceChild(inner, placeholder);
+
+    if (inChatView) {
+      const star = document.createElement('span');
+      star.textContent = '★';
+      star.className = 'star-icon';
+      if (importantMessages.has(nodeId) || node.important) {
+        star.classList.add('active');
+        importantMessages.add(nodeId);
+      }
+      star.addEventListener('click', e => {
+        e.stopPropagation();
+        if (importantMessages.has(nodeId)) {
+          importantMessages.delete(nodeId);
+          star.classList.remove('active');
+        } else {
+          importantMessages.add(nodeId);
+          star.classList.add('active');
+        }
+      });
+
+      wrapper.appendChild(star);
+    }
+  }, 0);
 
   return wrapper;
 }
@@ -427,7 +445,7 @@ function renderMCQOptions(optionsObj, type) {
     div.className = 'option-item';
     div.dataset.key = key;
     div.innerHTML = label;
-    renderMathInElement(div);
+    renderTex(div);
     div.addEventListener('click', () => {
       if (type === 'single-mcq' || type === 'dialogue') {
         document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
@@ -506,7 +524,7 @@ function submitMCQAnswer() {
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
       bubble.innerHTML = label;
-      renderMathInElement(bubble);
+      renderTex(bubble);
       bubble.dataset.key = key;
       row.appendChild(bubble);
     });
@@ -567,6 +585,18 @@ function submitMCQAnswer() {
 
 function round2(val) {
   return Math.round(val * 100) / 100;
+}
+
+function renderTex(element) {
+  renderMathInElement(element, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "\\[", right: "\\]", display: true },
+      { left: "$", right: "$", display: false },
+      { left: "\\(", right: "\\)", display: false }
+    ],
+    throwOnError: false
+  });
 }
 
 function attachZoomPanEvents(img) {
@@ -659,7 +689,7 @@ viewImportantBtn.addEventListener('click', () => {
         element = document.createElement('div');
         element.className = 'bubble important-message';
         element.innerHTML = node.content.trim();
-        renderMathInElement(element);
+        renderTex(element);
       }
 
       element.style.margin = '6px 0';

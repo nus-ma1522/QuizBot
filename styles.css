@@ -13,7 +13,14 @@ body {
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+}
+
+#chatContainer {
   overflow: hidden;
+}
+
+#checkpointSelector {
+  overflow: auto;
 }
 
 #chatHeader,
@@ -36,6 +43,7 @@ body {
   gap: 12px;
   padding: 24px;
   box-sizing: border-box;
+  position: relative;
 }
 
 #chatBody {
@@ -381,17 +389,12 @@ body {
   max-width: 80%;
 }
 
-.sticker-image, 
-.preview-thumbnail,
-.checkpoint-btn {
-  border: 3px solid #888888;
-}
-
 .sticker-image {
   max-width: min(450px, 80vw);
   max-height: min(255px, 80vh);
   margin: auto;
   border-radius: 12px;
+  border: 3px solid #888888;
   display: flex;
   cursor: pointer;
 }
@@ -403,6 +406,7 @@ body {
   height: 255px; 
   max-width: 80vw;
   max-height: 80vh;
+  border: 3px solid #888888;
   border-radius: 12px;
   background-color: #f5f5f5;
   background-size: cover;
@@ -521,3 +525,26 @@ body {
   font-size: 1.0em; 
 }
 
+.tex-message {
+  overflow: auto;
+  position: relative;
+  max-width: 80vw;
+  max-height: 80vh;
+  border: 3px solid #888888;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tex-content {
+  z-index: 2;
+  width: 100%;
+  display: inline-block;
+  padding: 12px;
+}
