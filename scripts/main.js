@@ -672,7 +672,7 @@ toggleInputBtn.addEventListener('click', () => {
 });
 
 viewImportantBtn.addEventListener('click', () => {
-  chatTitle.textContent = 'Starred';
+  chatTitle.textContent = "Starred Messages";
   importantList.innerHTML = "";
   messageHistory.forEach(nodeId => {
     if (importantMessages.has(nodeId)) {

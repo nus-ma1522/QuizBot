@@ -450,7 +450,7 @@ const dialogueSystem = {
 
   p30: {
     type: "plain",
-    content: "Mhm! I've summarised the key points below:",
+    content: "Mhm! If \\(s\\) exists for that point, then we can verify that it is solution!",
     next: "solutions"
   },
 
@@ -473,7 +473,7 @@ const dialogueSystem = {
   end: {
     type: "plain",
     content: "Well, that sums up our discussion on linear equations and systems.<br>" +
-    "🥺 I know I'm not invited, but if you have any doubts, clarify them on the Telegram group! See ya!",
+    "🥹 I know I'm not invited, but if you have any doubts, clarify them on the Telegram group! See ya!",
     systemMessage: "🎉Congratulations! You have reached the end of Interactive 1.1!🎉"
   }
 };
