@@ -41,12 +41,12 @@
           <div id="chatInput">
             <div id="textInputArea">
               <input type="text" id="userText" placeholder="Type your answer..." />
-              <button onclick="submitTextAnswer(dialogueSystem)">Send</button>
+              <button onclick="submitTextAnswer()">Send</button>
             </div>
           
             <div id="mcqInputArea">
               <div class="options" id="mcqOptions"></div>
-              <button onclick="submitMCQAnswer(dialogueSystem)">Send</button>
+              <button onclick="submitMCQAnswer()">Send</button>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@
     quizScript.src = `scripts/content/${sanitizedQuizName}.js`;
     quizScript.onload = () => {
       setTimeout(() => {
-        initializeQuiz(dialogueSystem); // Ensure renderMathInElement is loaded
+        initializeQuiz(); // Ensure renderMathInElement is loaded
       }, 100); 
     };
     quizScript.onerror = () => {
