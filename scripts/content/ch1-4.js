@@ -339,3 +339,4 @@ const checkpoints = [
     showCompulsoryMessages: 0
   }
 ];
+

@@ -25,6 +25,7 @@
 ## Testing Locally
 
 To test locally, open `index.html` with your browser. Then, the URL will be something like `<filepath>/index.html`. Make the URL `<filepath>/index.html?content=ch1-1`
+
 ## 🧱 Defining a Quiz with `dialogueSystem`
 
 Each quiz is stored as a JS object named `dialogueSystem` inside a `.js` file in `scripts/content/`.
