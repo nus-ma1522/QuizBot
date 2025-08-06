@@ -4,7 +4,7 @@ const dialogueSystem = {
     content: "If you see this, something went wrong with your quiz path.",
     next: "mid"
   },
-  
+
   mid: {
     type: "embed",
     content: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -12,9 +12,9 @@ const dialogueSystem = {
     preload: true,
     next: "end"
   },
-
+  
   end: {
-    type: "end",
+    type: "plain",
     content: "If you are trying to attack this bot, STOP IT D:<"
   }
 };
@@ -28,3 +28,4 @@ const checkpoints = [
     showCompulsoryMessages: 0
   },
 ];
+
