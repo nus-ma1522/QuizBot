@@ -32,6 +32,60 @@ const messageHistory = [];
 const importantMessages = new Set();
 const preloadedEmbeds = new Map();
 
+function initializeQuiz() {
+  const seen = new Set();
+
+  // Preload all embed iframes marked as preload
+  for (const key in dialogueSystem) {
+    const node = dialogueSystem[key];
+    if (node.type === 'embed' && node.preload && typeof node.content === 'string') {
+      const url = node.content.trim();
+      if (!seen.has(url)) {
+        seen.add(url);
+
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.className = 'embed-frame';
+        iframe.style.display = 'none'; // hidden by default
+        iframe.setAttribute('data-preloaded-url', url);
+
+        modalContent.appendChild(iframe);
+        preloadedEmbeds.set(url, iframe);
+      }
+    }
+  }
+
+  const selector = document.getElementById('checkpointSelector');
+  const buttons = document.getElementById('checkpointButtons');
+  const container = document.getElementById('chatContainer');
+
+  selector.style.display = 'block';
+
+  checkpoints.forEach(({ id, label, showCompulsoryMessages }) => {
+    const btn = document.createElement('button');
+    btn.className = 'checkpoint-btn';
+    const btnText = document.createElement('span');
+    btnText.textContent = label.trim();
+    btn.appendChild(btnText);
+    btn.addEventListener('click', () => {
+      selector.style.display = 'none';
+      container.style.display = 'flex';
+
+      if (showCompulsoryMessages) addSystemMessage("Loading message history...");
+
+      for (let i = 0; i < showCompulsoryMessages; i++) {
+          addBotMessage(compulsoryMessages[i]);
+      }
+
+      addSystemMessage("🧠 If you encounter any doubts, do clarify them on Telegram! 🧠");
+    
+      renderMessage(id);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+    buttons.appendChild(btn);
+  });
+}
+
 function queueMessage(func) {
   messageQueue.push(func);
   if (!isBusy) processQueue();
@@ -51,7 +105,7 @@ function addUserMessage(content) {
   const msgContent = document.createElement('div');
   msgContent.className = 'bubble';
   msgContent.innerHTML = content.trim();
-  renderMathInElement(msgContent);
+  renderTex(msgContent);
 
   msgWrapper.appendChild(msgContent);
   chatBox.appendChild(msgWrapper);
@@ -60,7 +114,7 @@ function addUserMessage(content) {
   return msgContent;
 }
 
-function addBotMessage(nodeId, dialogueSystem) {
+function addBotMessage(nodeId) {
   const msgWrapper = document.createElement('div');
   msgWrapper.className = 'message bot';
 
@@ -78,16 +132,16 @@ function addBotMessage(nodeId, dialogueSystem) {
  
   let msgContent;
   if (node.type === 'image') {
-    msgContent = createImageMessage(nodeId, dialogueSystem, true);
+    msgContent = createImageMessage(nodeId, true);
   } else if (node.type === 'embed') {
-    msgContent = createEmbedMessage(nodeId, dialogueSystem, true);
+    msgContent = createEmbedMessage(nodeId, true);
   } else if (node.type === 'tex') {
-    msgContent = createTexMessage(nodeId, dialogueSystem, true);
+    msgContent = createTexMessage(nodeId, true);
   } else {
     msgContent = document.createElement('div');
     msgContent.className = 'bubble';
     msgContent.innerHTML = node.content.trim();
-    renderMathInElement(msgContent);
+    renderTex(msgContent);
 
     const star = document.createElement('span');
     star.textContent = '★';
@@ -116,7 +170,7 @@ function addBotMessage(nodeId, dialogueSystem) {
   return msgContent;
 }
 
-function createImageMessage(nodeId, dialogueSystem, inChatView = true) {
+function createImageMessage(nodeId, inChatView = true) {
   const wrapper = document.createElement('div');
   wrapper.className = 'message-wrapper';
 
@@ -166,7 +220,7 @@ function createImageMessage(nodeId, dialogueSystem, inChatView = true) {
   return wrapper;
 }
 
-function createEmbedMessage(nodeId, dialogueSystem, inChatView = true) {
+function createEmbedMessage(nodeId, inChatView = true) {
   const wrapper = document.createElement('div');
   wrapper.className = 'message-wrapper';
 
@@ -188,7 +242,6 @@ function createEmbedMessage(nodeId, dialogueSystem, inChatView = true) {
       preloaded.style.display = 'flex';
       modal.style.display = 'flex';
     } else {
-      // fallback: create it dynamically
       const iframe = document.createElement('iframe');
       iframe.src = url;
       iframe.className = 'embed-frame';
@@ -226,63 +279,79 @@ function createEmbedMessage(nodeId, dialogueSystem, inChatView = true) {
   return wrapper;
 }
 
-function createTexMessage(nodeId, dialogueSystem, inChatView = true) {
+function createTexMessage(nodeId, inChatView = true) {
   const wrapper = document.createElement('div');
-  wrapper.className = 'message-wrapper'; // Reusing layout style
+  wrapper.className = 'message-wrapper';
 
   const node = dialogueSystem[nodeId];
+  const content = node.content.trim();
 
-  const preview = document.createElement('div');
-  preview.className = 'preview-thumbnail'; // Makes it look like a PDF block
-  if (node.previewImage) preview.style.backgroundImage = `url(${node.previewImage.trim()})`;
+  // Use placeholder as real test container
+  const placeholder = document.createElement('div');
+  placeholder.className = 'tex-message';
+  placeholder.style.visibility = 'hidden';
+  wrapper.appendChild(placeholder);
 
-  const previewText = document.createElement('span');
-  previewText.textContent = (node.previewText ?? "Click to open page").trim();
-  preview.appendChild(previewText);
+  const inlineTex = document.createElement('div');
+  inlineTex.className = 'tex-content';
+  inlineTex.innerHTML = content;
+  renderTex(inlineTex);
 
-  preview.addEventListener('click', () => {
-    const div = document.createElement('div');
-    div.className = 'latex-script';
-    div.innerHTML = node.content.trim();
-  
-    renderMathInElement(div, {
-      delimiters: [
-        { left: "$$", right: "$$", display: true },
-        { left: "\\[", right: "\\]", display: true },
-        { left: "$", right: "$", display: false },
-        { left: "\\(", right: "\\)", display: false }
-      ],
-      throwOnError: false
-    });
-  
-    showInModal(div);
-  });
+  placeholder.appendChild(inlineTex);
 
-  wrapper.appendChild(preview);
+  setTimeout(() => {
+    const causesOverflow =
+      placeholder.scrollWidth > placeholder.clientWidth ||
+      placeholder.scrollHeight > placeholder.clientHeight;
 
-  if (inChatView) {
-    const star = document.createElement('span');
-    star.textContent = '★';
-    star.className = 'star-icon';
+    const inner = document.createElement('div');
 
-    if (importantMessages.has(nodeId) || node.important) {
-      star.classList.add('active');
-      importantMessages.add(nodeId);
+    if (!causesOverflow) {
+      inner.className = 'tex-message';
+      inner.appendChild(inlineTex);
+    } else {
+      inner.className = 'preview-thumbnail';
+      if (node.previewImage) {
+        inner.style.backgroundImage = `url(${node.previewImage.trim()})`;
+      }
+      const label = document.createElement('span');
+      label.textContent = (node.previewText ?? "Click to open page").trim();
+      inner.appendChild(label);
     }
 
-    star.addEventListener('click', e => {
-      e.stopPropagation();
-      if (importantMessages.has(nodeId)) {
-        importantMessages.delete(nodeId);
-        star.classList.remove('active');
-      } else {
-        importantMessages.add(nodeId);
-        star.classList.add('active');
-      }
+    // Allow popup on click
+    inner.addEventListener('click', () => {
+      const script = document.createElement('div');
+      script.className = 'latex-script';
+      script.innerHTML = content;
+      renderTex(script);
+      showInModal(script);
     });
 
-    wrapper.appendChild(star);
-  }
+    wrapper.replaceChild(inner, placeholder);
+
+    if (inChatView) {
+      const star = document.createElement('span');
+      star.textContent = '★';
+      star.className = 'star-icon';
+      if (importantMessages.has(nodeId) || node.important) {
+        star.classList.add('active');
+        importantMessages.add(nodeId);
+      }
+      star.addEventListener('click', e => {
+        e.stopPropagation();
+        if (importantMessages.has(nodeId)) {
+          importantMessages.delete(nodeId);
+          star.classList.remove('active');
+        } else {
+          importantMessages.add(nodeId);
+          star.classList.add('active');
+        }
+      });
+
+      wrapper.appendChild(star);
+    }
+  }, 0);
 
   return wrapper;
 }
@@ -330,23 +399,13 @@ function adjustChatBoxPadding() {
   chatBox.style.paddingBottom = isExpanded ? `${expandedHeight}px` : '44px';
 }
 
-toggleInputBtn.addEventListener('click', () => {
-  if (isInputVisible) {
-      chatInputContainer.classList.remove('expanded');
-  } else {
-      chatInputContainer.classList.add('expanded');
-  }
-  isInputVisible = !isInputVisible;
-  adjustChatBoxPadding();
-});
-
-function renderMessage(nodeId, dialogueSystem) {
+function renderMessage(nodeId) {
   isBusy = true;
   currentNode = nodeId;
   const node = dialogueSystem[nodeId];
   if (!node) return;
 
-  addBotMessage(nodeId, dialogueSystem);
+  addBotMessage(nodeId);
 
   if (node.systemMessage) {
     addSystemMessage(node.systemMessage);
@@ -356,7 +415,7 @@ function renderMessage(nodeId, dialogueSystem) {
 
   if ((node.type === 'plain' || node.type === 'image' || node.type === 'embed' || node.type === 'tex') && node.next) {
     setTimeout(() => {
-      renderMessage(node.next, dialogueSystem);
+      renderMessage(node.next);
     }, delay);
     return;
   }
@@ -386,7 +445,7 @@ function renderMCQOptions(optionsObj, type) {
     div.className = 'option-item';
     div.dataset.key = key;
     div.innerHTML = label;
-    renderMathInElement(div);
+    renderTex(div);
     div.addEventListener('click', () => {
       if (type === 'single-mcq' || type === 'dialogue') {
         document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
@@ -399,7 +458,7 @@ function renderMCQOptions(optionsObj, type) {
   });
 }
 
-function submitTextAnswer(dialogueSystem) {
+function submitTextAnswer() {
   const answer = userText.value.trim();
   if (!answer) return;
   hideInput();
@@ -432,11 +491,11 @@ function submitTextAnswer(dialogueSystem) {
 
     isBusy = false;
     processQueue();
-    renderMessage(node.next, dialogueSystem);
+    renderMessage(node.next);
   }, 300);
 }
 
-function submitMCQAnswer(dialogueSystem) {
+function submitMCQAnswer() {
   const selectedEls = Array.from(document.querySelectorAll('.option-item.selected'));
   if (!selectedEls.length) return;
 
@@ -452,7 +511,7 @@ function submitMCQAnswer(dialogueSystem) {
 
       isBusy = false;
       processQueue();
-      renderMessage(node.respondToIdx[selectedKey], dialogueSystem);
+      renderMessage(node.respondToIdx[selectedKey]);
       return;
     }
 
@@ -465,7 +524,7 @@ function submitMCQAnswer(dialogueSystem) {
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
       bubble.innerHTML = label;
-      renderMathInElement(bubble);
+      renderTex(bubble);
       bubble.dataset.key = key;
       row.appendChild(bubble);
     });
@@ -508,7 +567,7 @@ function submitMCQAnswer(dialogueSystem) {
         const responseId = node.respondToIdx[key];
         if (!shownExplanations.has(responseId)) {
           shownExplanations.add(responseId);
-          queueMessage(() => renderMessage(responseId, dialogueSystem));
+          queueMessage(() => renderMessage(responseId));
         }
       }
     });
@@ -520,7 +579,7 @@ function submitMCQAnswer(dialogueSystem) {
     }
 
     isBusy = false;
-    queueMessage(() => renderMessage(node.next, dialogueSystem));
+    queueMessage(() => renderMessage(node.next));
   }, 300);
 }
 
@@ -528,39 +587,92 @@ function round2(val) {
   return Math.round(val * 100) / 100;
 }
 
-function initializeQuiz(dialogueSystem) {
-  const seen = new Set();
+function renderTex(element) {
+  renderMathInElement(element, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "\\[", right: "\\]", display: true },
+      { left: "$", right: "$", display: false },
+      { left: "\\(", right: "\\)", display: false }
+    ],
+    throwOnError: false
+  });
+}
 
-  for (const key in dialogueSystem) {
-    const node = dialogueSystem[key];
-    if (node.type === 'embed' && node.preload && typeof node.content === 'string') {
-      const url = node.content.trim();
-      if (!seen.has(url)) {
-        seen.add(url);
+function attachZoomPanEvents(img) {
+  let scale = 1;
+  let isPanning = false;
+  let startX = 0, startY = 0;
+  let translateX = 0, translateY = 0;
 
-        const iframe = document.createElement('iframe');
-        iframe.src = url;
-        iframe.className = 'embed-frame';
-        iframe.style.display = 'none'; // keep it hidden
-        iframe.setAttribute('data-preloaded-url', url);
-
-        modalContent.appendChild(iframe);
-        preloadedEmbeds.set(url, iframe); // store reference
-      }
-    }
+  function reset() {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+    img.style.transform = 'scale(1) translate(0px, 0px)';
   }
 
-  addSystemMessage("🧠 Simulation started");
-  renderMessage("start", dialogueSystem);
+  // Wheel zoom
+  img.addEventListener('wheel', e => {
+    e.preventDefault();
+    const zoomIntensity = 0.1;
+    scale += (e.deltaY < 0 ? zoomIntensity : -zoomIntensity);
+    scale = Math.max(1, Math.min(scale, 5));
+    img.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+  });
+
+  // Mouse zoom/pan
+  img.addEventListener('mousedown', e => {
+    if (scale <= 1) return;
+    isPanning = true;
+    img.style.cursor = 'grabbing';
+    startX = e.clientX - translateX * scale;
+    startY = e.clientY - translateY * scale;
+    e.preventDefault();
+  });
+
+  img.addEventListener('mousemove', e => {
+    if (!isPanning) {
+      img.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+      return;
+    }
+    const dx = (e.clientX - startX) / scale;
+    const dy = (e.clientY - startY) / scale;
+    translateX = dx;
+    translateY = dy;
+    img.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+  });
+
+  img.addEventListener('mouseup', () => {
+    isPanning = false;
+    img.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+  });
+
+  img.addEventListener('mouseleave', () => {
+    isPanning = false;
+    img.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+  });
+
+  // Close resets zoom
+  closeModalBtn.addEventListener('click', reset);
 }
 
 userText.addEventListener('keypress', e => {
-  if (e.key === 'Enter') submitTextAnswer(dialogueSystem);
+  if (e.key === 'Enter') submitTextAnswer();
 });
 
+toggleInputBtn.addEventListener('click', () => {
+  if (isInputVisible) {
+      chatInputContainer.classList.remove('expanded');
+  } else {
+      chatInputContainer.classList.add('expanded');
+  }
+  isInputVisible = !isInputVisible;
+  adjustChatBoxPadding();
+});
 
 viewImportantBtn.addEventListener('click', () => {
-  chatTitle.textContent = 'Starred';
+  chatTitle.textContent = "Starred Messages";
   importantList.innerHTML = "";
   messageHistory.forEach(nodeId => {
     if (importantMessages.has(nodeId)) {
@@ -568,16 +680,16 @@ viewImportantBtn.addEventListener('click', () => {
       const node = dialogueSystem[nodeId];
       let element;
       if (node.type === 'image') {
-        element = createImageMessage(nodeId, dialogueSystem, false); 
+        element = createImageMessage(nodeId, false); 
       } else if (node.type === 'embed') {
-        element = createEmbedMessage(nodeId, dialogueSystem, false);
+        element = createEmbedMessage(nodeId, false);
       } else if (node.type === 'tex') {
-        element = createTexMessage(nodeId, dialogueSystem, false);
+        element = createTexMessage(nodeId, false);
       } else {
         element = document.createElement('div');
         element.className = 'bubble important-message';
         element.innerHTML = node.content.trim();
-        renderMathInElement(element);
+        renderTex(element);
       }
 
       element.style.margin = '6px 0';
@@ -619,97 +731,3 @@ closeModalBtn.addEventListener('click', () => {
 
   modal.style.display = 'none';
 });
-
-function attachZoomPanEvents(img) {
-  let scale = 1;
-  let isPanning = false;
-  let startX = 0, startY = 0;
-  let translateX = 0, translateY = 0;
-  let initialDistance = null;
-
-  function reset() {
-    scale = 1;
-    translateX = 0;
-    translateY = 0;
-    img.style.transform = 'scale(1) translate(0px, 0px)';
-  }
-
-  // Wheel zoom
-  img.addEventListener('wheel', e => {
-    e.preventDefault();
-    const zoomIntensity = 0.1;
-    scale += (e.deltaY < 0 ? zoomIntensity : -zoomIntensity);
-    scale = Math.max(1, Math.min(scale, 5));
-    img.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-  });
-
-  // Pinch zoom (touch)
-  img.addEventListener('touchstart', e => {
-    if (e.touches.length === 2) {
-      initialDistance = getTouchDistance(e.touches);
-    }
-    if (e.touches.length === 1 && scale > 1) {
-      isPanning = true;
-      startX = e.touches[0].clientX - translateX * scale;
-      startY = e.touches[0].clientY - translateY * scale;
-      img.style.cursor = 'grabbing';
-    }
-  }, { passive: false });
-
-  img.addEventListener('touchmove', e => {
-    if (e.touches.length === 2 && initialDistance !== null) {
-      e.preventDefault();
-      const newDistance = getTouchDistance(e.touches);
-      const zoomFactor = newDistance / initialDistance;
-      scale = Math.min(5, Math.max(1, zoomFactor));
-      img.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-    } else if (isPanning && e.touches.length === 1) {
-      const dx = (e.touches[0].clientX - startX) / scale;
-      const dy = (e.touches[0].clientY - startY) / scale;
-      translateX = dx;
-      translateY = dy;
-      img.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-    }
-  }, { passive: false });
-
-  img.addEventListener('touchend', () => {
-    isPanning = false;
-    initialDistance = null;
-    img.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
-  });
-
-  // Mouse zoom/pan
-  img.addEventListener('mousedown', e => {
-    if (scale <= 1) return;
-    isPanning = true;
-    img.style.cursor = 'grabbing';
-    startX = e.clientX - translateX * scale;
-    startY = e.clientY - translateY * scale;
-    e.preventDefault();
-  });
-
-  img.addEventListener('mousemove', e => {
-    if (!isPanning) {
-      img.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
-      return;
-    }
-    const dx = (e.clientX - startX) / scale;
-    const dy = (e.clientY - startY) / scale;
-    translateX = dx;
-    translateY = dy;
-    img.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-  });
-
-  img.addEventListener('mouseup', () => {
-    isPanning = false;
-    img.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
-  });
-
-  img.addEventListener('mouseleave', () => {
-    isPanning = false;
-    img.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
-  });
-
-  // Close resets zoom
-  closeModalBtn.addEventListener('click', reset);
-}

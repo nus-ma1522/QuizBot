@@ -18,22 +18,27 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">
+  <div id="checkpointSelector">
+    <div id="selectorTitle">Choose Start Point</div>
+    <div id="checkpointButtons"></div>
+  </div>
+
+  <div id="chatContainer" style="display: none;">
+    <div id="chatHeader">
       <button id="backToChat" class="header-btn" style="display:none;">🔙</button>
       <span id="chatTitle">Kerfus</span>
       <button id="viewImportant" class="header-btn">⭐</button>
     </div>
 
-    <div class="chat-body">
+    <div id="chatBody">
       <div id="chatView" class="active">
-        <div class="chat-box" id="chatBox"></div>
+        <div id="chatBox"></div>
         <div id="chatInputContainer">
-          <div id="toggleInputBtn" class="toggle-input-btn">
-            <div class="btn-arrow">^</div>
+          <div id="toggleInputBtn">
+            <div id="toggleArrow">^</div>
           </div>
         
-          <div id="chatInput" class="chat-input">
+          <div id="chatInput">
             <div id="textInputArea">
               <input type="text" id="userText" placeholder="Type your answer..." />
               <button onclick="submitTextAnswer(dialogueSystem)">Send</button>
@@ -53,9 +58,9 @@
     </div>
   </div>
 
-  <div id="modal" class="modal">
-    <span id="closeModal" class="modal-close">&times;</span>
-    <div class="modal-content" id="modalContent">
+  <div id="modal">
+    <span id="closeModal">&times;</span>
+    <div id="modalContent">
     </div>
   </div>
 

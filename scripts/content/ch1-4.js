@@ -329,3 +329,14 @@ const dialogueSystem = {
   }
 
 };
+
+const compulsoryMessages = [];
+
+const checkpoints = [
+  {
+    id: "start",
+    label: "Start from beginning",
+    showCompulsoryMessages: 0
+  }
+];
+

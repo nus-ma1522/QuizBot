@@ -193,3 +193,20 @@ const dialogueSystem = {
     content: "This concludes our discussion. Bye have a great time~"
   }
 };
+
+const compulsoryMessages = [
+  "smh"
+];
+
+const checkpoints = [
+  {
+    id: "start",
+    label: "Start from beginning",
+    showCompulsoryMessages: 0
+  },
+  {
+    id: "p0",
+    label: "Skip beginning",
+    showCompulsoryMessages: 1
+  },
+];
