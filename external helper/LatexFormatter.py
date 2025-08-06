@@ -1,5 +1,13 @@
 stuff = []
 
+"""
+HOW TO USE:
+
+run the file in command line
+
+then paste in the latex that you want formatted
+"""
+
 while True:
 	x = input()
 	if x == "eof":
@@ -10,7 +18,7 @@ stuff = ['\"' + x + '\"' for x in stuff]
 stuff = [x.replace('\\', '(TEMP)') for x in stuff]
 stuff = [x.replace('(TEMP)', '\\\\') for x in stuff]
 
-formatted = "    content: " + " +\n      ".join(stuff)
+formatted = "    content: " + " +\n             ".join(stuff) + ","
 print(formatted)
 
 """
