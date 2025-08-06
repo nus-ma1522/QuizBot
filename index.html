@@ -80,7 +80,7 @@
 
     // Reduce attack surface by sanitizing & validating the quiz name
     // If quiz name does not match any of the patterns, redirect to error page
-    const sanitizedQuizName = quizWhitelistRegexes.some(regex => regex.test(quizName)) ? quizName : 'error';
+    const sanitizedQuizName = quizWhitelistRegexes.some(regex => regex.test(quizName)) ? quizName : 'pathResolveError';
 
     quizScript.src = `scripts/content/${sanitizedQuizName}.js`;
     quizScript.onload = () => {
