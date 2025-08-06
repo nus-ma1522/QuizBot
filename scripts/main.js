@@ -71,7 +71,7 @@ function initializeQuiz() {
       selector.style.display = 'none';
       container.style.display = 'flex';
 
-      addSystemMessage("Loading message history...");
+      if (showCompulsoryMessages) addSystemMessage("Loading message history...");
 
       for (let i = 0; i < showCompulsoryMessages; i++) {
           addBotMessage(compulsoryMessages[i]);
