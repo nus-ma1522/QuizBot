@@ -285,13 +285,13 @@
       "1 & 0 & 1 \\\\" +
       "0 & 1 & 2 \\\\" +
       "\\end{array}\\right)$$" +
-      "Can you see the solution immediately?",
+      "Can you 'see' the solution right away?",
     options: {
       0: "$x = 1, y = 2$",
       1: "$x = 2, y = 1$",
-      2: "$x = 1, y = 1/2$"
+      2: "$x = 1, y = \\frac{1}{2}$"
     },
-    answersIds: new Set([0]),
+    answersIdx: new Set([0]),
     respondToIdx: {
       1: "p7w",
       2: "p7w"
@@ -302,7 +302,7 @@
   p7w: {
     type: "plain",
     content:
-      "Erm. That HAD to be accidental.",
+      "Erm. That HAD to be accidental. 😶",
     systemMessage: "If that was not accidental, please review the content from the top 🙏"
   },
 
@@ -385,7 +385,7 @@ const checkpoints = [
   },
   {
     id: "p7",
-    label: "Reduced Roe-Echelon Form",
+    label: "Reduced Row-Echelon Form",
     showCompulsoryMessages: 2
   }
 ];
