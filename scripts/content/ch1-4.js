@@ -316,8 +316,8 @@ const dialogueSystem = {
     type: "mcq",
     content: "Now that you understand the process for reducing a matrix to REF and RREF respectively, here's some food for thought. Which of these statments are true?",
     options: {
-      0: "Given some starting matrix, the REF of the matrix is unique",
-      1: "Given some starting matrix, the RREF of the matrix is unique",
+      0: "Every matrix reduces to a unique REF",
+      1: "Every matrix reduces to a unique RREF",
     },
     answersIdx: new Set([1]),
     next: "end"
