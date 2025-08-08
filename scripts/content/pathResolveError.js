@@ -9,6 +9,7 @@ const dialogueSystem = {
     type: "embed",
     content: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     previewText: "Listen to some music",
+    previewImage: "images/cooked.png",
     preload: true,
     next: "end"
   },

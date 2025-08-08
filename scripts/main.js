@@ -487,11 +487,13 @@ function submitTextAnswer() {
       if (isMarked) {
         addSystemMessage(`📊 Score: 0/${round2(node.marks)}`);
       }
+      if (node.respondToWrong) {
+        queueMessage(() => renderMessage(node.respondToWrong));
+      }
     }
 
     isBusy = false;
-    processQueue();
-    renderMessage(node.next);
+    queueMessage(() => renderMessage(node.next));
   }, 300);
 }
 
@@ -510,8 +512,7 @@ function submitMCQAnswer() {
       addUserMessage(node.options[selectedKey]);
 
       isBusy = false;
-      processQueue();
-      renderMessage(node.respondToIdx[selectedKey]);
+      queueMessage(() => renderMessage(node.respondToIdx[selectedKey]));
       return;
     }
 
