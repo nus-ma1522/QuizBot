@@ -118,6 +118,7 @@ const dialogueSystem = {
   REFIntuition12: {
     type: "plain",
     content: "Finally, this matrix is in REF. Let's try another example<br>" +
+             "We want to bring the below matrix to REF. Which row operation should we use here?" +
              "$$\\left( " +
              "    \\begin{array}{ccc|c}" +
              "        0 & 2 & 1 & 10 \\\\" +
@@ -131,7 +132,7 @@ const dialogueSystem = {
 
   REFIntuition14: {
     type: "mcq",
-    content: "We want to bring the above matrix to REF. Which row operation should we use here?",
+    content: "",
     options: {
       0: "\\(R_i \\leftrightarrow R_j\\)",
       1: "\\(R_i + cR_j\\)",
@@ -326,10 +327,10 @@ const dialogueSystem = {
              "        0 & 0 & 5 & -22 \\\\" +
              "    \\end{array}" +
              "\\right)$$",
-    next: "FFT4"
+    next: "FFT3half"
   },
 
-  FFT3: {
+  FFT3half: {
     type: "dialogue",
     content: "But what if we did \\(R_2 \\leftrightarrow R_3\\), then \\(R_3 - \\frac{1}{4}R_2\\). What matrix did you get?",
     options: {
@@ -354,7 +355,21 @@ const dialogueSystem = {
 
   FFT5: {
     type: "dialogue",
-    content: "Now try doing steps 5-7 of the Gauss-Jordan Algorithm to reduce to RREF. Did you get the same matrix?",
+    content: "Now we have two matrices:" + 
+             "$$\\left( " +
+             "    \\begin{array}{ccc|c}" +
+             "        6 & 5 & 4 & 14 \\\\" +
+             "        0 & 8 & 9 & 18 \\\\" +
+             "        0 & 0 & -1.25 & 5.5 \\\\" +
+             "    \\end{array}" +
+             "\\right) \\text{and} \\left( " +
+             "    \\begin{array}{ccc|c}" +
+             "        6 & 5 & 4 & 14 \\\\" +
+             "        0 & 2 & 1 & 10 \\\\" +
+             "         0 & 0 & 5 & -22 \\\\" +
+             "    \\end{array}" +
+             "\\right)$$<br>" +
+             "Try doing steps 5-7 of the Gauss-Jordan Algorithm to reduce both matrices to RREF. Did you get the same matrix?",
     options: {
       0: "Yeah",
       1: "No...?",
