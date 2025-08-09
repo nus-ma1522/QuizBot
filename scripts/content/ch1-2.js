@@ -1,4 +1,4 @@
- const dialogueSystem = {
+const dialogueSystem = {
   p0: {
     type: "dialogue",
     content:
