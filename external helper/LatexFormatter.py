@@ -6,6 +6,8 @@ HOW TO USE:
 run the file in command line
 
 then paste in the latex that you want formatted
+
+then type eof
 """
 
 while True:
