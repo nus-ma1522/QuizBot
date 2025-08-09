@@ -1,5 +1,5 @@
 const dialogueSystem = {
-  start: {
+  p0: {
     type: "dialogue",
     content:
       "Previously we explored the graphical interpretation of linear systems, up to 3 equations and variables.<br>" +

@@ -23,7 +23,7 @@ const dialogueSystem = {
   
   REFIntuition1: {
     type: "mcq",
-    content: "Let's look at how to turn a matrix into REF first. But first, which of the following conditions are required for REF?",
+    content: "Let's look at how to turn a matrix into REF first. But first, which of the following conditions are required for REF? Choose all that apply.",
     options: {
       0: "If zero rows exist, they are at the bottom of the matrix.",
       1: "The leading entries are further to the right as we move down the rows",
@@ -36,13 +36,8 @@ const dialogueSystem = {
 
   REFIntuition2: {
     type: "plain",
-    content: "Roughly speaking, these two conditions mean that the shape of a matrix in REF is that it must have a staircase of zeros at the bottom left. <br> Let's look at this matrix:",
-    next: "REFIntuition3"
-  },
-  
-  REFIntuition3: {
-    type: "plain",
-    content: "$$\\left( " +
+    content: "Roughly speaking, these two conditions mean that the shape of a matrix in REF is that it must have a staircase of zeros at the bottom left. <br> Let's look at this matrix: <br>" + 
+             "$$\\left( " +
              "    \\begin{array}{ccc|c}" +
              "        3 & 2 & 1 & 10 \\\\" +
              "        6 & 5 & 4 & 14 \\\\" +
@@ -51,14 +46,16 @@ const dialogueSystem = {
              "\\right)$$",
     next: "REFIntuition4"
   },
+  
+
 
   REFIntuition4: {
     type: "mcq",
     content: "We need a zero at column 1 of row 2 (where the 6 is). Which type of row operation can we use for that?",
     options: {
-      0: "Row Swap",
-      1: "Row Addition",
-      2: "Row Multiplciation",
+      0: "\\(R_i \\leftrightarrow R_j\\) (Row Swap)",
+      1: "\\(R_i + cR_j\\) (Row Addition)",
+      2: "\\(aR_i\\) (Row Multiplciation)",
     },
     answersIdx: new Set([1]),
     next: "REFIntuition5"
@@ -66,13 +63,8 @@ const dialogueSystem = {
 
   REFIntuition5: {
     type: "plain",
-    content: "If we add \\(-2\\) times of row 1 to row 2, we get the following matrix:",
-    next: "REFIntuition6"
-  },
-
-  REFIntuition6: {
-    type: "plain",
-    content: "$$\\left( " +
+    content: "If we add \\(-2\\) times of row 1 to row 2, we get the following matrix:<br>" +
+             "$$\\left( " +
              "    \\begin{array}{ccc|c}" +
              "        3 & 2 & 1 & 10 \\\\" +
              "        0 & 1 & 2 & -6 \\\\" +
@@ -97,31 +89,22 @@ const dialogueSystem = {
 
   REFIntuition8: {
     type: "plain",
-    content: "We first try to change the \\(9\\) in row 3, column 1 to zero. We can only use row 1 for this since row 2 has a zero at column 1. We can subtract \\(3\\) times of row 1 from row 3. Giving us:",
-    next: "REFIntuition9"
-  },
-
-  REFIntuition9: {
-    type: "plain",
-    content: "$$\\left( " +
-                     "    \\begin{array}{ccc|c}" +
-                     "        3 & 2 & 1 & 10 \\\\" +
-                     "        0 & 1 & 2 & -6 \\\\" +
-                     "        0 & 2 & 7 & -12 \\\\" +
-                     "    \\end{array}" +
-                     "\\right)$$",
+    content: "We first try to change the \\(9\\) in row 3, column 1 to zero. We can only use row 1 for this since row 2 has a zero at column 1. We can subtract \\(3\\) times of row 1 from row 3. Giving us:<br>" + 
+             "$$\\left( " +
+             "    \\begin{array}{ccc|c}" +
+             "        3 & 2 & 1 & 10 \\\\" +
+             "        0 & 1 & 2 & -6 \\\\" +
+             "        0 & 2 & 7 & -12 \\\\" +
+             "    \\end{array}" +
+             "\\right)$$",
     next: "REFIntuition10"
   },
 
+
   REFIntuition10: {
     type: "plain",
-    content: "Next, row 3 column 2. We should use row 2 for this. If we use row 1, we will make row 3 column 1 non-zero again, which we don't want.",
-    next: "REFIntuition11"
-  },
-
-  REFIntuition11: {
-    type: "plain",
-    content: "$$\\left( " +
+    content: "Next, row 3 column 2. We should use row 2 for this. If we use row 1, we will make row 3 column 1 non-zero again, which we don't want." + 
+             "$$\\left( " +
              "    \\begin{array}{ccc|c}" +
              "        3 & 2 & 1 & 10 \\\\" +
              "        0 & 1 & 2 & -6 \\\\" +
@@ -131,15 +114,11 @@ const dialogueSystem = {
     next: "REFIntuition12"
   },
 
+
   REFIntuition12: {
     type: "plain",
-    content: "Finally, this matrix is in REF. Let's try another example",
-    next: "REFIntuition13"
-  },
-
-  REFIntuition13: {
-    type: "plain",
-    content: "$$\\left( " +
+    content: "Finally, this matrix is in REF. Let's try another example<br>" +
+             "$$\\left( " +
              "    \\begin{array}{ccc|c}" +
              "        0 & 2 & 1 & 10 \\\\" +
              "        6 & 5 & 4 & 14 \\\\" +
@@ -149,13 +128,14 @@ const dialogueSystem = {
     next: "REFIntuition14"
   },
 
+
   REFIntuition14: {
     type: "mcq",
     content: "We want to bring the above matrix to REF. Which row operation should we use here?",
     options: {
-      0: "Row Swap",
-      1: "Row Addition",
-      2: "Row Multiplciation",
+      0: "\\(R_i \\leftrightarrow R_j\\)",
+      1: "\\(R_i + cR_j\\)",
+      2: "\\(aR_i\\)",
     },
     answersIdx: new Set([0]),
     next: "REFIntuition15"
@@ -163,13 +143,8 @@ const dialogueSystem = {
 
   REFIntuition15: {
     type: "plain",
-    content: "Since there needs to be more zeros as we go down the rows, we should swap the row with the least leading zeros to the first row! Hence, we can swap row 2 and row 1.",
-    next: "REFIntuition16"
-  },
-
-  REFIntuition16: {
-    type: "plain",
-    content: "$$\\left( " +
+    content: "Since there needs to be more zeros as we go down the rows, we should swap the row with the least leading zeros to the first row! Hence, we can swap row 2 and row 1.<br>" + 
+             "$$\\left( " +
              "    \\begin{array}{ccc|c}" +
              "        6 & 5 & 4 & 14 \\\\" +
              "        0 & 2 & 1 & 10 \\\\" +
@@ -186,8 +161,13 @@ const dialogueSystem = {
   },
 
   REFSteps1: {
-    type: "plain",
-    content: "This summarizes the gist of how to reduce to REF. The step by step process is called \"Gaussian Elimination\", and is as follows: <br><br>1. Assuming the matrix has \\(N\\) rows. Initially, let \\(r = 1\\). \\(r\\) refers to the row we're trying to settle right now<br><br>2. Look at all rows from \\(r\\) to \\(N\\). If row \\(r\\) isn't the one with the least leading zeros, swap the row with the least leading zeros with row \\(r\\).<br><br>3. Let \\(c\\) be the column of the leading entry of row \\(r\\). The goal is to make all rows below have zero at column \\(c\\). Use row additions to achieve this<br><br>4. Increase \\(r\\) by \\(1\\) and repeat from step 2. If \\(r\\) is already \\(N\\), we're done",
+    type: "tex",
+    content: "<strong> This summarizes the gist of how to reduce to REF. The step by step process is called Gaussian Elimination. Assuming the matrix has $N$ rows, the steps are as follows:<strong> <br>" +
+             "<br>" +
+             "1. The aim is to settle the row $1$ first.<br>" +
+             "2. If the row $1$ isn't the row with the least leading zeros, find a row below with the least leading zeros and swap it with the row $1$.<br>" +
+             "3. Let $c$ be the column of the leading entry of the row $1$. The goal is to make all rows below have zero at column $c$. Use the row operation $R_i + aR_j$ for that. <br>" +
+             "4. Now, that the row $1$ settled, we repeat steps 1 to 3 for row $2$. Continue this until we reach row $N$.",
     next: "RREFIntuition1"
   },
 
@@ -200,7 +180,7 @@ const dialogueSystem = {
 
   RREFIntuition2: {
     type: "mcq",
-    content: "Which of the following conditions are needed for RREF?",
+    content: "Which of the following conditions are needed for RREF? Choose all that apply.",
     options: {
       0: "If zero rows exist, they are at the bottom of the matrix.",
       1: "The leading entries are further to the right as we move down the rows",
@@ -208,29 +188,25 @@ const dialogueSystem = {
       3: "In each pivot column, all entries except the leading entry is 0"
     },
     answersIdx: new Set([0,1,2,3]),
-    next: "RREFIntuition3"
-  },
-
-  RREFIntuition3: {
-    type: "mcq",
-    content: "The first two conditions are for both REF, while RREF needs the second two as well.<br><br>Let's settle the leading entries are 1 condition first, which type of row operation should we use to handle that?",
-    options: {
-      0: "Row Swap",
-      1: "Row Addition",
-      2: "Row Multiplciation",
-    },
-    answersIdx: new Set([2]),
     next: "RREFIntuition4"
   },
 
+
   RREFIntuition4: {
-    type: "plain",
-    content: "$$\\left( " +
+    type: "mcq",
+    content: "The first two conditions are for both REF, while RREF needs the second two as well. Consider the matrix below. <br>Let's settle the leading entries are 1 condition first. Which type of row operation should we use to handle that?" + 
+             "$$\\left( " +
              "    \\begin{array}{cccc|c}" +
              "        3 & 3 & 6 & 0 & 12 \\\\" +
              "        0 & 0 & 2 & 4 & 10 \\\\" +
              "    \\end{array}" +
              "\\right)$$",
+    options: {
+      0: "\\(R_i \\leftrightarrow R_j\\)",
+      1: "\\(R_i + cR_j\\)",
+      2: "\\(aR_i\\)",
+    },
+    answersIdx: new Set([2]),
     next: "RREFIntuition5"
   },
 
@@ -268,9 +244,9 @@ const dialogueSystem = {
     type: "mcq",
     content: "Next, let's make the pivot columns all 0. Which type of row operation should we use to handle that?",
     options: {
-      0: "Row Swap",
-      1: "Row Addition",
-      2: "Row Multiplciation",
+      0: "\\(R_i \\leftrightarrow R_j\\)",
+      1: "\\(R_i + cR_j\\)",
+      2: "\\(aR_i\\)",
     },
     answersIdx: new Set([1]),
     next: "RREFIntuition9"
@@ -307,12 +283,16 @@ const dialogueSystem = {
   },
 
   RREFSteps1: {
-    type: "plain",
-    content: "This summarizes the gist of how to further reduce to RREF from REF. This full process is known as Gauss-Jordan Elimination. Following from the first four steps of Gaussian Elimination:<br><br>5. For every row, multiply it by a constant to make the leading entry \\(1\\)<br><br>6. Starting from the bottommost row \\(N\\), let \\(c\\) be the column of the leading entry. The goal is to make all above rows be \\(0\\) at column \\(c\\). To do this, add some multiple of row \\(N\\) to all above rows. Repeat this step with row \\(N-1\\), \\(N-2\\)… until row \\(1\\)",
-    next: "RREFSteps2"
+    type: "tex",
+    content: "<strong> This summarizes the gist of how to further reduce to RREF from REF. This full process is known as Gauss-Jordan Elimination. Following from the first four steps of Gaussian Elimination: <br>" +
+             "<br>" +
+             "5. For every row, multiply it by a constant to make the leading entry \\(1\\)<br>" +
+             "6. Start from the last row. Let the pivot column of the last row be $c$. The goal is to make the values above the pivot column all \\(0\\). Use the row operation $R_i + aR_j$ for that. <br>" +
+             "7. Repeat step 6 for the second last row, going up until the first row<strong>",
+    next: "FFT1"
   },
 
-  RREFSteps2: {
+  FFT1: {
     type: "mcq",
     content: "Now that you understand the process for reducing a matrix to REF and RREF respectively, here's some food for thought. Which of these statments are true?",
     options: {
@@ -320,12 +300,99 @@ const dialogueSystem = {
       1: "Every matrix reduces to a unique RREF",
     },
     answersIdx: new Set([1]),
-    next: "end"
+    next: "FFT2"
+  },
+
+  FFT2: {
+    type: "plain",
+    content: "Let's look again at this matrix: " + 
+             "$$\\left( " +
+             "    \\begin{array}{ccc|c}" +
+             "        6 & 5 & 4 & 14 \\\\" +
+             "        0 & 2 & 1 & 10 \\\\" +
+             "        0 & 8 & 9 & 18 \\\\" +
+             "    \\end{array}" +
+             "\\right)$$",
+    next: "FFT3"
+  },
+
+  FFT3: {
+    type: "plain",
+    content: "We can reduce it straight to REF by using \\(R_3 - 4R_2\\):<br>" +
+             "$$\\left( " +
+             "    \\begin{array}{ccc|c}" +
+             "        6 & 5 & 4 & 14 \\\\" +
+             "        0 & 2 & 1 & 10 \\\\" +
+             "        0 & 0 & 5 & -22 \\\\" +
+             "    \\end{array}" +
+             "\\right)$$",
+    next: "FFT4"
+  },
+
+  FFT3: {
+    type: "dialogue",
+    content: "But what if we did \\(R_2 \\leftrightarrow R_3\\), then \\(R_3 - \\frac{1}{4}R_2\\). What matrix did you get?",
+    options: {
+      0: "$$\\left( " +
+         "    \\begin{array}{ccc|c}" +
+         "        6 & 5 & 4 & 14 \\\\" +
+         "        0 & 8 & 9 & 18 \\\\" +
+         "        0 & 0 & -1.25 & 5.5 \\\\" +
+         "    \\end{array}" +
+         "\\right)$$",
+    },
+    respondToIdx: {
+      0: "FFT4",
+    }
+  },
+
+  FFT4: {
+    type: "plain",
+    content: "With two different series of steps, we end up with different matrices in RREF.",
+    next: "FFT5"
+  },
+
+  FFT5: {
+    type: "dialogue",
+    content: "Now try doing steps 5-7 of the Gauss-Jordan Algorithm to reduce to RREF. Did you get the same matrix?",
+    options: {
+      0: "Yeah",
+      1: "No...?",
+      2: "I lazy sia just take me to the answer"
+    },
+    respondToIdx: {
+      0: "end",
+      1: "end",
+      2: "end",
+    }
   },
 
   end: {
     type: "end",
-    content: "If you're curious on why, do discuss on the telegram chat! That's the end of 1.4!"
+    content: "Anyways, it should be the same matrix. The RREF of a matrix is always unique, though the proof is quite involved so we won't go through it here. Anyways, we've reached the end of 1.4! We'll look at more complex matrix solving in 1.5 :)"
   }
 
 };
+
+const compulsoryMessages = [];
+
+const checkpoints = [
+  {
+    id: "start",
+    label: "Start from beginning",
+    showCompulsoryMessages: 0
+  },
+
+  {
+    id: "RREFIntuition1",
+    label: "RREF Steps",
+    showCompulsoryMessages: 0
+  },
+
+  {
+    id: "FFT1",
+    label: "Is REF and RREF unique?",
+    showCompulsoryMessages: 0
+  }
+];
+
