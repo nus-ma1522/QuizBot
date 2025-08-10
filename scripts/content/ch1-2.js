@@ -35,9 +35,9 @@
   p2: {
     type: "plain",
     content:
-      "On the left, we <b>let each column represent a variable</b>. Typically, $x, y, z$ form the first 3 columns.<br>" +
-      "This way, we only have to write down their coefficients as entries in the matrix.<br>" +
-      "Next, we draw a vertical line, and on the right, we write down the constants as a column.",
+      "On the left, we <b>let each column represent a variable</b>. Here, $x, y, z$ form the first 3 columns respectively.<br>" +
+      "This way, we only have to write down their coefficients as entries in the matrix. Saves some effort!<br>" +
+      "Next, we draw a vertical line, and on the right, we write down the constants as another column.",
     next: "def_aug_matrix"
   },
 
@@ -58,17 +58,30 @@
       "a_{21} & a_{22} & \\cdots & a_{2n} & b_2 \\\\" +
       "\\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\" +
       "a_{m1} & a_{m2} & \\cdots & a_{mn} & b_m" +
-      "\\end{array} \\right) $$",
+      "\\end{array} \\right) \\\\ $$" +
+      "$ \\text{• } a_{ij} \\text{ are known as entries of a matrix.} $",
     previewText: "Augmented Matrices",
     important: true,
     next: "p3"
   },
 
   p3: {
+    type: "dialogue",
+    content: 
+      "Now, let's practice writing it down!",
+    options: {
+      0: "How do I write matrices in here lol"
+    },
+    respondToIdx: {
+      0: "p3a"
+    }
+  },
+
+  p3a: {
     type: "plain",
     content: 
-      "Since we'll be using MATLAB, let's practice typing it down!<br>" +
-      "(ignore the fact that I can't read human handwriting 😌)",
+      "Wait...😳 You might be onto something. Let's do it differently then.<br>" +
+      "Since you'll be using MATLAB for this course, we can try typing it down!",
     next: "guide_matrix_matlab"
   },
 
@@ -138,7 +151,7 @@
       "1 & 0 & 0 & 1 \\\\" +
       "0 & 1 & 0 & 0 \\\\" +
       "0 & 0 & 1 & 0 \\\\" +
-      "\\end{array}\\right)$",
+      "\\end{array}\\right)$"
   },
 
   p5: {
@@ -157,7 +170,8 @@
       "0 & 1 & 2 & 3 \\\\" +
       "0 & 0 & 3 & 3 \\\\" +
       "\\end{array}\\right)$$" +
-      "Which one do you think is quicker to solve?",
+      "Which one seems faster to solve?<br>" +
+      "(same solution btw)",
     options: {
       0: 
         "$$\\left(\\begin{array}{ccc|c}" +
@@ -170,11 +184,14 @@
         "1 & 2 & 5 & 1 \\\\" +
         "0 & 1 & 2 & 3 \\\\" +
         "0 & 0 & 3 & 3 \\\\" +
-        "\\end{array}\\right)$$"
+        "\\end{array}\\right)$$",
+      2:
+        "Aren't they the same?"
     },
     respondToIdx: {
       0: "p5a",
-      1: "p5b"
+      1: "p5b",
+      2: "p5c"
     }
   },
 
@@ -188,7 +205,14 @@
   p5b: {
     type: "plain",
     content:
-      "You have good intuition!",
+      "Good eyesight!",
+    next: "p6"
+  },
+
+  p5c: {
+    type: "plain",
+    content:
+      "Not quite!",
     next: "p6"
   },
 
@@ -229,19 +253,13 @@
       "$x+2+5=1 \\\\ y=1 \\\\ z=1$<br>" +
       "We're very close!!",
     options: {0: "Solved it! $x=-6,y=1,z=1$"},
-    respondToIdx: {0: "p6d"}
-  },
-
-  p6d: {
-    type: "image",
-    content: "images/cooked.png",
-    next: "p6e"
+    respondToIdx: {0: "p6e"}
   },
 
   p6e: {
     type: "plain",
     content:
-      "<b>YOU. COOKED.</b><br>You have just applied a technique called <b>back-substitution</b>!<br>" +
+      "<b>YOU. COOKED.🔥🔥🔥</b><br>You have just applied a technique called <b>back-substitution</b>!<br>" +
       "We use this method to solve matrices in <b>row-echelon form (REF)</b>.<br>" + 
       "The 'staircase structure' you saw is a feature of matrices in REF!",
     next: "def_ref"
@@ -253,11 +271,11 @@
       "$$ \\textbf{\\Large Row-Echelon Form} \\\\ $$" +
       "$ \\text{In the augmented matrix:} \\\\$" +
       "$ \\text{• a zero row is a row with all entries equal to 0.} \\\\$" +
-      "$ \\text{• the leading entry of a row is the first nonzero entry from the left.} \\\\ \\text{ } \\\\$" +
+      "$ \\text{• the } \\textbf{leading entry} \\text{ of a row is the first nonzero entry from the left.} \\\\ \\text{ } \\\\$" +
 
       "$ \\text{An augmented matrix is in row-echelon form (REF) if:} \\\\$" +
-      "$\\quad 1.\\ \\text{All zero rows are at the bottom of the matrix.} \\\\$" +
-      "$\\quad 2.\\ \\text{The leading entries are further to the right as we move down the rows.} \\\\ \\text{ } \\\\$" +
+      "$ \\text{• All zero rows are at the bottom of the matrix.} \\\\$" +
+      "$ \\text{• The } \\textbf{leading entries} \\text{ are further to the right as we move down the rows.} \\\\ \\text{ } \\\\$" +
 
       "$ \\text{An augmented matrix in REF has the form:} \\\\$" +
       "$$ \\left( \\begin{array}{ccccccc|c}" +
@@ -270,22 +288,50 @@
 
       "$ \\text{where } * \\text{ denotes any arbitrary value.} \\\\ \\text{ } \\\\$" +
 
-      "$ \\text{In the row-echelon form, a pivot column contains a leading entry.} \\\\$" +
-      "$ \\text{Otherwise, it is called a non-pivot column.} $",
+      "$ \\text{In the row-echelon form, a } \\textbf{pivot column} \\text{ contains a leading entry.} \\\\$" +
+      "$ \\text{Otherwise, it is called a } \\textbf{non-pivot column} \\textbf{.} $",
     previewText: "Definition: Row-Echelon Form",
     important: true,
     next: "p7"
   },
 
   p7: {
+    type: "mcq",
+    content:
+      "Read through the definition? Now find the pivot columns!<br>" +
+      "$$\\left(\\begin{array}{ccc|c}" +
+      "0 & 0 & 0 & 2\\\\" +
+      "0 & 0 & 2 & 0\\\\" +
+      "0 & 5 & 0 & 0\\\\" +
+      "1 & 0 & 0 & 0\\\\" +
+      "\\end{array}\\right)$$",
+    options: {
+      0: "Column 1",
+      1: "Column 2",
+      2: "Column 3",
+      3: "Column 4"
+    },
+    answersIdx: new Set([]),
+    next: "p8"
+  },
+
+  p8: {
+    type: "plain",
+    content: 
+      "WHAT?! All of them were wrong? Let's relook at the definition...<br>" +
+      "Ah, seems like the terms <b>pivot and non-pivot columns</b> only apply to the REF.",
+    next: "p9"
+  },
+
+  p9: {
     type: "single-mcq",
     content:
-      "What about this matrix:<br>" +
+      "Now, what about this matrix:<br>" +
       "$$\\left(\\begin{array}{cc|c}" +
       "1 & 0 & 1 \\\\" +
       "0 & 1 & 2 \\\\" +
       "\\end{array}\\right)$$" +
-      "Can you 'see' the solution right away?",
+      "Can you see the solution right away?",
     options: {
       0: "$x = 1, y = 2$",
       1: "$x = 2, y = 1$",
@@ -293,79 +339,171 @@
     },
     answersIdx: new Set([0]),
     respondToIdx: {
-      1: "p7w",
-      2: "p7w"
+      1: "p9w",
+      2: "p9w"
     },
-    next: "p8"
+    next: "p10"
   },
 
-  p7w: {
+  p9w: {
     type: "plain",
     content:
       "Erm. That HAD to be accidental. 😶",
     systemMessage: "If that was not accidental, please review the content from the top 🙏"
   },
 
-  p8: {
+  p10: {
     type: "plain",
     content:
       "This matrix is in <b>reduced row‑echelon form (RREF)</b>, so you can read off the solution directly!<br>" +
-      "Each pivot is 1 and is the only nonzero entry in its column.",
+      "(each leading entry is 1 and the only nonzero entry in its column)",
+    next: "def_rref"
+  },
+
+  def_rref: {
+    type: "tex",
+  content:
+    "$$ \\textbf{\\Large Reduced Row-Echelon Form} \\\\ $$" +
+    "$ \\text{In the augmented matrix:} \\\\$" +
+    "$ \\text{• The } \\textbf{leading entries} \\text{ are 1.} \\\\$" +
+    "$ \\text{• In each } \\textbf{pivot column} \\text{, all entries except the } \\textbf{leading entry} \\text{ are 0.} \\\\ \\text{ } \\\\$" +
+
+    "$ \\text{A matrix in RREF has the form:} \\\\$" +
+    "$$ \\left( \\begin{array}{ccccccc|c}" +
+    "0 & \\cdots & 1 & * & 0 & \\cdots & 0 & * \\\\" +
+    "0 & \\cdots & 0 & 0 & 1 & \\cdots & 0 & * \\\\" +
+    "0 & \\cdots & 0 & 0 & 0 & \\cdots & 1 & * \\\\" +
+    "0 & \\cdots & 0 & 0 & 0 & \\cdots & 0 & 0 \\\\" +
+    "\\vdots & & \\vdots & \\vdots & \\vdots & & \\vdots & \\vdots \\\\" +
+    "0 & \\cdots & 0 & 0 & 0 & \\cdots & 0 & 0" +
+    "\\end{array} \\right), $$" +
+
+    "$ \\text{where } * \\text{ denotes any arbitrary value.} $",
+  previewText: "Definition: Reduced Row-Echelon Form",
+    previewText: "Definition: Row-Echelon Form",
+    important: true,
     next: "p11"
   },
 
   p11: {
     type: "plain",
     content:
-      "Not all systems have unique solutions. Sometimes you get infinitely many solutions (like in Interactive 1.1).<br>" +
-      "Consider this RREF matrix:<br>[1 0 2 3; 0 1 1 2]<br>" +
-      "Assuming variables are $x, y, z$, what can you say about the system?<br>Is it REF, RREF or neither? And how would you express the general solution?",
+      "But, as we know by now, not all systems have unique solutions.<br>" +
+      "Sometimes you get infinitely many solutions, and the general solution becomes confusing...<br><br>" +
+      "Let's use an example:" +
+      "$$\\left(\\begin{array}{ccc|c}" +
+      "1 & 0 & 2 & 3 \\\\" +
+      "0 & 1 & 0 & 2 \\\\" +
+      "\\end{array}\\right)$$" +
+      "Taking the variables as $x, y, z$, let's try finding the general solution together!",
     next: "p12"
   },
 
   p12: {
     type: "dialogue",
     content:
-      "Try parameterizing in different ways:<br>" +
-      "• Parameterize $x$: $x = s, y = ...$<br>" +
-      "• Parameterize $y$<br>" +
-      "• Parameterize $z$<br><br>" +
-      "Which one’s easier?",
+      "Expressing it in equation form, we get:<br>" +
+      "$x+2z=3 \\\\ y=2$<br><br>" +
+      "Which variable shall we parameterize?",
     options: {
-      0: "I did ✍️",
-      1: "Need guidance"
+      0: "Parameterize $x$",
+      1: "Parameterize $y$",
+      2: "Parameterize $z$"
     },
     respondToIdx: {
-      0: "p13",
-      1: "p13r1"
+      0: "p12x1",
+      1: "p12y1",
+      2: "p12z1"
     }
   },
 
-  p13r1: {
+  p12y1: {
     type: "plain",
-    content:
-      "The easiest method is to parameterize the non‑pivot variable—which is $z$ here—because pivot columns depend on them.<br>" +
-      "That gives the simplest general solution.",
-    next: "p13"
+    content: 
+      "First, we let:<br>$y=s, s \\in \\mathbb{R}$<br>Wait, but that can't be...<br>" +
+      "From the second row, it's apparent that $y=2$!",
+    next: "p12y2"
+  },
+
+  p12y2: {
+    type: "image",
+    content: 
+      "images/cipher_pitiful.png",
+    sticker: true,
+    next: "p12y3"
+  },
+
+  p12y3: {
+    type: "plain",
+    content: 
+      "Well, it seems like we screwed up this time.<br>" +
+      "Try choosing a different variable to parameterize!",
+    next: "p12"
+  },
+
+  p12x1: {
+    type: "plain",
+    content: 
+      "First, we let:<br>$x=s, s \\in \\mathbb{R}$<br><br>Now, we have:<br>" +
+      "$x+2z=3 \\implies s+2z=3 \\\\ y=2$",
+    next: "p12x2"
+  },
+
+  p12x2: {
+    type: "plain",
+    content: 
+      "We solved it! The general solution is:<br>" +
+      "$x=s,y=2,z=\\frac{3-s}{2},s \\in \\mathbb{R}$",
+    next: "p12rep"
+  },
+
+  p12z1: {
+    type: "plain",
+    content: 
+      "First, we let:<br>$z=s, s \\in \\mathbb{R}$<br><br>Now, we have:<br>" +
+      "$x+2z=3 \\implies x+2s=3 \\\\ y=2$",
+    next: "p12z2"
+  },
+
+  p12z2: {
+    type: "plain",
+    content: 
+      "We solved it! The general solution is:<br>" +
+      "$x=3-2s,y=2,z=s,s \\in \\mathbb{R}$",
+    next: "p12rep"
+  },
+
+  p12rep: {
+    type: "dialogue",
+    content: "Wanna proceed? Or shall we try again?",
+    options: {
+      0: "Let's try again",
+      1: "Let's proceed"
+    },
+    respondToIdx: {
+      0: "p12",
+      1: "p13"
+    }
   },
 
   p13: {
     type: "plain",
     content:
-      "Well done! Typically, we pick parameters for <b>non‑pivot columns</b> to simplify things.<br>" +
-      "It’s like muting noisy variables while solving!",
+      "Well, a simple life hack from me: just parameterize the non-pivot columns!<br>" +
+      "You're guaranteed to arrive at the general solution if you do so.<br>" + 
+      "In fact, there's a pattern to it. With enough practice, you can even find it with pure eye-power!",
     next: "end"
   },
 
   end: {
     type: "plain",
     content:
-      "👍 That wraps up our intro to augmented matrices, REF, RREF, and general solutions.<br>" +
-      "Ready to go deeper? Ping me anytime!",
-    systemMessage: "Checkpoint reached: Augmented Matrices & Solution Forms ✅"
+      "Anyways, that's all you need to know for this section!<br>" +
+      "If you have any queries, you may ask on Telegram as usual.<br>" +
+      "(I hope my creators don't disappoint you 🥺)",
+    systemMessage: "🎉Congratulations! You have reached the end of Interactive 1.2!🎉"
   }
 };
-
 
 const compulsoryMessages = [
   "def_aug_matrix",
@@ -384,7 +522,7 @@ const checkpoints = [
     showCompulsoryMessages: 1
   },
   {
-    id: "p7",
+    id: "p9",
     label: "Reduced Row-Echelon Form",
     showCompulsoryMessages: 2
   }
