@@ -1,15 +1,15 @@
 const dialogueSystem = {
   p0: {
     type: "plain",
-    content: "To start everything off, let's first recall what you have learnt in school!<br>" +
-    "Seen this before?<br>" +
+    content: "To start everything off, let's first recall what you have learnt in school!<br><br>" +
+    "Have ya seen this before?<br>" +
     "$y = mx + c$",
     next: "p1"
   },
 
   p1: {
     type: "dialogue",
-    content: "Do you still remember what the above is called?",
+    content: "Do you still remember what that thing is called?",
     options: {
       0: "Equation of a line",
       1: "Linear equation",
@@ -37,8 +37,9 @@ const dialogueSystem = {
 
   p2: {
     type: "plain",
-    content: "It's the equation of a line, where $x, y$ are the variables and $m, c$ are fixed values.<br>" +
-    "It's also a <b>linear equation</b>, meaning it forms a straight line, with no curves, bends, breaks or whatsoever.<br>" +
+    content: "It's the equation of a line, where $x, y$ are the variables and $m, c$ are fixed values.<br><br>" +
+    "We also call it a <b>linear equation</b> in $x, y$.<br>" +
+    "If you plot it with $x,y$ as the axes, you get a straight line, with no curves, bends, breaks or whatsoever.<br>" +
     "Makes sense, right?",
     next: "def_linear_eqn"
   },
@@ -62,7 +63,7 @@ const dialogueSystem = {
 
   p3: {
     type: "mcq",
-    content: "Vibe check! Which of the following equations are linear? (Select all that apply)",
+    content: "Vibe check! Which of the following equations are linear in $x$ and $y$? (Select all that apply)",
     options: {
       0: "<b>a</b>. $x + y = 1$",
       1: "<b>b</b>. $x + x^2 = y$",
@@ -78,33 +79,13 @@ const dialogueSystem = {
     type: "plain",
     content: "<b>b</b> & <b>c</b> contain nonlinear terms like $x^2$, $\\sin(x)$, etc. (They don't form straight lines when plotted, so they're not linear)<br>" + 
     "<b>d</b> is a trick option: by using the identity $ \\sin^2(x) + \\cos^2(x) = 1$, it can be simplified to $ x - y = -1 $. 🤓",
-    next: "p5"
-  },
-
-  p5: {
-    type: "single-mcq",
-    content: "In fact, one of the nonlinear equations can be linearized!<br>" +
-    "Wanna take a guess?",
-    options: {
-      0: "<b>a</b>. $x + x^2 = y$",
-      1: "<b>b</b>. $\\sin(x) + \\cos(y) = 1$",
-    },
-    answersIdx: new Set([1]),
-    next: "p6"
-  },
-
-  p6: {
-    type: "plain",
-    content: "<b>b</b> can be linearized through the substitution $u = \\sin(x), v = \\cos(y)$,<br>" +
-    "as $\\sin(x)$ and $\\cos(y)$ are independent of each other.<br>" + 
-    "The same cannot be said about $x$ and $x^2$, unfortunately...😞",
     next: "p7"
   },
 
   p7: {
     type: "plain",
     content: "Now, it's time to step things up. Remember simultaneous linear equations?<br>" +
-    "In MA1522, we call them <b>linear systems</b>:",
+    "Here in MA1522, we call them <b>linear systems</b>:",
     next: "def_linear_system"
   },
 
@@ -251,7 +232,7 @@ const dialogueSystem = {
       2: "Infinitely many points"
     },
     answersIdx: new Set([2]),
-    systemMessage: "Note: Reuse the Desmos page to plot the new equations",
+    systemMessage: "Note: Reuse the Desmos page to change the equations",
     next: "p13"
   },
 
@@ -300,9 +281,9 @@ const dialogueSystem = {
 
   p17: {
     type: "plain",
-    content: "Since we now have 3 variables, we can visualize the system in 3 dimensions.<br>" +
-    "In 3D, each equation represents a <b>plane</b>!<br>" + 
-    "The solution will be the point(s) of intersection of all planes (equations).",
+    content: "Since we now have 3 variables, we should visualize the system in 3 dimensions.<br>" +
+    "Therefore, each equation represents a plane!<br>" + 
+    "The solution will be the <b>point(s) of intersection of all planes (equations)</b>.",
     next: "graph3d"
   },
 
@@ -342,7 +323,7 @@ const dialogueSystem = {
 
   p20: {
     type: "plain",
-    content: "It’s <b>consistent</b> because all three planes <b>intersect at one point!</b><br>",
+    content: "It’s <b>consistent</b> because all three planes <b>intersect</b> at one point!<br>",
     next: "p21"
   },
 
@@ -392,11 +373,13 @@ const dialogueSystem = {
     "But, what if we want to find the solution that captures all possible solutions — the <b>general solution</b>?",
     options: {
       0: "Find 2 different solutions, then the line that includes both of them",
-      1: "Express it as a combination of a valid point and a directional vector scaled by some unknown"
+      1: "Express it as a combination of a valid point and a directional vector scaled by some unknown",
+      2: "Write them all down ✍️✍️✍️"
     },
     respondToIdx: {
       0: "p25r1",
-      1: "p25r2"
+      1: "p25r2",
+      2: "p25r3"
     }
   },
 
@@ -409,6 +392,12 @@ const dialogueSystem = {
   p25r2: {
     type: "plain",
     content: "Right on point!🎯",
+    next: "p26"
+  },
+
+  p25r3: {
+    type: "plain",
+    content: "Unfortunately, there isn't enough time in the universe...",
     next: "p26"
   },
 
