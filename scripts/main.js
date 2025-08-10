@@ -552,6 +552,7 @@ function submitMCQAnswer() {
     row.childNodes.forEach(bubble => {
       const key = bubble.dataset.key;
       const isSelected = selectedKeys.includes(key);
+      node.answersIdx = new Set(node.answersIdx); // in case it was array
       const isCorrect = node.answersIdx.has(Number(key));
       if (isSelected && isCorrect) {
         bubble.classList.remove('selected');
