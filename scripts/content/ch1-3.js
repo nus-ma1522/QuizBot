@@ -60,7 +60,7 @@ const dialogueSystem = {
 
   p4: {
         type: "dialogue",
-        content: "Do you think this changes the solution to the system?",
+        content: "Do you think this change the solution to the system?",
         options: {
           0: "No, the solution remains the same",
           1: "Yes, it changes the solution"
@@ -110,7 +110,7 @@ const dialogueSystem = {
       "$$\\left(\\begin{array}{cc|c}" +
       "1 & -1 & 0 \\\\" +
       "1 & 1 & 2 " +
-      "\\end{array}\\right)$$<br>" +
+      "\\end{array}\\right)$$" +
       "We essentially just swapped Row 1 and Row 2!",
     next: "p6"
   },
@@ -149,15 +149,27 @@ const dialogueSystem = {
       "Transformed System:<br>" +
       "$2x + 2y = 4$ — Equation 1<br>" +
       "$x - y = 0$ — Equation 2",
+    next: "p8e1"
+  },
+
+  p8e1: {
+    type: "embed",
+    content: "https://www.desmos.com/calculator/0hsfb9qmfi",
+    previewText: "Visualize the intersection on Desmos",
+    previewImage: "images/desmos_thumbnail.jpg",
+    important: true,
+    preload: true,
+    systemMessage: "The original system is preloaded into Desmos. Select/Deselect the relevant equations by clicking the circles on the left.",
     next: "p9"
   },
 
   p9: {
     type: "single-mcq",
-    content: "Does this change the solution to the system?",
+    content: "Let's visualize this on a graph! Does this preserve the solution to the system?<br>" +
+    "<em>Hint: What does it mean for a solution to be preserved? It means that the point(s) of intersection remain the same!</em>",
     options: {
-      0: "Yes, it creates a new solution",
-      1: "No, it's the same line scaled",
+      0: "No, it creates a new solution",
+      1: "Yes, it's the same line scaled",
       2: "We can't tell from a graph"
     },
     answersIdx: new Set([1]),
@@ -168,7 +180,7 @@ const dialogueSystem = {
     type: "plain",
     content:
       "Recall that the solution to a system of equations is the <b>point of intersection</b> between the lines represented by the equations.<br>" +
-      "Multiplying by $2$ scales the equation, but we know that the line (Equation 1) <b>remains exactly the same!</b><br>" +
+      "Multiplying by $2$ scales the equation, but we know that the line (Equation 1) <b>'looks' the same!</b><br>" +
       "Therefore, the point of intersection between the lines and hence, the solution remains the same.<br>",
     next: "p10e1"
   },
@@ -199,7 +211,7 @@ const dialogueSystem = {
       "2 & 2 & 4 \\\\" +
       "1 & -1 & 0 " +
       "\\end{array}\\right)$$" +
-      "<br>We label this operation as $R_1 \\rightarrow 2 \\times R_1$!<br>" +
+      "<br>We label this operation as $R_1 \\rightarrow 2R_1$!<br>" +
       "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0 " +
@@ -207,7 +219,8 @@ const dialogueSystem = {
       "\\left(\\begin{array}{cc|c}" +
       "2 & 2 & 4 \\\\" +
       "1 & -1 & 0 " +
-      "\\end{array}\\right)$$",
+      "\\end{array}\\right)$$<br>" +
+      "<em>Note: $2R_2$ and $R_2 \\rightarrow 2R_2$ mean the same thing! Just two different ways of writing!</em>",
     next: "p11"
   },
 
@@ -232,7 +245,7 @@ const dialogueSystem = {
     type: "plain",
     content:
       "Multiplying by $0$ turns your equation into $0 = 0$, which gives us no useful information. <br>" +
-      "It's like erasing the equation, so we say that multiplying a row by $0$ specifically, is an illegal ERO!",
+      "It's like erasing the equation, so we say that multiplying a row by $0$ specifically, is an <b>illegal</b> ERO!",
     next: "p12e1"
   },
   
@@ -275,22 +288,16 @@ const dialogueSystem = {
       "<b>Transformed system:</b><br>" +
       "$x + y = 2$ — Equation 1<br>" +
       "$2x = 2$ — Equation 3 (After adding Equation 1 to Equation 2)",
-    next: "p14e1"
-  },
-
-  p14e1: {
-    type: "embed",
-    content: "https://www.desmos.com/calculator/0hsfb9qmfi",
-    previewText: "Visualize the intersection on Desmos",
-    previewImage: "images/desmos_thumbnail.jpg",
-    important: true,
-    preload: true,
+    systemMessage:
+      "The transformed equation has already been included in the Desmos page. " +
+      "You can enable and disable equations by clicking on the circle to the left of the equation.",
     next: "p15"
   },
 
   p15: {
     type: "single-mcq",
     content:
+      "Let's take a look at the desmos page!<br>" +
       "Does this transformation (adding Equation 1 and Equation 2) preserve the solution?<br>" +
       "<em>Hint: What does it mean for a solution to be preserved? It means that the point(s) of intersection remain the same!</em>",
     options: {
@@ -306,13 +313,13 @@ const dialogueSystem = {
     type: "plain",
     content:
       "Visually, we can see that the line representing Equation 3 is basically a 'rotation' of Equation 2 about the intersection point.<br>" +
-      "The intersection point remains unchanged at $x=1,y=1$, so we can conclude that the solution is preserved!",
+      "The intersection point remains unchanged at $x=1$, $y=1$, so we can conclude that the solution is preserved!",
     next: "p16e1"
   },
 
   p16e1: {
     type: "single-mcq",
-    content: "What do you think about the transformed system will look like after row addition?",
+    content: "What do you think the transformed system will look like after row addition?",
     options: {
       0: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
@@ -342,29 +349,31 @@ const dialogueSystem = {
       "\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "2 & 0 & 2" +
-      "\\end{array}\\right)$$",
+      "\\end{array}\\right)$$" +
+      "We label this transformation as $R_2 + R_1$ where $R_2$ (written in front) is the row that is being modified!<br>" +
+      "<em>Note: $R_2 + R_1$ and $R_2 \\rightarrow R_2 + R_1$ mean the same thing! Just two different ways of writing!</em>",
     next: "p17"
   },
 
   p17: {
     type: "plain",
     content:
-      "Now, what happens if we add Equation 2 $+3\\times $ Equation 1?<br><br>" +
+      "Now, what happens if we add $R_2 +3R_1$?<br><br>" +
       "<b>Original system:</b><br>" +
-      "$x + y = 2$ — Equation 1<br>" +
-      "$x - y = 0$ — Equation 2<br><br>" +
+      "$x + y = 2$ — $R_1$<br>" +
+      "$x - y = 0$ — $R_2$<br><br>" +
       "<b>Transformed system:</b><br>" +
-      "$x + y = 2$ — Equation 1<br>" +
-      "$4x + 2y = 6$ — Equation 3 (After adding $3\\times$ Equation 1 to Equation 2)",
+      "$x + y = 2$ — $R_1$<br>" +
+      "$4x + 2y = 6$ — $R_2$ (After $R_2 + 3R_1)$",
     systemMessage: 
-      "Equation 3 has already been included in the Desmos page. " +
+      "The transformed equation has already been included in the Desmos page. " +
       "You can enable and disable equations by clicking on the circle to the left of the equation.",
     next: "p18"
   },
 
   p18: {
     type: "single-mcq",
-    content: "Is the solution set preserved?",
+    content: "Let's revisit the desmos page again! Is the solution set preserved?",
     options: {
       0: "No, the solution set is not preserved",
       1: "Yes, the solution set is preserved",
@@ -575,11 +584,11 @@ const dialogueSystem = {
     type: "mcq",
     content: "How do we reverse this row addition?",
     options: {
-      0: "$R_2 \\rightarrow R_2 - \\frac{1}{2} \\times R_1$",
-      1: "$R_2 \\rightarrow R_2 - 2 \\times R_1$",
-      2: "$R_1 \\rightarrow R_1 - 2 \\times R_2$",
-      3: "$R_1 \\rightarrow R_1 + 2 \\times R_2$",
-      4: "$R_1 \\leftrightarrow R_2$",
+      0: "$R_2 \\rightarrow R_2 - \\frac{1}{2}R_1$",
+      1: "$R_2 \\rightarrow R_2 - 2R_1$",
+      2: "$R_1 \\rightarrow R_1 - 2R_2$",
+      3: "$R_1 \\rightarrow R_1 + 2R_2$",
+      4: "$R_1 \\rightarrow R_2 + \\frac{1}{2}R_1$",
     },
     answersIdx: new Set([1]),
     next: "p29"
@@ -588,15 +597,21 @@ const dialogueSystem = {
   p29: {
     type: "plain",
     content:
-      "To undo $R_2 \\rightarrow R_2 + 2 \\times R_1$, just do the opposite: $R_2 \\rightarrow R_2 - 2 \\times R_1$!<br>" +
-      "Take note that in this case, we are modifying Row 2 and not Row 1.<br>",
+      "To undo $R_2 \\rightarrow R_2 + 2R_1$, just do the opposite: $R_2 \\rightarrow R_2 - 2R_1$!<br><br>" +
+      "<b>Warning:</b> Many students mistakenly think they should use the reciprocal (e.g. $\\frac{1}{2}$ instead of $2$) when reversing a row addition.<br>" +
+      "To reverse a row addition, you must subtract the exact same multiple from the same row you originally changed. " +
+      "Changing the wrong row, using the wrong multiple, or trying to replace the multiple with its reciprocal will not restore the original matrix!<br>",
     next: "end"
   },
 
   end: {
-    type: "plain",
-    content: "<b>In summary, there are 3 different types of EROs and all legal EROs are reversible!</b>",
-    systemMessage: "🎉Congratulations! You have reached the end of Interactive 1.3!🎉"
+    type: "tex",
+    content: "<b>In summary, there are 3 different types of EROs and all legal EROs are reversible!</b><br>" +
+    "1. The reverse of exchanging 2 rows, $R_i \\leftrightarrow R_j$, is itself.<br>" +
+    "2. The reverse of adding a multiple of a row to another, $R_i + cR_j$ is subtracting the multiple of that row, $R_i - cR_j$.<br>" +
+    "3. The reverse of multiplying a row by a nonzero constant, $aR_j$ is the multiplication of the reciprocal of the constant, $\\frac{1}{a}R_j$.",
+    systemMessage: "🎉Congratulations! You have reached the end of Interactive 1.3!🎉",
+    important: true,
   }
 }
 
