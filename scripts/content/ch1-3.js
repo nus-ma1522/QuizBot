@@ -11,22 +11,22 @@ const dialogueSystem = {
     type: "single-mcq",
     content:
       "Let’s take a look at this system of equations: <br>" +
-      "\\(x + y = 2\\) — Equation 1<br>" +
-      "\\(x - y = 0\\) — Equation 2<br>" +
+      "$x + y = 2$ — Equation 1<br>" +
+      "$x - y = 0$ — Equation 2<br>" +
       "We have learnt that this is a linear system! How do we express this in an augmented matrix?",
     options: {
-        0: "\\[\\left[\\begin{array}{cc|c}" +
+        0: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & 1 & 2" +
-      "\\end{array}\\right]\\]",
-        1: "\\[\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right)$$",
+        1: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0" +
-      "\\end{array}\\right]\\]",
-        2: "\\[\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right)$$",
+        2: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 0 & 1 \\\\" +
       "0 & 1 & 1" +
-      "\\end{array}\\right]\\]"
+      "\\end{array}\\right)$$"
     },
     answersIdx: new Set([1]),
 
@@ -37,10 +37,10 @@ const dialogueSystem = {
     type: "plain",
     content:
       "We have learnt that by taking the coefficients and constants, this linear system can be written as such!<br>" +
-      "\\[\\left[\\begin{array}{cc|c}" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0" +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
     next: "p3"
   },
 
@@ -49,11 +49,11 @@ const dialogueSystem = {
     content:
         "Now, what happens if we swap the order of the equations? <br><br>" + 
         "Original System:<br>" +
-        "\\(x + y = 2\\) — Equation 1<br>" +
-        "\\(x - y = 0\\) — Equation 2<br><br>" +
+        "$x + y = 2$ — Equation 1<br>" +
+        "$x - y = 0$ — Equation 2<br><br>" +
         "Transformed System:<br>" +
-        "\\(x - y = 0\\) — Equation 1<br>" +
-        "\\(x + y = 2\\) — Equation 2<br>",
+        "$x - y = 0$ — Equation 1<br>" +
+        "$x + y = 2$ — Equation 2<br>",
 
     next: "p4"
   },
@@ -79,7 +79,7 @@ const dialogueSystem = {
 
   p4r2: {
         type: "plain",
-        content: "Actually, it turns out that swapping the equations does not change the solution to the system<br>" + 
+        content: "Actually, the order does not matter if we express it in equation form!<br>" + 
         "At the end of the day, it’s still the same equations and the same solving process.",
         next: "p5"
     },
@@ -89,14 +89,14 @@ const dialogueSystem = {
     content:
       "What do you think the transformed system will look like in matrix form?",
     options: {
-        0: "\\[\\left[\\begin{array}{cc|c}" +
+        0: "$$\\left(\\begin{array}{cc|c}" +
       "1 & -1 & 0 \\\\" +
       "1 & 1 & 2 " +
-      "\\end{array}\\right]\\]",
-        1: "\\[\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right)$$",
+        1: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0" +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
       2: "You can't express this in matrix form!"
     },
     answersIdx: new Set([0]),
@@ -106,33 +106,35 @@ const dialogueSystem = {
   p5e1: {
     type: "plain",
     content:
-      "\\[\\left[\\begin{array}{cc|c}" +
+      "The correct answer is:<br>" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "1 & -1 & 0 \\\\" +
       "1 & 1 & 2 " +
-      "\\end{array}\\right]\\]<br>" +
-      "is the correct answer! We are essentially just swapping Row 1 and Row 2!",
+      "\\end{array}\\right)$$<br>" +
+      "We essentially just swapped Row 1 and Row 2!",
     next: "p6"
   },
 
   p6: {
     type: "plain",
     content:
-      "We label this operation as <strong>R1 ⟷ R2</strong> and we can express this transformation like this: <br>" +
-      "\\[\\left[\\begin{array}{cc|c}" +
+      "We label this operation as $R_1 \\leftrightarrow R_2$ and we can express the transformation like this:<br>" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0 " +
-      "\\end{array}\\right] \\xrightarrow{R1 ⟷ R2}" +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{R_1 \\leftrightarrow R_2}" +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & -1 & 0 \\\\" +
       "1 & 1 & 2 " +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
     next: "p7"
   },
 
   p7: {
     type: "plain",
     content:
-      "This is called a <strong>row swap</strong>. In matrices, there are 3 different <strong>Elementary Row Operations (EROs)</strong> and a row swap is the very first of three!<br>",
+      "This is called a <b>row swap</b>. $\\left(R_i \\leftrightarrow R_j\\right)$<br>" +
+      "In matrices, there are 3 different <b>Elementary Row Operations (EROs)</b> and a row swap is the very first of three!",
     next: "p8"
   },
 
@@ -140,13 +142,13 @@ const dialogueSystem = {
     type: "plain",
     content:
       "Moving on to the second ERO!<br>" +
-      "Now what happens if we multiply Equation 1 by 2?<br><br>" +
+      "Now what happens if we multiply Equation 1 by $2$?<br><br>" +
       "Original System:<br>" +
-      "\\(x + y = 2\\) — Equation 1<br>" +
-      "\\(x - y = 0\\) — Equation 2<br><br>" +
+      "$x + y = 2$ — Equation 1<br>" +
+      "$x - y = 0$ — Equation 2<br><br>" +
       "Transformed System:<br>" +
-      "\\(2x + 2y = 4\\) — Equation 1<br>" +
-      "\\(x - y = 0\\) — Equation 2",
+      "$2x + 2y = 4$ — Equation 1<br>" +
+      "$x - y = 0$ — Equation 2",
     next: "p9"
   },
 
@@ -165,8 +167,8 @@ const dialogueSystem = {
   p10: {
     type: "plain",
     content:
-      "Recall that the solution to a system of equations is the <strong>point of intersection</strong> between the lines represented by the equations.<br>" +
-      "Multiplying by 2 scales the equation, but we know that the line (Equation 1) <strong>remains exactly the same!</strong><br>" +
+      "Recall that the solution to a system of equations is the <b>point of intersection</b> between the lines represented by the equations.<br>" +
+      "Multiplying by $2$ scales the equation, but we know that the line (Equation 1) <b>remains exactly the same!</b><br>" +
       "Therefore, the point of intersection between the lines and hence, the solution remains the same.<br>",
     next: "p10e1"
   },
@@ -175,14 +177,14 @@ const dialogueSystem = {
     type: "single-mcq",
     content: "What does the transformed system look like in a matrix?",
     options: {
-      0: "\\[\\left[\\begin{array}{cc|c}" +
+      0: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0 " +
-      "\\end{array}\\right]\\]",
-      1: "\\[\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right)$$",
+      1: "$$\\left(\\begin{array}{cc|c}" +
       "2 & 2 & 4 \\\\" +
       "1 & -1 & 0 " +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
       2: "You can't express this in matrix form!"
     },
     answersIdx: new Set([1]),
@@ -192,30 +194,30 @@ const dialogueSystem = {
   p10e2: {
     type: "plain",
     content:
-      "We are taking the first row and multiplying it by 2, so the transformed system in matrix form is:<br>" +
-      "\\[\\left[\\begin{array}{cc|c}" +
+      "We are taking the first row and multiplying it by $2$, so the transformed system in matrix form is:<br>" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "2 & 2 & 4 \\\\" +
       "1 & -1 & 0 " +
-      "\\end{array}\\right]\\]" +
-      "<br>We label this operation as <strong>R1 → 2 × R1</strong>!<br>" +
-      "\\[\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right)$$" +
+      "<br>We label this operation as $R_1 \\rightarrow 2 \\times R_1$!<br>" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0 " +
-      "\\end{array}\\right] \\xrightarrow{2R1}" +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{2R_1}" +
+      "\\left(\\begin{array}{cc|c}" +
       "2 & 2 & 4 \\\\" +
       "1 & -1 & 0 " +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
     next: "p11"
   },
 
   p11: {
     type: "single-mcq",
     content:
-      "What if we were to multiply Equation 1 by 0? What happens?<br><br>" +
+      "What if we were to multiply Equation 1 by $0$? What happens?<br><br>" +
       "Transformed System:<br>" +
-      "\\(0x + 0y = 0\\) — Equation 1<br>" +
-      "\\(x - y = 0\\) — Equation 2",
+      "$0x + 0y = 0$ — Equation 1<br>" +
+      "$x - y = 0$ — Equation 2",
     options: {
       0: "It still has the same solution",
       1: "It erases all the information in that equation",
@@ -229,15 +231,16 @@ const dialogueSystem = {
   p12: {
     type: "plain",
     content:
-      "Multiplying by 0 turns your equation into 0 = 0, which gives us no useful information. <br>" +
-      "It's like erasing the equation, so we say that multiplying a row by 0 is an illegal ERO!",
+      "Multiplying by $0$ turns your equation into $0 = 0$, which gives us no useful information. <br>" +
+      "It's like erasing the equation, so we say that multiplying a row by $0$ specifically, is an illegal ERO!",
     next: "p12e1"
   },
   
   p12e1: {
     type: "plain",
     content:
-      "From this, we have introduced to you the <strong>second</strong> of 3 EROs! We call this <strong>multiplying a row by a non-zero scalar</strong>.",
+      "From this, we have introduced to you the second of 3 EROs!<br>" +
+      "We call this <b>multiplying a row by a non-zero scalar</b>. $\\left(aR_i\\right)$",
     next: "p13"
   },
 
@@ -246,18 +249,18 @@ const dialogueSystem = {
     content:
       "Moving on to the third ERO!<br>" +
       "Now, let's recall what we have previously learnt in secondary school. To solve this linear system:<br><br>" +
-      "\\(x + y = 2\\) — Equation 1<br>" +
-      "\\(x - y = 0\\) — Equation 2<br><br>" +
+      "$x + y = 2$ — Equation 1<br>" +
+      "$x - y = 0$ — Equation 2<br><br>" +
       "We can simply add Equation 1 to Equation 2 via the elimination method!<br><br>" +
-      "\\((x + y) + (x - y) = 2 + 0\\)<br>" +
-      "\\(\\rightarrow 2x = 2\\)",
+      "$(x + y) + (x - y) = 2 + 0$<br>" +
+      "$\\rightarrow 2x = 2$",
     next: "p13e1"
   },
 
   p13e1: {
     type: "plain",
     content:
-      "We have always assumed that we can just add the two equations together and somehow, we get the solution. " +
+      "We have always assumed that we can just add the two equations together and somehow, we get the solution.<br>" +
       "But now, let's verify together that no matter how we add/minus these two equations together, the solution remains the same!",
     next: "p14"
   },
@@ -266,12 +269,12 @@ const dialogueSystem = {
     type: "plain",
     content:
       "Let's verify that geometrically on Desmos!<br><br>" +
-      "<strong>Original system:</strong><br>" +
-      "\\(x + y = 2\\) — Equation 1<br>" +
-      "\\(x - y = 0\\) — Equation 2<br><br>" +
-      "<strong>Transformed system:</strong><br>" +
-      "\\(x + y = 2\\) — Equation 1<br>" +
-      "\\(2x = 2\\) — Equation 3 (After adding Equation 1 to Equation 2)",
+      "<b>Original system:</b><br>" +
+      "$x + y = 2$ — Equation 1<br>" +
+      "$x - y = 0$ — Equation 2<br><br>" +
+      "<b>Transformed system:</b><br>" +
+      "$x + y = 2$ — Equation 1<br>" +
+      "$2x = 2$ — Equation 3 (After adding Equation 1 to Equation 2)",
     next: "p14e1"
   },
 
@@ -302,8 +305,8 @@ const dialogueSystem = {
   p16: {
     type: "plain",
     content:
-      "Visually, we can see that the line representing Equation 3 is basically a rotation of Equation 2 about the intersection point.<br>" +
-      "The intersection point remains unchanged at (1, 1), so we can conclude that the solution is preserved!",
+      "Visually, we can see that the line representing Equation 3 is basically a 'rotation' of Equation 2 about the intersection point.<br>" +
+      "The intersection point remains unchanged at $x=1,y=1$, so we can conclude that the solution is preserved!",
     next: "p16e1"
   },
 
@@ -311,18 +314,18 @@ const dialogueSystem = {
     type: "single-mcq",
     content: "What do you think about the transformed system will look like after row addition?",
     options: {
-      0: "\\[\\left[\\begin{array}{cc|c}" +
+      0: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0 " +
-      "\\end{array}\\right]\\]",
-      1: "\\[\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right)$$",
+      1: "$$\\left(\\begin{array}{cc|c}" +
       "2 & 2 & 4 \\\\" +
       "1 & -1 & 0 " +
-      "\\end{array}\\right]\\]",
-      2: "\\[\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right)$$",
+      2: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "2 & 0 & 2 " +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
       3: "You can't express this in matrix form!"
     },
     answersIdx: new Set([2]),
@@ -332,35 +335,36 @@ const dialogueSystem = {
   p16e2: {
     type: "plain",
     content: "We are taking the second row and adding the first row to it, so the transformed system in matrix form is:<br>" +
-      "\\[\\left[\\begin{array}{cc|c}" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0" +
-      "\\end{array}\\right] \\xrightarrow{R_2 + R_1} " +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{R_2 + R_1} " +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "2 & 0 & 2" +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
     next: "p17"
   },
 
   p17: {
     type: "plain",
     content:
-      "Now, what happens if we add Equation 2 + 3 × Equation 1?<br><br>" +
-      "<strong>Original system:</strong><br>" +
-      "\\(x + y = 2\\) — Equation 1<br>" +
-      "\\(x - y = 0\\) — Equation 2<br><br>" +
-      "<strong>Transformed system:</strong><br>" +
-      "\\(x + y = 2\\) — Equation 1<br>" +
-      "\\(4x + 2y = 6\\) — Equation 3 (After adding 3 × Equation 1 to Equation 2)",
+      "Now, what happens if we add Equation 2 $+3\\times $ Equation 1?<br><br>" +
+      "<b>Original system:</b><br>" +
+      "$x + y = 2$ — Equation 1<br>" +
+      "$x - y = 0$ — Equation 2<br><br>" +
+      "<b>Transformed system:</b><br>" +
+      "$x + y = 2$ — Equation 1<br>" +
+      "$4x + 2y = 6$ — Equation 3 (After adding $3\\times$ Equation 1 to Equation 2)",
+    systemMessage: 
+      "Equation 3 has already been included in the Desmos page. " +
+      "You can enable and disable equations by clicking on the circle to the left of the equation.",
     next: "p18"
   },
 
   p18: {
     type: "single-mcq",
-    content: "Is the solution set preserved?<br>" +
-    "Equation 3 has already been included in the Desmos under \"Starred Messages\". " +
-    "Feel free to go back to it to visualize the intersection!",
+    content: "Is the solution set preserved?",
     options: {
       0: "No, the solution set is not preserved",
       1: "Yes, the solution set is preserved",
@@ -373,7 +377,8 @@ const dialogueSystem = {
   p19: {
     type: "plain",
     content:
-      "The solution is preserved! Even though the equation looks different, the point of intersection in the original and transformed systems remains the same!<br><br>",
+      "Even though the equation looks different, the solution is preserved!<br>" +
+      "See? The point of intersection in the original and transformed systems remains the same!",
     next: "p19e1"
   },
 
@@ -381,30 +386,30 @@ const dialogueSystem = {
     type: "single-mcq",
     content: "How do you think we can express this transformation in matrix form?",
     options: {
-      0: "\\[\\left[\\begin{array}{cc|c}" +
+      0: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0" +
-      "\\end{array}\\right] \\xrightarrow{R_1 ⟷ R_2} " +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{R_1 \\leftrightarrow R_2} " +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & -1 & 0 \\\\" +
       "1 & 1 & 2" +
-      "\\end{array}\\right]\\]",
-      1: "\\[\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right)$$",
+      1: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0" +
-      "\\end{array}\\right] \\xrightarrow{R_2 \\rightarrow 4R_2} " +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{4R_2} " +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "4 & -4 & 0" +
-      "\\end{array}\\right]\\]",
-      2: "\\[\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right)$$",
+      2: "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0" +
-      "\\end{array}\\right] \\xrightarrow{R_2 + 3R_1} " +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{R_2 + 3R_1} " +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "4 & 2 & 6" +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
     },
     answersIdx: new Set([2]),
     next: "p19e2"
@@ -414,31 +419,31 @@ const dialogueSystem = {
     type: "plain",
     content:
       "We are just taking the second row and adding 3 times the first row to it, so the transformed system in matrix form is:<br>" +
-      "\\[\\left[\\begin{array}{cc|c}" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "1 & -1 & 0" +
-      "\\end{array}\\right] \\xrightarrow{R_2 + 3R_1} " +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{R_2 + 3R_1} " +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & 1 & 2 \\\\" +
       "4 & 2 & 6" +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
       next: "p20"
   },
 
   p20: {
     type: "plain",
     content:
-      "The act of <strong>adding a multiple of one row to another</strong> is the <strong>last</strong> of 3 EROs!",
+      "The action of <b>adding a multiple of one row to another</b> is the last of 3 EROs! $\\left(R_i+cR_j\\right)$",
     next: "p20e1"
   },
 
   p20e1: {
     type: "tex",
     content:
-      "<strong>In summary, we have established the following 3 EROs:</strong><br>" +
-      "1. <strong>Exchanging 2 Rows:</strong> \\(R_i \\leftrightarrow R_j\\)<br>" +
-      "2. <strong>Adding a multiple of a row to another:</strong> \\(R_i + cR_j\\) where \\(c \\in \\mathbb{R}\\) any real number and \\(i \\neq j\\)<br>" +
-      "3. <strong>Multiplying a row by a non-zero constant:</strong> \\(aR_i\\) where \\(a \\neq 0\\)<br>",
+      "<b>In summary, we have established the following 3 elememtary row operations:</b><br>" +
+      "1. <b>Swapping 2 rows:</b> $R_i \\leftrightarrow R_j$<br>" +
+      "2. <b>Adding a multiple of a row to another:</b> $R_i + cR_j$ where $c \\in \\mathbb{R}$ and $i \\neq j$<br>" +
+      "3. <b>Multiplying a row by a nonzero constant:</b> $aR_i$ where $a \\neq 0$<br>",
     important: true,
     next: "p21"
   },
@@ -448,8 +453,8 @@ const dialogueSystem = {
     content:
       "At this point in time, you may be wondering... what is the purpose of all these EROs?<br>" +
       "The purpose of these 3 EROs is to ideally transform a matrix into a simpler, more useful form, specifically:<br>" +
-      "• <strong>Row Echelon Form (REF)</strong><br>" +
-      "• <strong>Reduced Row Echelon Form (RREF)</strong><br>" +
+      "• <b>Row Echelon Form (REF)</b><br>" +
+      "• <b>Reduced Row Echelon Form (RREF)</b><br>" +
       "(We'll go deeper into these in Chapter 1.4)",
     next: "p22"
   },
@@ -457,34 +462,37 @@ const dialogueSystem = {
   p22: {
     type: "plain",
     content:
-      "Remember that when you perform EROs on a matrix and end up with a new matrix, you haven't changed the solution, just the appearance of the matrix!<br><br>" +
+      "Remember that when you perform EROs on a matrix and end up with something different,<br>" +
+      "you haven't changed the solution, just the appearance of the matrix!<br>" +
       "So, if you can go from Matrix A to Matrix B using only legal EROs…<br>" +
-      "We say that matrices A and B are <strong>row equivalent</strong>!",
+      "We say that matrices A and B are <b>row equivalent</b>!",
+    systemMessage: "Row equivalence will be revisited in depth in chapter 4. Stay tuned!",
     next: "p23"
   },
 
   p23: {
     type: "plain",
     content:
-      "Now, what happens if we do an ERO by mistake and want to reverse it?<br>" +
-      "Let's say we have this:<br>" +
-      "\\[\\left[\\begin{array}{cc|c}" +
-      "1 & 2 & 3 \\\\" +
-      "4 & 5 & 6" +
-      "\\end{array}\\right] \\xrightarrow{R_1 ⟷ R_2}" +
-      "\\left[\\begin{array}{cc|c}" +
-      "4 & 5 & 6 \\\\" +
-      "1 & 2 & 3" +
-      "\\end{array}\\right]\\]",
+      "Now, what happens if we did an ERO by mistake and want to reverse it?<br>",
     next: "p24"
   },
 
   p24: {
     type: "mcq",
-    content: "Oops! You realize that the swap was unnecessary. How do you reverse it?",
+    content: 
+      "Let's say you did this:<br>" +
+      "$$\\left(\\begin{array}{cc|c}" +
+      "1 & 2 & 3 \\\\" +
+      "4 & 5 & 6" +
+      "\\end{array}\\right) \\xrightarrow{R_1 \\leftrightarrow R_2}" +
+      "\\left(\\begin{array}{cc|c}" +
+      "4 & 5 & 6 \\\\" +
+      "1 & 2 & 3" +
+      "\\end{array}\\right)$$<br>" +
+      "But oops! You realize that the swap was unnecessary. How can you reverse it?",
     options: {
       0: "You can't, once rows are swapped, the original order is lost",
-      1: "Just swap them again with R1 ⟷ R2",
+      1: "Just swap them again with $R_1 \\leftrightarrow R_2$",
       2: "You can only reverse it only with the help of a computer"
     },
     answersIdx: new Set([1]),
@@ -493,31 +501,31 @@ const dialogueSystem = {
 
   p24e1: {
     type: "plain",
-    content: "A row swap is reversible, you just swap them again with R1 ⟷ R2 to undo the operation.<br>" +
-    "\\[\\left[\\begin{array}{cc|c}" +
+    content: "A row swap is reversible, you simply swap them again with $R_1 \\leftrightarrow R_2$ to undo the operation!<br>" +
+    "$$\\left(\\begin{array}{cc|c}" +
       "4 & 5 & 6 \\\\" +
       "1 & 2 & 3" +
-      "\\end{array}\\right] \\xrightarrow{R_1 ⟷ R_2}" +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{R_1 \\leftrightarrow R_2}" +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & 2 & 3 \\\\" +
       "4 & 5 & 6" +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
     next: "p25"
   },
 
   p25: {
     type: "plain",
     content:
-      "Now let's say you scaled a row. For example, you multiplied Row 2 by 3.<br>" +
+      "Now let's say you scaled a row. For example, you multiplied Row 2 by $3$.<br>" +
       "Starting from:<br>" +
-      "\\[\\left[\\begin{array}{cc|c}" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "1 & 2 & 3 \\\\" +
       "4 & 5 & 6" +
-      "\\end{array}\\right] \\xrightarrow{3R_2}" +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{3R_2}" +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & 2 & 3 \\\\" +
       "12 & 15 & 18" +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
     next: "p26"
   },
 
@@ -525,8 +533,8 @@ const dialogueSystem = {
     type: "mcq",
     content: "How can you undo this scaling operation?",
     options: {
-      0: "Multiply Row 2 by 0. In other words, 0 × R2",
-      1: "Multiply Row 2 by ⅓. In other words, ⅓ × R2",
+      0: "Multiply Row 2 by $0$. In other words, $0R_2$",
+      1: "Multiply Row 2 by $\\frac{1}{3}$. In other words, $\\frac{1}{3}R_2$",
       2: "You can't undo row scaling"
     },
     answersIdx: new Set([1]),
@@ -535,32 +543,31 @@ const dialogueSystem = {
   
   p26e1: {
     type: "plain",
-    content:"Just multiply Row 2 by 1/3 to reverse the effect of multiplying by 3. " +
-    "Remember that option A is <strong>not a legal ERO</strong> as we cannot multiply a row by 0!<br>" +
-    "\\[\\left[\\begin{array}{cc|c}" +
+    content:"Just multiply Row 2 by $\\frac{1}{3}$ to reverse the effect of multiplying by $3$. " +
+    "Remember that the first option is <b>not a legal ERO</b> as we cannot multiply a row by $0$!<br>" +
+    "$$\\left(\\begin{array}{cc|c}" +
       "1 & 2 & 3 \\\\" +
       "12 & 15 & 18" +
-      "\\end{array}\\right] \\xrightarrow{\\frac{1}{3}R_2}" +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{\\frac{1}{3}R_2}" +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & 2 & 3 \\\\" +
       "4 & 5 & 6" +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
     next: "p27"
   },
 
   p27: {
     type: "plain",
     content:
-      "Lastly, let's say you added one row to another.<br>" +
-      "Starting from:<br>" +
-      "\\[\\left[\\begin{array}{cc|c}" +
+      "Lastly, let's say you added one row to another:<br>" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "1 & 2 & 3 \\\\" +
       "4 & 5 & 6" +
-      "\\end{array}\\right] \\xrightarrow{R_2 + 2R_1}" +
-      "\\left[\\begin{array}{cc|c}" +
+      "\\end{array}\\right) \\xrightarrow{R_2 + 2R_1}" +
+      "\\left(\\begin{array}{cc|c}" +
       "1 & 2 & 3 \\\\" +
       "6 & 9 & 12" +
-      "\\end{array}\\right]\\]",
+      "\\end{array}\\right)$$",
     next: "p28"
   },
 
@@ -568,39 +575,42 @@ const dialogueSystem = {
     type: "mcq",
     content: "How do we reverse this row addition?",
     options: {
-      0: "R2 → R2 - 2 × R1",
-      1: "R1 → R1 - 2 × R2",
-      2: "R1 ⟷ R2",
-      3: "R2 → -2R2"
+      0: "$R_2 \\rightarrow R_2 - \\frac{1}{2} \\times R_1$",
+      1: "$R_2 \\rightarrow R_2 - 2 \\times R_1$",
+      2: "$R_1 \\rightarrow R_1 - 2 \\times R_2$",
+      3: "$R_1 \\rightarrow R_1 + 2 \\times R_2$",
+      4: "$R_1 \\leftrightarrow R_2$",
     },
-    answersIdx: new Set([0]),
+    answersIdx: new Set([1]),
     next: "p29"
   },
 
   p29: {
     type: "plain",
     content:
-      "To undo R2 → R2 + 2 × R1, just do the opposite: R2 → R2 - 2 × R1!<br>" +
+      "To undo $R_2 \\rightarrow R_2 + 2 \\times R_1$, just do the opposite: $R_2 \\rightarrow R_2 - 2 \\times R_1$!<br>" +
       "Take note that in this case, we are modifying Row 2 and not Row 1.<br>",
     next: "end"
   },
 
   end: {
     type: "plain",
-    content: "<strong>In summary, there are 3 different types of EROs and all legal EROs are reversible!</strong>",
+    content: "<b>In summary, there are 3 different types of EROs and all legal EROs are reversible!</b>",
     systemMessage: "🎉Congratulations! You have reached the end of Interactive 1.3!🎉"
   }
 }
 
-const compulsoryMessages = [];
+const compulsoryMessages = [
+  "p20e1"
+];
 
 const checkpoints = [
   {
     id: "p0",
-    label: "Start from beginning",
+    label: "Beginning: Row Swap and Row Multiplication",
     showCompulsoryMessages: 0
   },
 
-  {id: "p13", label: "Addition EROs", showCompulsoryMessages: 0},
-  {id: "p23", label: "Reverse EROs", showCompulsoryMessages: 0}
+  {id: "p13", label: "The ERO known (informally) as Row Addition", showCompulsoryMessages: 0},
+  {id: "p23", label: "Reverse EROs", showCompulsoryMessages: 1}
 ];
