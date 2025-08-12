@@ -253,7 +253,7 @@ const dialogueSystem = {
     type: "plain",
     content:
       "From this, we have introduced to you the second of 3 EROs!<br>" +
-      "We call this <b>multiplying a row by a non-zero scalar</b>. $\\left(aR_i\\right)$",
+      "We call this <b>multiplying a row by a nonzero scalar</b>. $\\left(aR_i\\right)$",
     next: "p13"
   },
 
@@ -474,7 +474,7 @@ const dialogueSystem = {
       "Remember that when you perform EROs on a matrix and end up with something different,<br>" +
       "you haven't changed the solution, just the appearance of the matrix!<br>" +
       "So, if you can go from Matrix A to Matrix B using only legal EROs…<br>" +
-      "We say that matrices A and B are <b>row equivalent</b>!",
+      "We say that matrices A and B are <em>row equivalent</em>!",
     systemMessage: "Row equivalence will be revisited in depth in chapter 4. Stay tuned!",
     next: "p23"
   },
@@ -553,8 +553,8 @@ const dialogueSystem = {
   p26e1: {
     type: "plain",
     content:"Just multiply Row 2 by $\\frac{1}{3}$ to reverse the effect of multiplying by $3$. " +
-    "Remember that the first option is <b>not a legal ERO</b> as we cannot multiply a row by $0$!<br>" +
-    "$$\\left(\\begin{array}{cc|c}" +
+      "Remember that the first option is <b>not a legal ERO</b> as we cannot multiply a row by $0$!<br>" +
+      "$$\\left(\\begin{array}{cc|c}" +
       "1 & 2 & 3 \\\\" +
       "12 & 15 & 18" +
       "\\end{array}\\right) \\xrightarrow{\\frac{1}{3}R_2}" +
