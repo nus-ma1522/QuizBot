@@ -444,7 +444,7 @@ function renderMCQOptions(optionsObj, type) {
     const div = document.createElement('div');
     div.className = 'option-item';
     div.dataset.key = key;
-    div.innerHTML = label;
+    div.innerHTML = label.trim();
     renderTex(div);
     div.addEventListener('click', () => {
       if (type === 'single-mcq' || type === 'dialogue') {
@@ -524,7 +524,7 @@ function submitMCQAnswer() {
     Object.entries(node.options).forEach(([key, label]) => {
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
-      bubble.innerHTML = label;
+      bubble.innerHTML = label.trim();
       renderTex(bubble);
       bubble.dataset.key = key;
       row.appendChild(bubble);
