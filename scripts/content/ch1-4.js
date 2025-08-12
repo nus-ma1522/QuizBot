@@ -349,7 +349,7 @@ const dialogueSystem = {
 
   FFT4: {
     type: "plain",
-    content: "With two different series of steps, we end up with different matrices in RREF.",
+    content: "With two different series of steps, we end up with different matrices in REF.",
     next: "FFT5"
   },
 
