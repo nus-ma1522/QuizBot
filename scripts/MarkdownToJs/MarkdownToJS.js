@@ -4,14 +4,18 @@ const path = require('path');
 function parseMarkdown(mdContent) {
     const lines = mdContent.split('\n');
     const dialogueSystem = {};
+    const compulsoryMessages = [];
+    const checkpoints = [];
     let counter = 1;
 
     let currentEntry = null;
    	let currentKey = null;
    	let inLatexMode = false;
    	let optionNo = 0;
+    let compulsoryMessageCount = 0;
    	let sectionName = "default";
    	let addedEmptyNewline = false;
+    let needCheckpointId = false;
 
     function pushCurrentEntry(nextKey) {
         if (currentEntry) {
@@ -66,7 +70,16 @@ function parseMarkdown(mdContent) {
         if (h2Match) {
             let lineSplit = line.trim().split(" ");
             sectionName = lineSplit[1];
+            sectionLabel = lineSplit.slice(2).join(" ")
             counter = 1;
+
+            needCheckpointId = true;
+            checkpointInfo = {}
+            checkpointInfo.label = sectionLabel;
+            checkpointInfo.showCompulsoryMessages = compulsoryMessageCount;
+            checkpointInfo.id = "PLAECEHOLDER";
+            checkpoints.push(checkpointInfo);
+
             continue;
         }
 
@@ -78,6 +91,11 @@ function parseMarkdown(mdContent) {
             pushCurrentEntry(key);
             currentKey = key;
 
+            if(needCheckpointId){
+                checkpoints[checkpoints.length-1].id = key;
+                needCheckpointId = false;
+            }
+
             currentEntry = { type };
             if (type === 'mcq') {
                 currentEntry.options = {};
@@ -86,6 +104,11 @@ function parseMarkdown(mdContent) {
             if (type === 'dialogue') {
                 currentEntry.options = {};
                 currentEntry.respondToIdx = {};
+            }
+            if (type === 'tex') {
+                currentEntry.important = true;
+                compulsoryMessages.push(key);
+                compulsoryMessageCount += 1;
             }
             currentEntry.content = "";
             continue;
@@ -150,14 +173,21 @@ function parseMarkdown(mdContent) {
 
     pushCurrentEntry();
 
-    return dialogueSystem;
+    var allInfo = {};
+    allInfo.dialogueSystem = dialogueSystem;
+    allInfo.compulsoryMessages = compulsoryMessages;
+    allInfo.checkpoints = checkpoints;
+    
+    return allInfo;
 }
 
 function convertMarkdownToJS(mdPath, jsPath) {
     const mdContent = fs.readFileSync(mdPath, 'utf-8');
-    const dialogueSystem = parseMarkdown(mdContent);
+    const allInfo = parseMarkdown(mdContent);
 
-    const jsContent = `const dialogueSystem = ${JSON.stringify(dialogueSystem, null, 4)};`;
+    var jsContent = `const dialogueSystem = ${JSON.stringify(allInfo.dialogueSystem, null, 4)};`;
+    jsContent += `\n\nconst compulsoryMessages = ${JSON.stringify(allInfo.compulsoryMessages, null, 4)};`
+    jsContent += `\n\nconst checkpoints = ${JSON.stringify(allInfo.checkpoints, null, 4)};`
     fs.writeFileSync(jsPath, jsContent, 'utf-8');
     console.log(`Converted ${mdPath} -> ${jsPath}`);
 }
@@ -166,9 +196,7 @@ var inputFileName = process.argv[2]
 var outputFileName = inputFileName.replace(".md",".js")
 
 var inputFile = path.join(__dirname, inputFileName);
-var outputFile = path.join(__dirname, outputFileName);
-
-
+var outputFile = path.join(__dirname, "..", "content", outputFileName);
 
 convertMarkdownToJS(inputFile, outputFile);
 
