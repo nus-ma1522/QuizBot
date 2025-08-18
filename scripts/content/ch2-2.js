@@ -111,7 +111,7 @@ const dialogueSystem = {
             "2": "afterMatrixMulGuess",
             "3": "afterMatrixMulGuess"
         },
-        "content": "If can multiply a matrix and a vector, and a matrix is several vectors glued together, what happens if we multiply two matrices together? What kind of object do you expect from this mutliplication?<br> $$\\left(\\begin{array}{c c} 2 & 1 \\\\ 3 & 4\\\\\\end{array}\\right)\\left(\\begin{array}{c c} 5 & 10 \\\\ 10 & 1\\\\\\end{array}\\right) = \\textbf{??}$$"
+        "content": "If we can multiply a matrix and a vector, and a matrix is several vectors glued together, what happens if we multiply two matrices together? What kind of object do you expect from this mutliplication?<br> $$\\left(\\begin{array}{c c} 2 & 1 \\\\ 3 & 4\\\\\\end{array}\\right)\\left(\\begin{array}{c c} 5 & 10 \\\\ 10 & 1\\\\\\end{array}\\right) = \\textbf{??}$$"
     },
     "afterMatrixMulGuess": {
         "type": "plain",
@@ -156,11 +156,6 @@ const dialogueSystem = {
         "next": "MatMal_default_6"
     },
     "MatMal_default_6": {
-        "type": "plain",
-        "content": "To do this, we take",
-        "next": "MatMal_default_7"
-    },
-    "MatMal_default_7": {
         "type": "mcq",
         "options": {
             "0": "2 rows",
@@ -173,14 +168,14 @@ const dialogueSystem = {
             4
         ],
         "content": "What about this?<br> $$\\left(\\begin{array}{c c} 2 & 1 \\\\ 3 & 4\\\\\\end{array}\\right)\\left(\\begin{array}{c c} 5 & 10 \\\\ 10 & 1\\\\ 7 & 8\\end{array}\\right) = \\textbf{??}$$<br> How many rows and columns should the resulting matrix have?",
+        "next": "MatMal_default_7"
+    },
+    "MatMal_default_7": {
+        "type": "plain",
+        "content": "Let's try doing<br> $$\\left(\\begin{array}{c c} 2 & 1 \\\\ 3 & 4\\\\\\end{array}\\right)\\left(\\begin{array}{c} 5  \\\\ 10\\\\ 7\\end{array}\\right) = \\textbf{??}$$<br> We want $5$ times of $\\left(\\begin{array}{c} 2 \\\\ 3\\\\\\end{array}\\right)$, $10$ times of $\\left(\\begin{array}{c} 1 \\\\ 4\\\\\\end{array}\\right)$, and $7$ times of... what?<br> <br> This multiplication doesn't make sense because the dimensions of the matrices don't match",
         "next": "MatMal_default_8"
     },
     "MatMal_default_8": {
-        "type": "plain",
-        "content": "Let's try doing<br> $$\\left(\\begin{array}{c c} 2 & 1 \\\\ 3 & 4\\\\\\end{array}\\right)\\left(\\begin{array}{c} 5  \\\\ 10\\\\ 7\\end{array}\\right) = \\textbf{??}$$<br> We want $5$ times of $\\left(\\begin{array}{c} 2 \\\\ 3\\\\\\end{array}\\right)$, $10$ times of $\\left(\\begin{array}{c} 1 \\\\ 4\\\\\\end{array}\\right)$, and $7$ times of... what?<br> <br> This multiplication doesn't make sense because the dimensions of the matrices don't match",
-        "next": "MatMal_default_9"
-    },
-    "MatMal_default_9": {
         "type": "mcq",
         "options": {
             "0": "The no. of columns in $A$ equals the no. of columns in $B$",
@@ -192,25 +187,25 @@ const dialogueSystem = {
             2
         ],
         "content": "Think back to the process, if we want to multiply matrices $A$ and $B$ together, what condition(s) must be satisfied?",
+        "next": "MatMal_default_9"
+    },
+    "MatMal_default_9": {
+        "type": "plain",
+        "content": "Given matrix $A$ is $m$ by $p$ and matrix $B$ is $p$ by $mn$, $AB$ will give us a $m$ by $n$ matrix.",
         "next": "MatMal_default_10"
     },
     "MatMal_default_10": {
-        "type": "plain",
-        "content": "Given matrix $A$ is $m$ by $p$ and matrix $B$ is $p$ by $mn$, $AB$ will give us a $m$ by $n$ matrix.",
-        "next": "MatMal_default_11"
-    },
-    "MatMal_default_11": {
         "type": "tex",
         "important": true,
         "content": "$\\textbf{Matrix Multiplication}$<br> $$\\mathbf{AB}=(a_{ij})_{m\\times p}(b_{ij})_{p\\times n}=(\\sum_{k=1}^pa_{ik}b_{kj})_{m\\times n}$$<br> $$\\begin{pmatrix}a_{11}&a_{12}&\\cdots&a_{1p}\\\\a_{21}&a_{22}&\\cdots&a_{2p}\\\\\\vdots&\\vdots&\\ddots&\\vdots\\\\a_{m1}&a_{m2}&\\cdots&a_{mp}\\end{pmatrix}\\begin{pmatrix}b_{11}&b_{12}&\\cdots&b_{1n}\\\\b_{21}&b_{22}&\\cdots&b_{2n}\\\\\\vdots&\\vdots&\\ddots&\\vdots\\\\b_{p1}&b_{p2}&\\cdots&b_{pm}\\end{pmatrix}=\\begin{pmatrix}a_{11}b_{11}+a_{12}b_{21}+\\cdots+a_{1p}b_{p1}&a_{11}b_{12}+a_{12}b_{22}+\\cdots+a_{1p}b_{p2}&\\cdots&a_{11}b_{1n}+a_{12}b_{2n}+\\cdots+a_{1p}b_{pn}\\\\a_{21}b_{11}+a_{22}b_{21}+\\cdots+a_{2p}b_{p1}&a_{21}b_{12}+a_{22}b_{22}+\\cdots+a_{2p}b_{p2}&\\cdots&a_{21}b_{1n}+a_{22}b_{2n}+\\cdots+a_{2p}b_{pn}\\\\\\vdots&\\vdots&\\ddots&\\vdots\\\\a_{m1}b_{11}+a_{m2}b_{21}+\\cdots+a_{mp}b_{p1}&a_{m1}b_{12}+a_{m2}b_{22}+\\cdots+a_{mp}b_{p2}&\\cdots&a_{m1}b_{1n}+a_{m2}b_{2n}+\\cdots+a_{mp}b_{pn}\\end{pmatrix}$$",
+        "next": "MatMal_default_11"
+    },
+    "MatMal_default_11": {
+        "type": "plain",
+        "content": "Above is the formal definition of matrix multiplication.<br> <br> The $(i, j)$-entry of the product $AB$ is the sum of the product of the entries in the $i$-th row of $A$ with the $j$-th column of $B$.<br> <br> We can verify that this gives us the same result as the \"split B into vectors, multiply them by A, and glue them together\" process that we've discussed above.",
         "next": "MatMal_default_12"
     },
     "MatMal_default_12": {
-        "type": "plain",
-        "content": "Above is the formal definition of matrix multiplication.<br> <br> The $(i, j)$-entry of the product $AB$ is the sum of the product of the entries in the $i$-th row of $A$ with the $j$-th column of $B$.<br> <br> We can verify that this gives us the same result as the \"split B into vectors, multiply them by A, and glue them together\" process that we've discussed above.",
-        "next": "MatMal_default_13"
-    },
-    "MatMal_default_13": {
         "type": "dialogue",
         "options": {
             "0": "I'm ready!"
@@ -280,7 +275,7 @@ const dialogueSystem = {
     },
     "ManyFormsOfMatrix_default_8": {
         "type": "plain",
-        "content": "If you'd like to see this idea fleshed out more, do check out this <a href=\"https://youtu.be/cc1ivDlZ71U?si=KW3jrTv0VIVQ8hbI\"><br> Why do we multiply matrices the way we do??</a>, a great video by Michael Penn.<br> <br> And that's a wrap!"
+        "content": "If you'd like to see this idea fleshed out more, do check out this <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://youtu.be/cc1ivDlZ71U?si=KW3jrTv0VIVQ8hbI\"><br> Why do we multiply matrices the way we do??</a>, a great video by Michael Penn.<br> <br> And that's a wrap!"
     }
 };
 
@@ -288,7 +283,7 @@ const compulsoryMessages = [
     "Scalar_default_3",
     "Scalar_default_5",
     "MatVec_default_8",
-    "MatMal_default_11"
+    "MatMal_default_10"
 ];
 
 const checkpoints = [
