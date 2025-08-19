@@ -211,36 +211,98 @@ const dialogueSystem = {
             "0": "I'm ready!"
         },
         "respondToIdx": {
-            "0": "StartOfMatrix"
+            "0": "SolvingMatrixStart"
         },
         "content": "That's quite abit of stuff, so let's pause here for a while. Let me know when you're ready to move on :)"
     },
-    "StartOfMatrix": {
+    "SolvingMatrixStart": {
         "type": "plain",
-        "content": "Anyways on the point that a matrix is just a bunch of vectors glued together.<br> <br> erm 🤓 ackchually ☝️ I lied 🤓 kinda<br> <br> It's one way to view it, and it helps simplify the abomination of a formula that is Matrix Multiplication.",
+        "content": "Now that we know how to multiply matrices, let's try to solve for a matrix instead! Below, $X$ is a matrix, and we want to solve for $X$.<br> $$\\left(\\begin{array}{c c} 3 & 4 \\\\ 1 & 2\\\\\\end{array}\\right)X = \\left(\\begin{array}{c c} 16 & 12 \\\\ 6 & 6\\\\ \\end{array}\\right)$$",
+        "next": "SolvingMatrix_default_1"
+    },
+    "SolvingMatrix_default_1": {
+        "type": "mcq",
+        "options": {
+            "0": "1 Row",
+            "1": "2 Rows",
+            "2": "1 Column",
+            "3": "2 Columns"
+        },
+        "answersIdx": [
+            1,
+            3
+        ],
+        "content": "Firstly, what is the dimensions of $X$?",
+        "next": "SolvingMatrix_default_2"
+    },
+    "SolvingMatrix_default_2": {
+        "type": "mcq",
+        "options": {
+            "0": "Split $X$ into column vectors",
+            "1": "Split $\\left(\\begin{array}{c c} 16 & 12 \\\\ 6 & 6\\\\ \\end{array}\\right)$ into column vectors"
+        },
+        "answersIdx": [
+            0,
+            1
+        ],
+        "content": "How should we proceed from here?",
+        "next": "SolvingMatrix_default_3"
+    },
+    "SolvingMatrix_default_3": {
+        "type": "plain",
+        "content": "If we split $X = (x_1 \\space \\space \\space x_2)$, we can write the following matrix equations:<br> $$\\left(\\begin{array}{c c} 3 & 4 \\\\ 1 & 2\\\\\\end{array}\\right)x_1 = \\left(\\begin{array}{c} 16 \\\\ 6 \\\\ \\end{array}\\right)$$$$\\left(\\begin{array}{c c} 3 & 4 \\\\ 1 & 2\\\\\\end{array}\\right)x_2 = \\left(\\begin{array}{c} 12 \\\\ 6 \\\\ \\end{array}\\right)$$",
+        "next": "SolvingMatrix_default_4"
+    },
+    "SolvingMatrix_default_4": {
+        "type": "plain",
+        "content": "Recap that a matrix equation is a different way of representing a system of linear equation, and so we can write the above two equations as augmented matrices and solve them using REF or RREF algorithms!",
+        "next": "SolvingMatrix_default_5"
+    },
+    "SolvingMatrix_default_5": {
+        "type": "mcq",
+        "options": {
+            "0": "$\\left(\\begin{array}{c c} 4 & 1 \\\\ 0 & 3\\\\ \\end{array}\\right)$",
+            "1": "$\\left(\\begin{array}{c c} 4 & 0 \\\\ 1 & 3\\\\ \\end{array}\\right)$",
+            "2": "$\\left(\\begin{array}{c c} 3 & 0 \\\\ 1 & 4\\\\ \\end{array}\\right)$",
+            "3": "$\\left(\\begin{array}{c c} 3 & 1 \\\\ 0 & 4\\\\ \\end{array}\\right)$"
+        },
+        "answersIdx": [
+            1
+        ],
+        "content": "Try and solve it, and let me know what you got for $X$!",
         "next": "ManyFormsOfMatrix_default_1"
     },
     "ManyFormsOfMatrix_default_1": {
         "type": "plain",
-        "content": "However, it is certainly not the full picture of what a matrix is. A matrix represents so many different inter-related concepts, and you'll get to explore more such concepts as you go down the course",
+        "content": "This will be the last part so bear with me a while longer",
+        "next": "StartOfMatrix"
+    },
+    "StartOfMatrix": {
+        "type": "plain",
+        "content": "Anyways on the point that a matrix is just a bunch of vectors glued together.<br> <br> erm 🤓 ackchually ☝️ I lied 🤓 kinda<br> <br> It's one way to view it, and it helps simplify the abomination of a formula that is Matrix Multiplication.",
         "next": "ManyFormsOfMatrix_default_2"
     },
     "ManyFormsOfMatrix_default_2": {
         "type": "plain",
-        "content": "Anyways, here's more food for thought as to why matrices multiply in this manner. Suppose we have a a system of linear equations:<br> $$\\begin{array}{}2x_1 &+&     x_2 &=& y_1 \\\\3x_1 &+&    4x_2 &=& y_2 \\\\\\end{array}$$<br> Which we can write this as:<br> $$\\left(\\begin{array}{c c} 2 & 1 \\\\ 3 & 4\\\\\\end{array}\\right)\\left(\\begin{array}{c} x_1 \\\\ x_2\\\\\\end{array}\\right) = \\left(\\begin{array}{c}  y_1 \\\\ y_2\\\\\\end{array}\\right)$$",
+        "content": "However, it is certainly not the full picture of what a matrix is. A matrix represents so many different inter-related concepts, and you'll get to explore more such concepts as you go down the course",
         "next": "ManyFormsOfMatrix_default_3"
     },
     "ManyFormsOfMatrix_default_3": {
         "type": "plain",
-        "content": "Now we have a second system of linear equations:<br> $$\\begin{array}{}5y_1 &+&     6y_2 &=& z_1 \\\\0y_1 &+&    7y_2 &=& z_2 \\\\\\end{array}$$<br> Which we can write this as:<br> $$\\left(\\begin{array}{c c} 5 & 6 \\\\ 0 & 7\\\\\\end{array}\\right)\\left(\\begin{array}{c} y_1 \\\\ y_2\\\\\\end{array}\\right) = \\left(\\begin{array}{c}  z_1 \\\\ z_2\\\\\\end{array}\\right) $$",
+        "content": "Anyways, here's more food for thought as to why matrices multiply in this manner. Suppose we have a a system of linear equations:<br> $$\\begin{array}{}2x_1 &+&     x_2 &=& y_1 \\\\3x_1 &+&    4x_2 &=& y_2 \\\\\\end{array}$$<br> Which we can write this as:<br> $$\\left(\\begin{array}{c c} 2 & 1 \\\\ 3 & 4\\\\\\end{array}\\right)\\left(\\begin{array}{c} x_1 \\\\ x_2\\\\\\end{array}\\right) = \\left(\\begin{array}{c}  y_1 \\\\ y_2\\\\\\end{array}\\right)$$",
         "next": "ManyFormsOfMatrix_default_4"
     },
     "ManyFormsOfMatrix_default_4": {
         "type": "plain",
-        "content": "Here's our goal, express $z$ in terms of $x$. I.e. find the values of $a$, $b$, $c$, $d$ of the following system of linear equation.<br> $$\\begin{array}{}ax_1 &+&     bx_2 &=& z_1 \\\\cx_1 &+&    dx_2 &=& z_2 \\\\\\end{array}$$<br> We could do a ton of substitution to handle this, but let's see how matrices help us here.",
+        "content": "Now we have a second system of linear equations:<br> $$\\begin{array}{}5y_1 &+&     6y_2 &=& z_1 \\\\0y_1 &+&    7y_2 &=& z_2 \\\\\\end{array}$$<br> Which we can write this as:<br> $$\\left(\\begin{array}{c c} 5 & 6 \\\\ 0 & 7\\\\\\end{array}\\right)\\left(\\begin{array}{c} y_1 \\\\ y_2\\\\\\end{array}\\right) = \\left(\\begin{array}{c}  z_1 \\\\ z_2\\\\\\end{array}\\right) $$",
         "next": "ManyFormsOfMatrix_default_5"
     },
     "ManyFormsOfMatrix_default_5": {
+        "type": "plain",
+        "content": "Here's our goal, express $z$ in terms of $x$. I.e. find the values of $a$, $b$, $c$, $d$ of the following system of linear equation.<br> $$\\begin{array}{}ax_1 &+&     bx_2 &=& z_1 \\\\cx_1 &+&    dx_2 &=& z_2 \\\\\\end{array}$$<br> We could do a ton of substitution to handle this, but let's see how matrices help us here.",
+        "next": "ManyFormsOfMatrix_default_6"
+    },
+    "ManyFormsOfMatrix_default_6": {
         "type": "mcq",
         "options": {
             "0": "Multiply the two matrices together!"
@@ -249,14 +311,14 @@ const dialogueSystem = {
             0
         ],
         "content": "If we substitute the first matrix equation into the second matrix equation, we get:<br> $$\\left(\\begin{array}{c c} 5 & 6 \\\\ 0 & 7\\\\\\end{array}\\right)\\left(\\begin{array}{c c} 2 & 1 \\\\ 3 & 4\\\\\\end{array}\\right)\\left(\\begin{array}{c} x_1 \\\\ x_2\\\\\\end{array}\\right) = \\left(\\begin{array}{c}  z_1 \\\\ z_2\\\\\\end{array}\\right) $$<br> What should we do next?",
-        "next": "ManyFormsOfMatrix_default_6"
-    },
-    "ManyFormsOfMatrix_default_6": {
-        "type": "plain",
-        "content": "That's right! If we multiply the first two matrices, we can get a matrix of the form<br> <br> $$\\left(\\begin{array}{c c} a & c \\\\ b & d\\\\\\end{array}\\right)\\left(\\begin{array}{c} x_1 \\\\ x_2\\\\\\end{array}\\right) = \\left(\\begin{array}{c}  z_1 \\\\ z_2\\\\\\end{array}\\right) $$<br> Which is exactly what we are trying to get!",
         "next": "ManyFormsOfMatrix_default_7"
     },
     "ManyFormsOfMatrix_default_7": {
+        "type": "plain",
+        "content": "That's right! If we multiply the first two matrices, we can get a matrix of the form<br> <br> $$\\left(\\begin{array}{c c} a & c \\\\ b & d\\\\\\end{array}\\right)\\left(\\begin{array}{c} x_1 \\\\ x_2\\\\\\end{array}\\right) = \\left(\\begin{array}{c}  z_1 \\\\ z_2\\\\\\end{array}\\right) $$<br> Which is exactly what we are trying to get!",
+        "next": "ManyFormsOfMatrix_default_8"
+    },
+    "ManyFormsOfMatrix_default_8": {
         "type": "dialogue",
         "options": {
             "0": "$\\left(\\begin{array}{c c} 28 & 29 \\\\ 21 & 28\\\\ \\end{array}\\right)$",
@@ -266,14 +328,14 @@ const dialogueSystem = {
             "0": "afterLazy",
             "1": "afterLazy"
         },
-        "content": "I'll leave you to do the actual matrix multiplcation as an excercise. Don't open the options if you wanna try it yourself first"
+        "content": "I'll leave you to do the actual matrix multiplication as an excercise. Don't open the options if you wanna try it yourself first"
     },
     "afterLazy": {
         "type": "plain",
         "content": "Indeed,$$\\left(\\begin{array}{c c} 5 & 6 \\\\ 0 & 7\\\\\\end{array}\\right)\\left(\\begin{array}{c c} 2 & 1 \\\\ 3 & 4\\\\\\end{array}\\right) = \\left(\\begin{array}{c c} 28 & 29 \\\\ 21 & 28\\\\ \\end{array}\\right)$$",
-        "next": "ManyFormsOfMatrix_default_8"
+        "next": "ManyFormsOfMatrix_default_9"
     },
-    "ManyFormsOfMatrix_default_8": {
+    "ManyFormsOfMatrix_default_9": {
         "type": "plain",
         "content": "If you'd like to see this idea fleshed out more, do check out this <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://youtu.be/cc1ivDlZ71U?si=KW3jrTv0VIVQ8hbI\"><br> Why do we multiply matrices the way we do??</a>, a great video by Michael Penn.<br> <br> And that's a wrap!"
     }
@@ -303,8 +365,13 @@ const checkpoints = [
         "id": "MatMal_default_1"
     },
     {
+        "label": "Solving Matrix Equations",
+        "showCompulsoryMessages": 4,
+        "id": "SolvingMatrixStart"
+    },
+    {
         "label": "72 Matrix Transformations",
         "showCompulsoryMessages": 4,
-        "id": "StartOfMatrix"
+        "id": "ManyFormsOfMatrix_default_1"
     }
 ];
