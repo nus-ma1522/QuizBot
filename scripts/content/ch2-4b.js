@@ -352,7 +352,7 @@ const dialogueSystem = {
     "LU_default_1": {
         "type": "dialogue",
         "options": {
-            "0": "It's computes (cooks) faster that way"
+            "0": "It computes (cooks) faster that way"
         },
         "respondToIdx": {
             "0": "LU_default_2"
