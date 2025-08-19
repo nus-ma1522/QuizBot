@@ -52,9 +52,9 @@ const dialogueSystem = {
       "$$ a_1 x_1 + a_2 x_2 + \\ldots + a_n x_n = b $$" +
       "$ \\text{• } a_1, a_2, \\ldots, a_n \\text{ are known constants, called the coefficients.} \\\\$" +
       "$ \\text{• } b \\text{ is called the constant} \\\\$" +
-      "$ \\text{• } x_1, x_2, \\ldots, x_n \\text{ are variables} \\\\ \\text{ } \\\\$" +
+      "$ \\text{• } x_1, x_2, \\ldots, x_n \\text{ are variables} \\\\ \\; \\\\$" +
       "$ \\text{The linear equation is homogeneous if } b = 0 \\text{, i.e.} \\\\$" +
-      "$$ a_1 x_1 + a_2 x_2 + \\ldots + a_n x_n = 0 \\\\ \\text{ } $$",
+      "$$ a_1 x_1 + a_2 x_2 + \\ldots + a_n x_n = 0 \\\\ \\; $$",
     previewText: "Definition: Linear Equations",
     important: true,
     systemMessage: "You may view starred messages anytime by clicking on the star icon on the top right corner.",
@@ -102,7 +102,7 @@ const dialogueSystem = {
       "a_{m1} x_1 + a_{m2} x_2 + \\ldots + a_{mn} x_n = b_m" +
       "\\end{cases} $$" +
       "$ \\text{The linear system is homogeneous if } b_1 = b_2 = \\ldots = b_m = 0 \\text{,} \\\\$" +
-      "$ \\text{that is, all the linear equations are homogeneous.} \\\\ \\text{ } \\\\$",
+      "$ \\text{that is, all the linear equations are homogeneous.} \\\\ \\; \\\\$",
     previewText: "Definition: Linear Systems",
     important: true,
     next: "p8"
@@ -452,9 +452,9 @@ const dialogueSystem = {
       "$ \\text{Given a linear system, we say that:} \\\\$" +
       "$$ x_1 = c_1, x_2 = c_2, \\ldots, x_n = c_n $$" +
       "$ \\text{is a solution to the linear system if the equations are simultaneously} \\\\$" +
-      "$ \\text{satisfied after making the substitution.} \\\\ \\text{ } \\\\$" + 
+      "$ \\text{satisfied after making the substitution.} \\\\ \\; \\\\$" + 
       "$ \\text{The general solution to a linear system captures all possible solutions} \\\\$" + 
-      "$ \\text{to the linear system.} \\\\ \\text{ } \\\\$" + 
+      "$ \\text{to the linear system.} \\\\ \\; \\\\$" + 
       "$ \\text{A linear system is said to be inconsistent if it does not have any solutions.} \\\\$" + 
       "$ \\text{Otherwise, a linear system is consistent if it has at least one solution.} $",
     previewText: "Solutions to a Linear System",

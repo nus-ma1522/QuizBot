@@ -159,7 +159,7 @@ function parseMarkdown(mdContent) {
 
         if (!nonContentMatch) {
             if(currentEntry.content != "" && inLatexMode == false && justExitedLatexMode == false){
-            	currentEntry.content += "<br> ";
+            	currentEntry.content += "<br>";
             }
             currentEntry.content += line.trim();
         }

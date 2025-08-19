@@ -92,12 +92,12 @@ const dialogueSystem = {
     "$ \\text{To enter a matrix in MATLAB, we use square brackets: } \\texttt{[]} \\\\$" +
     "$ \\text{• Separate columns using spaces or commas} \\\\$" +
     "$ \\text{• Separate rows using semicolons} \\\\$" +
-    "$ \\text{ } \\\\$" +
+    "$ \\; \\\\$" +
     "$ \\text{For example, the matrix:} \\\\$" +
     "$$ \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix} $$" +
     "$ \\text{is written in MATLAB as:} \\\\$" +
     "$$ \\texttt{[1 2 3;4 5 6;7 8 9]} $$" +
-    "$ \\text{ } \\\\$" +
+    "$ \\; \\\\$" +
     "$ \\text{Note: The vertical line in augmented matrices is ignored in MATLAB.} \\\\$" +
     "$ \\text{Just enter the full row. DO NOT leave spaces within each entry.} $",
   previewText: "Guide: Writing a Matrix in MATLAB",
@@ -271,11 +271,11 @@ const dialogueSystem = {
       "$$ \\textbf{\\Large Row-Echelon Form} \\\\ $$" +
       "$ \\text{In the augmented matrix:} \\\\$" +
       "$ \\text{• a zero row is a row with all entries equal to 0.} \\\\$" +
-      "$ \\text{• the } \\textbf{leading entry} \\text{ of a row is the first nonzero entry from the left.} \\\\ \\text{ } \\\\$" +
+      "$ \\text{• the } \\textbf{leading entry} \\text{ of a row is the first nonzero entry from the left.} \\\\ \\; \\\\$" +
 
       "$ \\text{An augmented matrix is in row-echelon form (REF) if:} \\\\$" +
       "$ \\text{• All zero rows are at the bottom of the matrix.} \\\\$" +
-      "$ \\text{• The } \\textbf{leading entries} \\text{ are further to the right as we move down the rows.} \\\\ \\text{ } \\\\$" +
+      "$ \\text{• The } \\textbf{leading entries} \\text{ are further to the right as we move down the rows.} \\\\ \\; \\\\$" +
 
       "$ \\text{An augmented matrix in REF has the form:} \\\\$" +
       "$$ \\left( \\begin{array}{ccccccc|c}" +
@@ -286,7 +286,7 @@ const dialogueSystem = {
       "0 & \\cdots & 0 & 0 & \\cdots & 0 & 0 & 0" +
       "\\end{array} \\right), $$" +
 
-      "$ \\text{where } * \\text{ denotes any arbitrary value.} \\\\ \\text{ } \\\\$" +
+      "$ \\text{where } * \\text{ denotes any arbitrary value.} \\\\ \\; \\\\$" +
 
       "$ \\text{In the row-echelon form, a } \\textbf{pivot column} \\text{ contains a leading entry.} \\\\$" +
       "$ \\text{Otherwise, it is called a } \\textbf{non-pivot column} \\textbf{.} $",
@@ -366,7 +366,7 @@ const dialogueSystem = {
     "$$ \\textbf{\\Large Reduced Row-Echelon Form} \\\\ $$" +
     "$ \\text{In the augmented matrix:} \\\\$" +
     "$ \\text{• The } \\textbf{leading entries} \\text{ are 1.} \\\\$" +
-    "$ \\text{• In each } \\textbf{pivot column} \\text{, all entries except the } \\textbf{leading entry} \\text{ are 0.} \\\\ \\text{ } \\\\$" +
+    "$ \\text{• In each } \\textbf{pivot column} \\text{, all entries except the } \\textbf{leading entry} \\text{ are 0.} \\\\ \\; \\\\$" +
 
     "$ \\text{A matrix in RREF has the form:} \\\\$" +
     "$$ \\left( \\begin{array}{ccccccc|c}" +
