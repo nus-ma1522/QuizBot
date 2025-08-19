@@ -451,8 +451,8 @@ const dialogueSystem = {
     content:
       "<b>In summary, we have established the following 3 elememtary row operations:</b><br>" +
       "1. <b>Swapping 2 rows:</b> $R_i \\leftrightarrow R_j$<br>" +
-      "2. <b>Adding a multiple of a row to another:</b> $R_i + cR_j$ where $c \\in \\mathbb{R}$ and $i \\neq j$<br>" +
-      "3. <b>Multiplying a row by a nonzero constant:</b> $aR_i$ where $a \\neq 0$<br>",
+      "2. <b>Multiplying a row by a nonzero constant:</b> $aR_i$ where $a \\neq 0$<br>" +
+      "3. <b>Adding a multiple of a row to another:</b> $R_i + cR_j$ where $c \\in \\mathbb{R}$ and $i \\neq j$",
     important: true,
     next: "p21"
   },
@@ -608,8 +608,8 @@ const dialogueSystem = {
     type: "tex",
     content: "<b>In summary, there are 3 different types of EROs and all legal EROs are reversible!</b><br>" +
     "1. The reverse of exchanging 2 rows, $R_i \\leftrightarrow R_j$, is itself.<br>" +
-    "2. The reverse of adding a multiple of a row to another, $R_i + cR_j$ is subtracting the multiple of that row, $R_i - cR_j$.<br>" +
-    "3. The reverse of multiplying a row by a nonzero constant, $aR_j$ is the multiplication of the reciprocal of the constant, $\\frac{1}{a}R_j$.",
+    "2. The reverse of multiplying a row by a nonzero constant, $aR_j$ is multiplying by the reciprocal of the constant, $\\frac{1}{a}R_j$.<br>" +
+    "3. The reverse of adding a multiple of a row to another, $R_i + cR_j$ is subtracting the multiple of that row, $R_i - cR_j$.",
     systemMessage: "🎉Congratulations! You have reached the end of Interactive 1.3!🎉",
     important: true,
   }
