@@ -17,7 +17,7 @@ const dialogueSystem = {
     },
     "Scalar_default_4": {
         "type": "plain",
-        "content": "Next, to add something $c$ times of something is the same as multiplying it by $c$. This is how we define scalar multiplication of a matrix as well:",
+        "content": "We can also mutliply every entry in a matrix by some real number $c$. We call this scalar multiplication",
         "next": "Scalar_default_5"
     },
     "Scalar_default_5": {
@@ -191,7 +191,7 @@ const dialogueSystem = {
     },
     "MatMal_default_9": {
         "type": "plain",
-        "content": "Given matrix $A$ is $m$ by $p$ and matrix $B$ is $p$ by $mn$, $AB$ will give us a $m$ by $n$ matrix.",
+        "content": "Given matrix $A$ is $m$ by $p$ and matrix $B$ is $p$ by $n$, $AB$ will give us a $m$ by $n$ matrix.",
         "next": "MatMal_default_10"
     },
     "MatMal_default_10": {
