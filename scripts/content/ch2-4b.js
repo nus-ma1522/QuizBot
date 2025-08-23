@@ -199,7 +199,7 @@ const dialogueSystem = {
     },
     "Finding_default_8": {
         "type": "plain",
-        "content": "Therefore:$$\\begin{align*}\\mathbf{A} \\xrightarrow{rref} \\; &\\mathbf{E}_k \\ldots \\mathbf{E}_2 \\mathbf{E}_1\\mathbf{A}\\\\ = \\; & \\mathbf{A}^{-1}\\mathbf{A}\\\\ = \\; & \\mathbf{I}\\end{align*}$$<br>Voila! Now, we have proved that $\\mathbf{A}^{-1}\\mathbf{A} = \\mathbf{I}$!<br>Also, we have shown that if $\\mathbf{A}^{-1}$ exists, then $\\mathbf{A}$ is row equivalent to $\\mathbf{I}$. Same is true for the other direction.",
+        "content": "As the RREF operation produces a series of EROs corresponding to elementary matrices:$$\\begin{align*}\\mathbf{A} \\xrightarrow{rref} \\; &\\mathbf{E}_k \\ldots \\mathbf{E}_2 \\mathbf{E}_1\\mathbf{A}\\\\ = \\; & \\mathbf{A}^{-1}\\mathbf{A}\\\\ = \\; & \\mathbf{I}\\end{align*}$$<br>Voila! Now, we have proved that $\\mathbf{A}^{-1}\\mathbf{A} = \\mathbf{I}$!<br>Also, we have shown that if $\\mathbf{A}^{-1}$ exists, then $\\mathbf{A}$ is row equivalent to $\\mathbf{I}$. Same is true for the other direction.",
         "next": "Finding_default_9"
     },
     "Finding_default_9": {
