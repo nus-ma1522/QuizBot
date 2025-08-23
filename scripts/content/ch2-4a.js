@@ -170,7 +170,7 @@ const dialogueSystem = {
         "important": true,
         "content": 
             "$$ \\textbf{\\Large Inverse of a Matrix} $$" +  
-            "So since the inverse is unique, we can denote the inverse of an<br>invertible matrix $\\mathbf{A}$ by $\\mathbf{A}^{-1}$ and call it the inverse of $\\mathbf{A}$.<br>" +  
+            "We can denote the inverse of an invertible matrix $\\mathbf{A}$ by $\\mathbf{A}^{-1}$<br>and call it the inverse of $\\mathbf{A}$.<br>" +  
             "That is, $\\mathbf{A}$ is invertible and $\\mathbf{A}^{-1}$ is its (unique) inverse if:<br>" +  
             "$$ \\mathbf{A}\\mathbf{A}^{-1} = \\mathbf{I_n} = \\mathbf{A}^{-1}\\mathbf{A}. $$<br>" +
             "$$ \\textbf{Uniqueness of Inverse} $$" +  
