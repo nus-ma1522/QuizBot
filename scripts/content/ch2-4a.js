@@ -238,7 +238,8 @@ const dialogueSystem = {
     "Properties_default_7": {
         "type": "plain",
         "content": "This one's tricky!$$\\begin{align*}\\mathbf{I}&=\\mathbf{I^\\top}\\\\\\mathbf{A}^\\top \\left(\\mathbf{A}^\\top\\right)^{-1}&=\\left(\\mathbf{A}^{-1}\\mathbf{A}\\right)^\\top\\\\\\mathbf{A}^\\top \\left(\\mathbf{A}^\\top\\right)^{-1}&=\\mathbf{A}^\\top\\left(\\mathbf{A}^{-1}\\right)^\\top\\\\\\left(\\mathbf{A}^\\top\\right)^{-1}&=\\left(\\mathbf{A}^{-1}\\right)^\\top\\end{align*}$$",
-        "next": "Properties_default_8"
+        "next": "Properties_default_8",
+        systemMessage: "Note: Left cancellation rule has been applied. It will be covered soon."
     },
     "Properties_default_8": {
         "type": "single-mcq",
