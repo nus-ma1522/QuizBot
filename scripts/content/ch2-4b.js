@@ -61,7 +61,7 @@ const dialogueSystem = {
             "$$ \\textbf{\\Large Elementary Matrices} $$" +
             "A square matrix of order $n$, $\\mathbf{E}$, is called an elementary matrix if it can<br>" +
             "be obtained from the identity matrix $\\mathbf{I_n}$ by performing a single elementary<br>" +
-            "row operation.<br>" +
+            "row operation:<br>" +
             "$$ \\mathbf{I_n} \\xrightarrow{r} \\mathbf{E}, $$" +
             "where $r$ is an elementary row operation.<br><br>" +
             "The elementary row operation performed to obtain $\\mathbf{E}$ is said to be the row<br>" +
@@ -77,7 +77,7 @@ const dialogueSystem = {
             "Then,<br>" +
             "$$ \\mathbf{B} = \\mathbf{E}_k \\cdots \\mathbf{E}_2 \\mathbf{E}_1 \\mathbf{A}. $$" +
             "Two $n \\times m$ matrices $\\mathbf{A}$ and $\\mathbf{B}$ are row equivalent iff there exist<br>" +
-            "elementary matrices $\\mathbf{E}_1, \\mathbf{E}_2, \\ldots, \\mathbf{E}_k$ such that<br>" +
+            "elementary matrices $\\mathbf{E}_1, \\mathbf{E}_2, \\ldots, \\mathbf{E}_k$ such that:<br>" +
             "$$ \\mathbf{B} = \\mathbf{E}_k \\cdots \\mathbf{E}_2 \\mathbf{E}_1 \\mathbf{A}. $$" +
             "<br>" +
             "$$ \\textbf{Inverse of Elementary Matrices} $$" +
@@ -128,7 +128,7 @@ const dialogueSystem = {
     "Finding_default_1": {
         "type": "dialogue",
         "options": {
-            "0": "Solve $\\mathbf{AX}=\\mathbf{B}$. Here $\\mathbf{B} = \\mathbf{I}$ and $\\mathbf{X} = \\mathbf{A}^{-1}$."
+            "0": "Solve $\\mathbf{AX}=\\mathbf{I}$. The answer $\\mathbf{X} = \\mathbf{A}^{-1}$."
         },
         "respondToIdx": {
             "0": "findingInverse"
@@ -365,10 +365,11 @@ const dialogueSystem = {
         options: {
             0: "$O(n)$",
             1: "$O(n^2)$",
-            2: "$O(n^3)$"
+            // 2: "$O(n^3)$"
         },
         answersIdx: [2],
-        "next": "LU_default_3"
+        "next": "LU_default_3",
+        systemMessage: "Note: It is 100% okay if you do not know big-O notation yet, as it is not tested is this course. The aim is to draw parallels between MA1522 and other CS courses."
     },
     "LU_default_3": {
         "type": "mcq",
@@ -423,7 +424,7 @@ const dialogueSystem = {
     "LU_default_7": {
         "type": "plain",
         "content": "Wow, that has been a looooong discussion. I don't want to elaborate any further, so you can leave the rest to the Tele chat. See ya... 😴😴😴",
-        systemMessage: "🎉Congratulations! You have reached the end of Interactive 2.4 (Side B)!🎉"
+        systemMessage: "🎉Congratulations! You have reached the end of Interactive 2.4-2.7 β!🎉"
     }
 };
 
