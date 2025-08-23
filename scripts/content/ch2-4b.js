@@ -52,7 +52,7 @@ const dialogueSystem = {
         "type": "plain",
         "content": "Now, removing $\\mathbf{A}$ from both sides, we have:<br><br>$$\\mathbf{I} \\xrightarrow{\\text{some ERO}} \\mathbf{EI} = \\mathbf{E}$$<br>We just have to find $\\mathbf{I}$ of the right size, then perform the respective ERO on it!<br>Isn't that simple?",
         "next": "Elementary_default_6",
-        systemMessage: "Note: That was a rhetorical question."
+        systemMessage: "Note: This is NOT an application of the cancellation law."
     },
     "Elementary_default_6": {
         "type": "tex",
@@ -159,7 +159,7 @@ const dialogueSystem = {
     },
     "Finding_default_3": {
         "type": "plain",
-        "content": "Remember, pivot columns on the right only means one thing: the system is <b>inconsistent</b>! There is no solution.<br>Therefore, $\\mathbf{A}^{-1}$ does not exist in this case. Don't believe me? Try finding $\\mathbf{AA^{-1}}$ then.",
+        "content": "Remember, pivot columns on the right only means one thing: the system is <b>inconsistent</b>! There is no solution.<br>Therefore, $\\mathbf{A}^{-1}$ does not exist in this case. Don't believe me? Try multiplying them together then.",
         "next": "Finding_default_4"
     },
     "Finding_default_4": {
