@@ -513,10 +513,6 @@ body {
   font-size: 1.18em;
 }
 
-.latex-script .katex { 
-  font-size: 1.0em; 
-}
-
 .tex-message {
   overflow: auto;
   position: relative;
@@ -529,9 +525,15 @@ body {
   justify-content: center;
   align-items: center;
   color: black;
+  font-family: 'KaTeX_Main';
   font-size: 16px;
   text-align: center;
   cursor: pointer;
+}
+
+.tex-message .katex,
+.latex-script .katex { 
+  font-size: 1.0em; 
 }
 
 .tex-content {

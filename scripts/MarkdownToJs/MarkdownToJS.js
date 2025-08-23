@@ -97,7 +97,7 @@ function parseMarkdown(mdContent) {
             }
 
             currentEntry = { type };
-            if (type === 'mcq') {
+            if (type === 'mcq' || type === 'single-mcq') {
                 currentEntry.options = {};
                 currentEntry.answersIdx = [];
             }
@@ -117,7 +117,7 @@ function parseMarkdown(mdContent) {
         if (!currentEntry) continue;
 
        	let nonContentMatch = false;
-        if (currentEntry.type === 'mcq') {
+        if (currentEntry.type === 'mcq' || currentEntry.type === 'single-mcq') {
         	line = line.trim();
             if (line.charAt(0) === '*' || line.charAt(0) === '-') {
                 currentEntry.options[optionNo] = line.substring(2).trim();
