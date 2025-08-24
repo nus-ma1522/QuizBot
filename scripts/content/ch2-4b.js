@@ -199,7 +199,8 @@ const dialogueSystem = {
     },
     "Finding_default_8": {
         "type": "plain",
-        "content": "As the RREF operation produces a series of EROs corresponding to elementary matrices:$$\\begin{align*}\\mathbf{A} \\xrightarrow{rref} \\; &\\mathbf{E}_k \\ldots \\mathbf{E}_2 \\mathbf{E}_1\\mathbf{A}\\\\ = \\; & \\mathbf{A}^{-1}\\mathbf{A}\\\\ = \\; & \\mathbf{I}\\end{align*}$$<br>Voila! Now, we have proved that $\\mathbf{A}^{-1}\\mathbf{A} = \\mathbf{I}$!<br>Also, we have shown that if $\\mathbf{A}^{-1}$ exists, then $\\mathbf{A}$ is row equivalent to $\\mathbf{I}$. Same is true for the other direction.",
+        "content": "From the above, we observe that the RREF operation produces a series of EROs,<br>" +
+        "$r_1, r_2, \\ldots, r_k$ corresponding to elementary matrices $\\mathbf{E}_1, \\mathbf{E},\\ldots,\\mathbf{E}_k$:$$\\begin{align*}\\mathbf{A} \\xrightarrow{rref} \\; &\\mathbf{E}_k \\ldots \\mathbf{E}_2 \\mathbf{E}_1\\mathbf{A}\\\\ = \\; & \\mathbf{A}^{-1}\\mathbf{A}\\\\ = \\; & \\mathbf{I}\\end{align*}$$<br>Voila! Now, we have proved that $\\mathbf{A}^{-1}\\mathbf{A} = \\mathbf{I}$!<br>Also, we have shown that if $\\mathbf{A}^{-1}$ exists, then $\\mathbf{A}$ is row equivalent to $\\mathbf{I}$. Same is true for the other direction.",
         "next": "Finding_default_9"
     },
     "Finding_default_9": {
@@ -359,18 +360,41 @@ const dialogueSystem = {
         },
         "content": "Now that we've learnt to find the LU factorization, why do we apply it?<br>(hint: why do we cut ingredients before cooking them?)"
     },
+    // "LU_default_2": {
+    //     "type": "single-mcq",
+    //     "content": "You just <em>cooked</em> with that response!<br>From a computational standpoint, Gaussian Elimination takes $O(n^3)$ time,<br>and the remaining steps in Gauss-Jordan Elimination takes $O(n^2)$ time.<br>With the methods we've learnt, how much time does it take to solve the system $\\mathbf{Ax=b}$?",
+    //     options: {
+    //         0: "$O(n)$",
+    //         1: "$O(n^2)$",
+    //         2: "$O(n^3)$"
+    //     },
+    //     answersIdx: [2],
+    //     "next": "LU_default_3",
+    //     systemMessage: "Note: It is 100% okay if you do not know big-O notation yet, as it is not tested is this course. The aim is to draw parallels between MA1522 and other CS courses."
+    // },
     "LU_default_2": {
-        "type": "single-mcq",
-        "content": "You just <em>cooked</em> with that response!<br>From a computational standpoint, Gaussian Elimination takes $O(n^3)$ time,<br>and the remaining steps in Gauss-Jordan Elimination takes $O(n^2)$ time.<br>With the methods we've learnt, how much time does it take to solve the system $\\mathbf{Ax=b}$?",
+        "type": "mcq",
+        "content": "You just <em>cooked</em> with that response!<br>Solving a system requires the Gauss-Jordan Elimination process, which is computationally heavy.<br>Based on your experience, what steps are the bottleneck to solving $\\mathbf{Ax=b}$?",
         options: {
-            0: "$O(n)$",
-            1: "$O(n^2)$",
-            // 2: "$O(n^3)$"
+            0: "The first four steps (Regular Gaussian Elimination)",
+            1: "The last four steps (Set pivots to 1 and eliminate entries above)"
         },
-        answersIdx: [2],
+        answersIdx: [0],
         "next": "LU_default_3",
-        systemMessage: "Note: It is 100% okay if you do not know big-O notation yet, as it is not tested is this course. The aim is to draw parallels between MA1522 and other CS courses."
     },
+    // "LU_default_3": {
+    //     "type": "mcq",
+    //     "options": {
+    //         "0": "Factorization Technique: LU Factorization!",
+    //         "1": "Reverse Technique: Find $\\mathbf{A}^{-1}$!"
+    //     },
+    //     "answersIdx": [
+    //         0,
+    //         1
+    //     ],
+    //     "content": "When solving a system for the first time, we cannot avoid $O(n^3)$ time. However, we can do precomputation to solve similar systems in the future.<br>Who knows, what if we suddenly have a different $\\mathbf{b}_i$ and want to solve for the corresponding $\\mathbf{x}_i$ in $O(n^2)$ time?",
+    //     "next": "gordon_sukuna"
+    // },
     "LU_default_3": {
         "type": "mcq",
         "options": {
@@ -381,7 +405,7 @@ const dialogueSystem = {
             0,
             1
         ],
-        "content": "When solving a system for the first time, we cannot avoid $O(n^3)$ time. However, we can do precomputation to solve similar systems in the future.<br>Who knows, what if we suddenly have a different $\\mathbf{b}_i$ and want to solve for the corresponding $\\mathbf{x}_i$ in $O(n^2)$ time?",
+        "content": "When solving a system for the first time, we cannot take any shortcuts.<br>However, we can do precomputation to solve similar systems in the future.<br>Who knows, what if we have a different $\\mathbf{b}_i$ and want to solve for the corresponding $\\mathbf{x}_i$ in a fraction of the time?",
         "next": "gordon_sukuna"
     },
     "gordon_sukuna": {
@@ -411,14 +435,24 @@ const dialogueSystem = {
         "content": "That goes against our intentions!",
         "next": "yas"
     },
+    // "yas": {
+    //     "type": "plain",
+    //     "content": "We first use substitution $\\mathbf{Ux=y}$, then solve for $\\mathbf{y}$ in $\\mathbf{Ly=b}$.<br>This is very similar to the $O(n^2)$ step in Gauss-Jordan Elimination, only with the rows in reverse order.<br>As a result, this takes $O(n^2)$ time.",
+    //     "next": "LU_default_6"
+    // },
     "yas": {
         "type": "plain",
-        "content": "We first use substitution $\\mathbf{Ux=y}$, then solve for $\\mathbf{y}$ in $\\mathbf{Ly=b}$.<br>This is very similar to the $O(n^2)$ step in Gauss-Jordan Elimination, only with the rows in reverse order.<br>As a result, this takes $O(n^2)$ time.",
+        "content": "We first use substitution $\\mathbf{Ux=y}$, then solve for $\\mathbf{y}$ in $\\mathbf{Ly=b}$.<br>This is very similar to the extra steps in Gauss-Jordan Elimination, only with the rows in reverse order.",
         "next": "LU_default_6"
     },
+    // "LU_default_6": {
+    //     "type": "plain",
+    //     "content": "Then, we solve for $\\mathbf{x}$ in $\\mathbf{Ux=y}$. This is exactly the same as the $O(n^2)$ step in Gauss-Jordan Elimination.<br>The entire process takes only $O(n^2+n^2)=O(n^2)$ time!",
+    //     "next": "LU_default_7"
+    // },
     "LU_default_6": {
         "type": "plain",
-        "content": "Then, we solve for $\\mathbf{x}$ in $\\mathbf{Ux=y}$. This is exactly the same as the $O(n^2)$ step in Gauss-Jordan Elimination.<br>The entire process takes only $O(n^2+n^2)=O(n^2)$ time!",
+        "content": "Then, we solve for $\\mathbf{x}$ in $\\mathbf{Ux=y}$. This is exactly the same as the extra steps in Gauss-Jordan Elimination.",
         "next": "LU_default_7"
     },
     "LU_default_7": {
