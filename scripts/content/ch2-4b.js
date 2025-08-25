@@ -50,7 +50,7 @@ const dialogueSystem = {
     },
     "Elementary_default_5": {
         "type": "plain",
-        "content": "Now, removing $\\mathbf{A}$ from both sides, we have:<br><br>$$\\mathbf{I} \\xrightarrow{\\text{some ERO}} \\mathbf{EI} = \\mathbf{E}$$<br>We just have to find $\\mathbf{I}$ of the right size, then perform the respective ERO on it!<br>Isn't that simple?",
+        "content": "Now, since this is true for all $\\mathbf{A}$, we have:<br><br>$$\\mathbf{I} \\xrightarrow{\\text{some ERO}} \\mathbf{EI} = \\mathbf{E}$$<br>We just have to find $\\mathbf{I}$ of the right size, then perform the respective ERO on it!<br>Isn't that simple?",
         "next": "Elementary_default_6",
         systemMessage: "Note: This is NOT an application of the cancellation law."
     },
@@ -58,14 +58,22 @@ const dialogueSystem = {
         "type": "tex",
         "important": true,
         "content": 
-            "$$ \\textbf{\\Large Elementary Matrices} $$" +
+            "$$ \\textbf{\\Large Elementary Matrices (1/3)} $$" +
             "A square matrix of order $n$, $\\mathbf{E}$, is called an elementary matrix if it can<br>" +
             "be obtained from the identity matrix $\\mathbf{I_n}$ by performing a single elementary<br>" +
             "row operation:<br>" +
             "$$ \\mathbf{I_n} \\xrightarrow{r} \\mathbf{E}, $$" +
             "where $r$ is an elementary row operation.<br><br>" +
             "The elementary row operation performed to obtain $\\mathbf{E}$ is said to be the row<br>" +
-            "operation corresponding to the elementary matrix.<br><br>" +
+            "operation corresponding to the elementary matrix.",
+        "next": "Elementary_default_61",
+        previewText: "Definition: Elementary Matrix (Part 1)"
+    },
+    "Elementary_default_61": {
+        "type": "tex",
+        "important": true,
+        "content": 
+            "$$ \\textbf{\\Large Elementary Matrices (2/3)} $$" +
             "$$ \\textbf{Elementary Matrix and Elementary Row Operation} $$" +
             "Let $\\mathbf{A}$ be an $n \\times m$ matrix and $\\mathbf{E}$ the elementary matrix<br>" +
             "corresponding to the ERO $r$. Then the product $\\mathbf{E}\\mathbf{A}$ is the result of<br>" +
@@ -78,8 +86,15 @@ const dialogueSystem = {
             "$$ \\mathbf{B} = \\mathbf{E}_k \\cdots \\mathbf{E}_2 \\mathbf{E}_1 \\mathbf{A}. $$" +
             "Two $n \\times m$ matrices $\\mathbf{A}$ and $\\mathbf{B}$ are row equivalent iff there exist<br>" +
             "elementary matrices $\\mathbf{E}_1, \\mathbf{E}_2, \\ldots, \\mathbf{E}_k$ such that:<br>" +
-            "$$ \\mathbf{B} = \\mathbf{E}_k \\cdots \\mathbf{E}_2 \\mathbf{E}_1 \\mathbf{A}. $$" +
-            "<br>" +
+            "$$ \\mathbf{B} = \\mathbf{E}_k \\cdots \\mathbf{E}_2 \\mathbf{E}_1 \\mathbf{A}. $$",
+        "next": "Elementary_default_62",
+        previewText: "Definition: Elementary Matrix (Part 2)"
+    },
+    "Elementary_default_62": {
+        "type": "tex",
+        "important": true,
+        "content": 
+            "$$ \\textbf{\\Large Elementary Matrices (3/3)} $$" +
             "$$ \\textbf{Inverse of Elementary Matrices} $$" +
             "Every elementary matrix $\\mathbf{E}$ is invertible (row equivalent to $\\mathbf{I_n}$).<br>" +
             "The inverse $\\mathbf{E}^{-1}$ is the ERO corresponding to the reverse of the original.<br><br>" +
@@ -87,7 +102,7 @@ const dialogueSystem = {
             "(ii) $$ \\mathbf{I_n} \\xrightarrow{R_i \\leftrightarrow R_j} \\mathbf{E} \\xrightarrow{R_i \\leftrightarrow R_j} \\mathbf{I_n} \\;\\;\\;\\; \\Rightarrow \\;\\;\\;\\; \\mathbf{E}: R_i \\leftrightarrow R_j, \\quad \\mathbf{E}^{-1}: R_i \\leftrightarrow R_j. $$" +
             "(iii) $$ \\mathbf{I_n} \\xrightarrow{cR_i} \\mathbf{E} \\xrightarrow{\\tfrac{1}{c}R_i} \\mathbf{I_n} \\;\\;\\;\\; \\Rightarrow \\;\\;\\;\\; \\mathbf{E}: cR_i, \\quad \\mathbf{E}^{-1}: \\tfrac{1}{c}R_i. $$",
         "next": "Elementary_default_7",
-        previewText: "Definition: Elementary Matrix"
+        previewText: "Definition: Elementary Matrix (Part 3)"
     },
     "Elementary_default_7": {
         "type": "single-mcq",
@@ -112,7 +127,7 @@ const dialogueSystem = {
             "0": "explainYourself",
             "1": "explainYourself"
         },
-        "content": "No matter what, it is always row equivalent to $\\mathbf{I}$, since it originated from $\\mathbf{I}$.<br>Therefore, it is an invertible matrix."
+        "content": "Remember: it is row equivalent to $\\mathbf{I}$, since it is obtained from $\\mathbf{I}$ through a series of EROs.<br>Therefore, it is an invertible matrix."
     },
     "explainYourself": {
         "type": "image",
@@ -228,7 +243,7 @@ const dialogueSystem = {
         "next": "First_default_2"
     },
     "First_default_2": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$\\mathbf{E}_1 \\mathbf{E}_2 \\ldots \\mathbf{E}_k$",
             "1": "$\\mathbf{E}_1^{-1} \\mathbf{E}_2^{-1} \\ldots \\mathbf{E}_k^{-1}$",
@@ -252,7 +267,7 @@ const dialogueSystem = {
     },
     "First_default_5": {
         "type": "plain",
-        "content": "Together, $\\mathbf{L}$ and $\\mathbf{U}$ form the <b>LU factorization</b> of $\\mathbf{A}$, for some $\\mathbf{A}$ that fulfils the above criteria. We say  $\\mathbf{A}$ is <b>LU factorizable</b>.",
+        "content": "Together, $\\mathbf{L}$ and $\\mathbf{U}$ form the <b>LU factorization</b> of $\\mathbf{A}$ ($\\mathbf{A=LU}$), for some $\\mathbf{A}$ fulfilling the above criteria.<br>Thus, we say $\\mathbf{A}$ is <b>LU factorizable</b>.",
         "next": "First_default_6"
     },
     "First_default_6": {
@@ -265,7 +280,7 @@ const dialogueSystem = {
             "0": "noCalcAllow",
             "1": "simplifiedMethod"
         },
-        "content": "Now, how do we find the LU factorization for some given matrix $\\mathbf{A}$?"
+        "content": "Now, how do we find an LU factorization for some given matrix $\\mathbf{A}$?"
     },
     "noCalcAllow": {
         "type": "plain",
@@ -306,14 +321,14 @@ const dialogueSystem = {
     },
     "First_default_10": {
         "type": "plain",
-        "content": "By observing the pattern, we can come up with a shortcut:<br>1. First, we initialize a matrix $\\mathbf{L} = \\mathbf{I_m}$, where $m$ is the row size of $\\mathbf{A}$.<br>2. Carry out the EROs to reduce $\\mathbf{A}$ to REF, which is strictly of type $R_i+cR_j$.<br>For each ERO, set the respective entry $(i,j)$ in $\\mathbf{L}$, $l_{ij} \\leftarrow -c$.<br>3. Once we have found $\\mathbf{U}$, we would also have computed $\\mathbf{L}$.",
+        "content": "By observing the pattern, we can come up with a shortcut:<br>1. First, we initialize a matrix $\\mathbf{L} = \\mathbf{I_m}$, where $m$ is the row size of $\\mathbf{A}$.<br>2. Carry out the EROs to reduce $\\mathbf{A}$ to REF, which is strictly of type $R_i+cR_j$, where $i > j$.<br>For each ERO, set the respective entry $(i,j)$ in $\\mathbf{L}$, $l_{ij} \\leftarrow -c$.<br>3. Once we have found $\\mathbf{U}$, we would also have computed $\\mathbf{L}$.",
         "next": "First_default_11"
     },
     "First_default_11": {
         "type": "tex",
         "important": true,
         "content": 
-            "$$ \\textbf{\\Large LU Factorization} $$" +
+            "$$ \\textbf{\\Large LU Factorization (1/2)} $$" +
             "A square matrix $\\mathbf{L}$ is a unit lower triangular matrix if $\\mathbf{L}$ is a lower triangular<br>" +
             "matrix with 1 in the diagonal entries.<br><br>" +
             "An LU factorization of a $m \\times n$ matrix $\\mathbf{A}$ is the decomposition:<br><br>" +
@@ -321,7 +336,16 @@ const dialogueSystem = {
             "where:<br>" +
             "• $\\mathbf{L}$ is a unit lower triangular matrix, and<br>" +
             "• $\\mathbf{U}$ is a row-echelon form of $\\mathbf{A}$.<br><br>" +
-            "If such LU factorization exists for $\\mathbf{A}$, we say that $\\mathbf{A}$ is LU factorizable.<br><br>" +
+            "If such LU factorization exists for $\\mathbf{A}$, we say that $\\mathbf{A}$ is LU factorizable.",
+        "next": "First_default_12",
+        previewText: "Definition: LU Factorization (Part 1)",
+        previewImage: "images/lu_fac.png"
+    },
+    "First_default_12": {
+        "type": "tex",
+        "important": true,
+        "content": 
+            "$$ \\textbf{\\Large LU Factorization (2/2)} $$" +
             "$$ \\textbf{Algorithm for LU Factorization} $$<br>" +
             "Suppose $\\mathbf{A} \\xrightarrow{r_1, r_2, \\ldots, r_k} \\mathbf{U}$, where each row operation $r_l$ is of the form $R_i + cR_j$<br>" +
             "for some $i, j$ and real number $c$, and $\\mathbf{U}$ is a row-echelon form of $\\mathbf{A}$.<br>" +
@@ -347,7 +371,7 @@ const dialogueSystem = {
             "\\right) $$<br>" +
             "is an LU factorization of $\\mathbf{A}$.",
         "next": "LU_default_1",
-        previewText: "Definition: LU Factorization",
+        previewText: "Definition: LU Factorization (Part 2)",
         previewImage: "images/lu_fac.png"
     },
     "LU_default_1": {
@@ -464,8 +488,11 @@ const dialogueSystem = {
 
 const compulsoryMessages = [
     "Elementary_default_6",
+    "Elementary_default_61",
+    "Elementary_default_62",
     "Finding_default_9",
-    "First_default_11"
+    "First_default_11",
+    "First_default_12"
 ];
 
 const checkpoints = [
@@ -476,17 +503,17 @@ const checkpoints = [
     },
     {
         "label": "Reverse Technique: Matrix Inverse",
-        "showCompulsoryMessages": 1,
+        "showCompulsoryMessages": 3,
         "id": "Finding_default_1"
     },
     {
         "label": "Factorization Technique: LU Factorization",
-        "showCompulsoryMessages": 2,
+        "showCompulsoryMessages": 4,
         "id": "First_default_1"
     },
     {
         "label": "Factorization: Cleave and Dismantle!",
-        "showCompulsoryMessages": 3,
+        "showCompulsoryMessages": 6,
         "id": "LU_default_1"
     }
 ];
