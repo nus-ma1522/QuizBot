@@ -9,7 +9,7 @@ const dialogueSystem = {
         "options": {
             "0": "$c\\mathbf{A}$",
             "1": "$\\frac{1}{c}\\mathbf{A}$",
-            "2": "$c\\frac{1}{\\mathbf{A}}$",
+            "2": "$c\\frac{\\mathbf{I}}{\\mathbf{B}}$",
             "3": "$\\mathbf{AB}$",
             "4": "$\\mathbf{BA}$",
             "5": "$\\frac{1}{\\mathbf{BA}}$"
@@ -17,24 +17,24 @@ const dialogueSystem = {
         "answersIdx": [
             0,
             1,
-            3
+            4
         ],
-        "content": "Let $c \\in \\mathbb{R}, \\mathbf{A} \\in \\mathbb{R}^{m \\times p}, \\mathbf{B} \\in \\mathbb{R}^{p \\times n}.$<br>Under the assumption that all of the above are nonzero,<br>which of the following expressions are valid?",
+        "content": "Let: $$\\mathbf{A} = \\left(\\begin{array}{ccc}1 & 0 & 1 \\\\ 0 & 1 & 0\\end{array}\\right),$$ $$\\mathbf{B} = \\left(\\begin{array}{cc}0 & 1 \\\\ 1 & 0\\end{array}\\right),$$ $$c \\in \\mathbb{R} \\setminus \\{0\\}.$$Which of the following expressions are valid?",
         "next": "Intro:_default_3"
     },
     "Intro:_default_3": {
         "type": "dialogue",
         "options": {
-            "0": "Maybe use $\\mathbf{I}$ instead of $1$?"
+            "0": "same"
         },
         "respondToIdx": {
             "0": "questioning"
         },
-        "content": "Hmm. Have we heard of the term matrix division before?<br>What does it mean to divide the scalar $1$ by a matrix $\\mathbf{A}$?<br>I can't seem to visualize it..."
+        "content": "Hmm. Have we heard of the term matrix division before?<br>What does it mean to divide something by a matrix?<br>I can't seem to visualize it..."
     },
     "questioning": {
         "type": "dialogue",
-        "content": "Maybe you have a point...<br>Since multiplying a matrix with $\\mathbf{I}$ is the same as multiplying with $1$.<br>But then, the matrix might not be square!",
+        "content": "Hmmmmm. What should the size of the result be? Based on row or column size?<br>This doesn't seem to make sense.",
         "next": "questioningHard",
         "options": {
             "0": "What if we assume it's square?"
@@ -95,7 +95,7 @@ const dialogueSystem = {
         "respondToIdx": {
             "0": "firstId"
         },
-        "content": "Suppose now we have square matrices $\\mathbf{A}$ of order $n$.<br>We denote its inverse as $\\mathbf{A}^{-1}$.<br>Instinctively, what should the product $\\mathbf{AA}^{-1}$ be equal to?"
+        "content": "Suppose now we have square matrices $\\mathbf{A}$ of order $n$.<br>We assume it has a unique inverse and denote it as $\\mathbf{A}^{-1}$.<br>Instinctively, what should the product $\\mathbf{AA}^{-1}$ be equal to?"
     },
     "firstId": {
         "type": "plain",
@@ -268,7 +268,7 @@ const dialogueSystem = {
         "type": "tex",
         "important": true,
         "content": 
-            "$$ \\textbf{\\Large Properties of the Inverse} $$" +  
+            "$$ \\textbf{\\Large Properties of the Inverse (1/2)} $$" +  
             "Let $\\mathbf{A}$ be an invertible matrix of order $n$.<br>" +  
             "(i) $(\\mathbf{A}^{-1})^{-1} = \\mathbf{A}$.<br>" +  
             "(ii) For any nonzero real number $a \\in \\mathbb{R}$, $a\\mathbf{A}$ is invertible with inverse:<br>" +  
@@ -277,8 +277,15 @@ const dialogueSystem = {
             "$$ (\\mathbf{A}^\\top)^{-1} = (\\mathbf{A}^{-1})^\\top, $$" +  
             "that is, the inverse of the transpose is the transpose of the inverse.<br><br>" +  
             "(iv) If $\\mathbf{B}$ is an invertible matrix of the same size, then the product $\\mathbf{AB}$<br>is invertible with inverse:<br>" +  
-            "$$ (\\mathbf{AB})^{-1} = \\mathbf{B}^{-1}\\mathbf{A}^{-1}. $$<br><br>" +  
-
+            "$$ (\\mathbf{AB})^{-1} = \\mathbf{B}^{-1}\\mathbf{A}^{-1}. $$",
+        "next": "Properties_default_12",
+        previewText: "Properties of the Inverse (Part 1)"
+    },
+    "Properties_default_12": {
+        "type": "tex",
+        "important": true,
+        "content": 
+            "$$ \\textbf{\\Large Properties of the Inverse (2/2)} $$" +  
             "Following (iv): If $\\mathbf{A}_1, \\mathbf{A}_2, \\ldots, \\mathbf{A}_k$ are invertible matrices of the same size,<br>then the product:<br>" +  
             "$$ \\mathbf{A}_1\\mathbf{A}_2\\ldots\\mathbf{A}_k $$" +  
             "is invertible with:<br>" +  
@@ -289,7 +296,7 @@ const dialogueSystem = {
             "$$ \\mathbf{A}^{-n} = (\\mathbf{A}^{-1})^n, $$<br>" +  
             "for any $n > 0$.",
         "next": "Invertible_default_1",
-        previewText: "Properties of the Inverse"
+        previewText: "Properties of the Inverse (Part 2)"
     },
     "Invertible_default_1": {
         "type": "plain",
@@ -526,6 +533,7 @@ const dialogueSystem = {
 const compulsoryMessages = [
     "Matrix_default_10",
     "Properties_default_11",
+    "Properties_default_12",
     "def_invertible",
     "The_default_6"
 ];
@@ -543,17 +551,17 @@ const checkpoints = [
     },
     {
         "label": "Properties of the Inverse",
-        "showCompulsoryMessages": 1,
+        "showCompulsoryMessages": 2,
         "id": "Properties_default_1"
     },
     {
         "label": "Invertible Matrices",
-        "showCompulsoryMessages": 2,
+        "showCompulsoryMessages": 3,
         "id": "Invertible_default_1"
     },
     {
         "label": "The Mantra (Equivalent Statements for Invertibility)",
-        "showCompulsoryMessages": 3,
+        "showCompulsoryMessages": 4,
         "id": "The_default_1"
     }
 ];
