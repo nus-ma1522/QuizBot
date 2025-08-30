@@ -11,7 +11,7 @@ const dialogueSystem = {
     },
     "Checkpoint1_default_3": {
         "type": "plain",
-        "content": "In this chapter, we will take a look at the first of 2 ways to calculate a discriminant:<br><br><b>1. Determinant by Cofactor Expansion</b> 2. Determinant by Reduction<br><br>Let's take a look at the first one, calculating the Determinant by Cofactor Expansion!!",
+        "content": "In this chapter, we will take a look at the first of 2 ways to calculate a discriminant:<br><br><b>1. Determinant by Cofactor Expansion</b> <br>2. Determinant by Reduction<br><br>Let's take a look at the first one, calculating the Determinant by Cofactor Expansion!!",
         "next": "Checkpoint1_default_4"
     },
     "Checkpoint1_default_4": {
@@ -740,7 +740,8 @@ const dialogueSystem = {
     },
     "Checkpoint1_default_23": {
         "type": "plain",
-        "content": "Does this result work for a lower triangular matrix? Convince yourself by working it out manually!<br><br>That's it!! You have learnt <b>cofactor expansion</b>, the first of the two main ways to find a determinant!$$"
+        "content": "Does this result work for a lower triangular matrix? Convince yourself by working it out manually!<br><br>That's it!! You have learnt <b>cofactor expansion</b>, the first of the two main ways to find a determinant!$$",
+        "systemMessage": "🎉Congratulations! You have reached the end of Interactive 2.8!🎉"
     }
 };
 
