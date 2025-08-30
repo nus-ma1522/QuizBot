@@ -45,7 +45,7 @@ const dialogueSystem = {
     "Checkpoint1_default_8": {
         "type": "tex",
         "important": true,
-        "content": "$$\\textbf{\\Large Determinant of a Matrix (1/2)}$$The determinant of $\\mathbf{A}$ for an order $n$ square matrix is defined to be:<br>$$\\begin{align*}\\det(\\mathbf{A})&=a_{i1}A_{i1}+a_{i2}A_{i2}+\\cdots+a_{in}A_{in}=\\sum_{k=1}^na_{ik}A_{ik}\\quad \\quad \\\\&=a_{1j}A_{1j}+a_{2j}A_{2j}+\\cdots+a_{nj}A_{nj}=\\sum_{k=1}^na_{kj}A_{kj},\\quad \\quad\\end{align*}$$where<br>$$A_{ij}=(-1)^{i+j}\\det(\\mathbf{M}_{ij})$$is the $(i,j)$ cofactor of $\\mathbf{A}$, and $\\mathbf{M}_{ij}$, the $(i,j)$ matrix minor of $\\mathbf{A}$,<br>obtained from $\\mathbf{A}$ by deleting the $i$-th row and $j$-th column.<br><br>This is called the cofactor expansion along<br><br>$$\\begin{cases}\\text{row } i & (1) \\\\[6pt]\\text{column } j & (2)\\end{cases}$$",
+        "content": "$$\\textbf{\\Large Determinant by Cofactor Expansion (1/2)}$$The determinant of $\\mathbf{A}$ for an order $n$ square matrix is defined to be:<br>$$\\begin{align*}\\det(\\mathbf{A})&=a_{i1}A_{i1}+a_{i2}A_{i2}+\\cdots+a_{in}A_{in}=\\sum_{k=1}^na_{ik}A_{ik}\\quad \\quad \\\\&=a_{1j}A_{1j}+a_{2j}A_{2j}+\\cdots+a_{nj}A_{nj}=\\sum_{k=1}^na_{kj}A_{kj},\\quad \\quad\\end{align*}$$where<br>$$A_{ij}=(-1)^{i+j}\\det(\\mathbf{M}_{ij})$$is the $(i,j)$ cofactor of $\\mathbf{A}$, and $\\mathbf{M}_{ij}$, the $(i,j)$ matrix minor of $\\mathbf{A}$,<br>obtained from $\\mathbf{A}$ by deleting the $i$-th row and $j$-th column.<br><br>This is called the cofactor expansion along<br><br>$$\\begin{cases}\\text{row } i & (1) \\\\[6pt]\\text{column } j & (2)\\end{cases}$$",
         "next": "start-branch"
     },
     "start-branch": {
@@ -697,9 +697,9 @@ const dialogueSystem = {
     "Checkpoint1_default_18": {
         "type": "single-mcq",
         "options": {
-            "0": "1026",
-            "1": "-5",
-            "2": "0",
+            "0": "$1026$",
+            "1": "$-5$",
+            "2": "$0$",
             "3": "It's too big, I gotta matlab it..."
         },
         "answersIdx": [
@@ -735,7 +735,7 @@ const dialogueSystem = {
     "Checkpoint1_default_22": {
         "type": "tex",
         "important": true,
-        "content": "$$\\textbf{\\Large Determinant of a Matrix (2/2)}$$In fact, the determinant of any triangular matrix is the product of its diagonal entries.<br>That is, if  $\\mathbf{A}$ is triangular, then:$$\\det(\\mathbf{A}) = a_{11} a_{22} \\ldots a_{nn} = \\prod_{k=1}^{n} a_{kk}.$$",
+        "content": "$$\\textbf{\\Large Determinant by Cofactor Expansion (2/2)}$$In fact, the determinant of any triangular matrix is the product of its diagonal entries.<br>That is, if  $\\mathbf{A}$ is triangular, then:$$\\det(\\mathbf{A}) = a_{11} a_{22} \\ldots a_{nn} = \\prod_{k=1}^{n} a_{kk}.$$",
         "next": "Checkpoint1_default_23"
     },
     "Checkpoint1_default_23": {

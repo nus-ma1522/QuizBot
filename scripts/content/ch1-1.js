@@ -9,7 +9,7 @@ const dialogueSystem = {
 
   p1: {
     type: "dialogue",
-    content: "Do you still remember what that thing is called?",
+    content: "Do you still remember what that <em>thing</em> is called?",
     options: {
       0: "Equation of a line",
       1: "Linear equation",

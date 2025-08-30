@@ -7,13 +7,13 @@ const dialogueSystem = {
     "Theorem1": {
         "type": "tex",
         "important": true,
-        "content": "Suppose $\\mathbf{B}$ is obtained from $\\mathbf{A}$ by a single elementary row operation, $\\mathbf{A} \\xrightarrow{\\text{r}} \\mathbf{B}$.<br>Then the determinant of $\\mathbf{B}$ is obtained from the determinant of $\\mathbf{A}$ as such.<br><br>If $r = R_i + aR_j, \\text{then det}(\\mathbf{B}) = \\text{det}(\\mathbf{A})$<br>If $r = cR_i, \\text{then det}(\\mathbf{B}) = c\\space\\text{det}(\\mathbf{A})$<br>If $r = R_i \\leftrightarrow R_j, \\text{then det}(\\mathbf{B}) = -\\space\\text{det}(\\mathbf{A})$<br>$$\\begin{array}{c c}\\text{ERO} & \\text{Determinant} \\\\A \\xrightarrow{R_i + aR_j} B & \\det(B) = \\det(A) \\\\A \\xrightarrow{cR_i} B & \\det(B) = c\\det(A) \\\\A \\xrightarrow{R_i \\leftrightarrow R_j} B & \\det(B) = -\\det(A) \\\\\\end{array}$$",
+        "content": "$$\\textbf{\\Large Determinant by Reduction (1/2)}$$Suppose $\\mathbf{B}$ is obtained from $\\mathbf{A}$ by a single elementary row operation, $\\mathbf{A} \\xrightarrow{\\text{r}} \\mathbf{B}$.<br>Then the determinant of $\\mathbf{B}$ is obtained from the determinant of $\\mathbf{A}$ as such.<br><br>If $r \\text{ is } R_i + aR_j, \\text{then det}(\\mathbf{B}) = \\text{det}(\\mathbf{A})$<br>If $r \\text{ is } cR_i, \\text{then det}(\\mathbf{B}) = c\\space\\text{det}(\\mathbf{A})$<br>If $r \\text{ is } R_i \\leftrightarrow R_j, \\text{then det}(\\mathbf{B}) = -\\space\\text{det}(\\mathbf{A})$<br>$$\\begin{array}{c c}\\text{ERO} & \\text{Determinant} \\\\ \\mathbf{A} \\xrightarrow{R_i + aR_j} \\mathbf{B} & \\det(\\mathbf{B}) = \\det(\\mathbf{A}) \\\\ \\mathbf{A} \\xrightarrow{cR_i} \\mathbf{B} & \\det(\\mathbf{B}) = c\\det(\\mathbf{A}) \\\\ \\mathbf{A} \\xrightarrow{R_i \\leftrightarrow R_j} \\mathbf{B} & \\det(\\mathbf{B}) = -\\det(\\mathbf{A}) \\\\\\end{array}$$",
         "next": "Checkpoint1_default_2"
     },
     "Checkpoint1_default_2": {
         "type": "dialogue",
         "options": {
-            "0": "HOLD UPPP!! You have not even explained why it works the way it does!"
+            "0": "HOLD UPPP!! You haven't even explained why it works the way it does!"
         },
         "respondToIdx": {
             "0": "reply"
@@ -22,20 +22,20 @@ const dialogueSystem = {
     },
     "reply": {
         "type": "plain",
-        "content": "Great question! The full proof is tricky, so we won’t cover it 😭. The best way to get a feel for it is to try examples: take a matrix $\\mathbf{A}$, apply an ERO to get $\\mathbf{B}$, and use cofactor expansion to see how the determinant changes.<br>Feel free to discuss this in the telegram group though!",
+        "content": "Great question! The full proof is tricky, so we won’t cover it 😭. (totally not because I don't know)<br>The best way to get a feel for it is to try examples: take a matrix $\\mathbf{A}$, apply an ERO to get $\\mathbf{B}$, and use cofactor expansion to see how the determinant changes.",
         "next": "Checkpoint1_default_3"
     },
     "Checkpoint1_default_3": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "2",
-            "1": "-2",
-            "2": "0"
+            "0": "$2$",
+            "1": "$-2$",
+            "2": "$0$"
         },
         "answersIdx": [
             1
         ],
-        "content": "Suppose<br>$$A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$$What is $\\text{det}(\\mathbf{A})$?",
+        "content": "Suppose<br>$$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$$What is $\\text{det}(\\mathbf{A})$?",
         "next": "Checkpoint1_default_4"
     },
     "Checkpoint1_default_4": {
@@ -44,17 +44,17 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_5"
     },
     "Checkpoint1_default_5": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "2",
-            "1": "-2",
-            "2": "10",
-            "3": "-10"
+            "0": "$1520$",
+            "1": "$-1524$",
+            "2": "$2$",
+            "3": "$-3044$"
         },
         "answersIdx": [
-            1
+            2
         ],
-        "content": "Now that we know $\\text{det}(\\mathbf{A}) = -2$ and given,$$A \\xrightarrow{R_2 + 100R_1} B.$$What is  $\\text{det}(\\mathbf{B})$ without finding $\\mathbf{B}$?<br><em>Hint: Take a look at the theorem we just showed you!</em>",
+        "content": "Now that we know $\\text{det}(\\mathbf{A}) = -2$ and given,$$\\mathbf{A} \\xrightarrow{R_2 + 1522R_1} \\mathbf{B}.$$What is  $\\text{det}(\\mathbf{B})$ without finding $\\mathbf{B}$?<br><em>Hint: Take a look at the theorem we just showed you!</em>",
         "next": "Checkpoint1_default_6"
     },
     "Checkpoint1_default_6": {
@@ -63,41 +63,41 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_7"
     },
     "Checkpoint1_default_7": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "10",
-            "1": "30",
-            "2": "-10",
-            "3": "-30"
+            "0": "$10$",
+            "1": "$15220$",
+            "2": "$-10$",
+            "3": "$-15220$"
         },
         "answersIdx": [
             1
         ],
-        "content": "Suppose now, I am given a $3 \\times 3$ matrix $\\mathbf{A}$, $\\text{det}(\\mathbf{A}) = 10$ and I can obtain $\\mathbf{B}$ from $\\mathbf{A}$ as such,<br>$$A \\xrightarrow{3R_2} B$$ What is $\\text{det}(\\mathbf{B})$?",
+        "content": "Suppose now, I am given a $3 \\times 3$ matrix $\\mathbf{A}$, $\\text{det}(\\mathbf{A}) = 10$ and I can obtain $\\mathbf{B}$ from $\\mathbf{A}$ as such,<br>$$\\mathbf{A} \\xrightarrow{1522R_2} \\mathbf{B}$$ What is $\\text{det}(\\mathbf{B})$?",
         "next": "Checkpoint1_default_8"
     },
     "Checkpoint1_default_8": {
         "type": "plain",
-        "content": "By the theorem we learnt, row scaling <b>does</b> change the determinant of the matrix. If I <b>scale a row by $c$, my determinant is also scaled by $c$</b>. Therefore,<br>$\\text{det}(\\mathbf{B}) = 3\\space\\text{det}(\\mathbf{A}) = 3(10) = 30$",
+        "content": "By the theorem we learnt, row scaling <b>does</b> change the determinant of the matrix. If I <b>scale a row by $c$, my determinant is also scaled by $c$</b>. Therefore,<br>$\\text{det}(\\mathbf{B}) = 1522\\space\\text{det}(\\mathbf{A}) = 1522(10) = 15220$",
         "next": "Checkpoint1_default_9"
     },
     "Checkpoint1_default_9": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "200",
-            "1": "0",
-            "2": "-10",
-            "3": "-200"
+            "0": "$1522$",
+            "1": "$2251$",
+            "2": "$\\frac{1}{1522}$",
+            "3": "$-1522$"
         },
         "answersIdx": [
             3
         ],
-        "content": "Last scenario: Given a $10 \\times 10$ matrix $\\mathbf{A}$, $\\text{det}(\\mathbf{A}) = 200$ and I can obtain $\\mathbf{B}$ from $\\mathbf{A}$ as such,$$A \\xrightarrow{R_3 \\leftrightarrow R_7} B$$ What is $\\text{det}(\\mathbf{B})$?",
+        "content": "Last scenario: Given a $10 \\times 10$ matrix $\\mathbf{A}$, $\\text{det}(\\mathbf{A}) = 1522$ and I can obtain $\\mathbf{B}$ from $\\mathbf{A}$ as such,$$\\mathbf{A} \\xrightarrow{R_3 \\leftrightarrow R_1} \\mathbf{B}$$ What is $\\text{det}(\\mathbf{B})$?",
         "next": "Checkpoint1_default_10"
     },
     "Checkpoint1_default_10": {
         "type": "plain",
-        "content": "By the theorem we learnt, row swapping <b>does</b> change the determinant of the matrix by <b>flipping the sign</b>.<br>$\\text{det}(\\mathbf{B}) = -\\space\\text{det}(\\mathbf{A}) = -200$",
+        "content": "By the theorem we learnt, row swapping <b>does</b> change the determinant of the matrix by <b>flipping the sign</b>.<br>$\\text{det}(\\mathbf{B}) = -\\space\\text{det}(\\mathbf{A}) = -1522$",
         "next": "Checkpoint1_default_11"
     },
     "Checkpoint1_default_11": {
@@ -106,18 +106,18 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_12"
     },
     "Checkpoint1_default_12": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "-4",
-            "1": "4",
-            "2": "12",
-            "3": "-12",
+            "0": "$-4$",
+            "1": "$4$",
+            "2": "$12$",
+            "3": "$-12$",
             "4": "I have not learnt this!"
         },
         "answersIdx": [
             2
         ],
-        "content": "Suppose<br>$$A = \\begin{pmatrix} 2 & 1 & 3 \\\\ 0 & -1 & 4 \\\\ 0 & 0 & 2 \\end{pmatrix}$$<br>$$A \\xrightarrow{R_1 \\leftrightarrow R_2}{}\\xrightarrow{3R_2}{}\\xrightarrow{R_3 - 2R_2} D$$<em>Hint: From previous chapter, determinant of a triangular matrix is just the multiplication of the diagonal entries.</em><br><br>What is  $\\text{det}(\\mathbf{D})$ without finding $\\mathbf{D}$?",
+        "content": "Suppose<br>$$\\mathbf{A} = \\begin{pmatrix} 2 & 1 & 3 \\\\ 0 & -1 & 4 \\\\ 0 & 0 & 2 \\end{pmatrix}$$<br>$$\\mathbf{A} \\xrightarrow{R_1 \\leftrightarrow R_2}{}\\xrightarrow{3R_2}{}\\xrightarrow{R_3 - 2R_2} \\mathbf{D}$$<em>Hint: From previous chapter, determinant of a triangular matrix is just the product of the diagonal entries.</em><br><br>What is  $\\text{det}(\\mathbf{D})$ without finding $\\mathbf{D}$?",
         "next": "Checkpoint1_default_13"
     },
     "Checkpoint1_default_13": {
@@ -127,16 +127,16 @@ const dialogueSystem = {
     },
     "Checkpoint1_default_14": {
         "type": "plain",
-        "content": "At this point you probably realise that the answer is esentially a <b>multiplication</b> of the effects of the EROs!!<br><br>And since we know that EROs can be written as elementary matrices, this brings us to the next theorem that sums up this 'phenomenon'!",
+        "content": "At this point you probably realise that the answer is essentially a <b>product</b> of $\\det(\\mathbf{A})$ and the effects of EROs!!<br><br>And since we know that EROs can be written as elementary matrices, this brings us to the next theorem that sums up this 'phenomenon'!",
         "next": "Checkpoint1_default_15"
     },
     "Checkpoint1_default_15": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "-2",
-            "1": "2",
-            "2": "1",
-            "3": "-1"
+            "0": "$-2$",
+            "1": "$2$",
+            "2": "$1$",
+            "3": "$-1$"
         },
         "answersIdx": [
             2
@@ -150,11 +150,11 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_17"
     },
     "Checkpoint1_default_17": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "1",
-            "1": "0",
-            "2": "-1"
+            "0": "$1$",
+            "1": "$0$",
+            "2": "$-1$"
         },
         "answersIdx": [
             2
@@ -168,17 +168,17 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_19"
     },
     "Checkpoint1_default_19": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "0",
-            "1": "1",
-            "2": "-c",
-            "3": "c"
+            "0": "$0$",
+            "1": "$1$",
+            "2": "$-a$",
+            "3": "$a$"
         },
         "answersIdx": [
             3
         ],
-        "content": "$$\\mathbf{E} = \\begin{pmatrix} c & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}, \\space\\text{(row scaling)}$$<br>What is $\\det(\\mathbf{E})?$",
+        "content": "$$\\mathbf{E} = \\begin{pmatrix} a & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}, \\space\\text{(row scaling)}$$<br>What is $\\det(\\mathbf{E})?$",
         "next": "Checkpoint1_default_20"
     },
     "Checkpoint1_default_20": {
@@ -194,44 +194,44 @@ const dialogueSystem = {
     "Theorem2": {
         "type": "tex",
         "important": true,
-        "content": "Further generalising it:<br>Let $\\mathbf{A}$ and $\\mathbf{R}$ be square matrices such that<br>$$\\mathbf{R} = \\mathbf{E_k}\\cdots\\mathbf{E_2}\\mathbf{E_1}\\mathbf{A}$$for some elementary matrices $\\mathbf{E_1},\\mathbf{E_2},\\cdots,\\mathbf{E_k}$. Then,<br>$$\\text{det}(\\mathbf{R}) = \\text{det}(\\mathbf{E_k})\\cdots\\text{det}(\\mathbf{E_2})\\space\\text{det}(\\mathbf{E_1})\\space\\text{det}(\\mathbf{A})$$",
+        "content": "$$\\textbf{\\Large Determinant by Reduction (2/2)}$$Further generalising it:<br>Let $\\mathbf{A}$ and $\\mathbf{R}$ be square matrices such that:$$\\mathbf{R} = \\mathbf{E}_k\\ldots\\mathbf{E}_2\\mathbf{E}_1\\mathbf{A}$$for some elementary matrices $\\mathbf{E}_1,\\mathbf{E}_2,\\ldots,\\mathbf{E}_k$. Then,$$\\text{det}(\\mathbf{R}) = \\text{det}(\\mathbf{E}_k)\\ldots\\text{det}(\\mathbf{E}_2)\\space\\text{det}(\\mathbf{E}_1)\\space\\text{det}(\\mathbf{A})$$",
         "next": "Checkpoint1_default_22"
     },
     "Checkpoint1_default_22": {
         "type": "mcq",
         "options": {
-            "0": "$E_1\\space E_3\\space E_2 \\space A = B$",
-            "1": "$E_1\\space E_2\\space E_3 \\space A = B$",
-            "2": "$E_3\\space E_2\\space E_1 \\space A = B$",
-            "3": "$E_2\\space E_1\\space E_3 \\space A = B$"
+            "0": "$\\mathbf{E}_1\\space \\mathbf{E}_3\\space \\mathbf{E}_2 \\space \\mathbf{A} = \\mathbf{R}$",
+            "1": "$\\mathbf{E}^{-1}_1\\space \\mathbf{E}^{-1}_3\\space \\mathbf{E}^{-1}_2 \\space \\mathbf{R} = \\mathbf{A}$",
+            "2": "$\\mathbf{E}^{-1}_2\\space \\mathbf{E}^{-1}_3\\space \\mathbf{E}^{-1}_1 \\space \\mathbf{R} = \\mathbf{A}$",
+            "3": "$\\mathbf{E}_2\\space \\mathbf{E}_3\\space \\mathbf{E}_1 \\space \\mathbf{A} = \\mathbf{R}$"
         },
         "answersIdx": [
-            0
+            0,2
         ],
-        "content": "Let's try this out!$$A \\xrightarrow{R_2\\space -\\space 4R_1}{}\\xrightarrow{R_2\\space\\leftrightarrow{\\space R_3}}{}\\xrightarrow{-5R_1} B$$$$E_1 = \\begin{pmatrix} -5 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix},E_2 = \\begin{pmatrix} 1 & 0 & 0 \\\\ -4 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix},E_3 = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 0 & 1 \\\\ 0 & 1 & 0 \\end{pmatrix}$$How do we form an equation connecting $A, B, E_1, E_2$ and $E_3$?",
+        "content": "Let's try this out!$$\\mathbf{A} \\xrightarrow{R_2\\space -\\space 4R_1}{}\\xrightarrow{R_2\\space\\leftrightarrow{\\space R_3}}{}\\xrightarrow{-\\frac{1}{2}R_1} \\mathbf{R}$$$$\\mathbf{E}_1= \\begin{pmatrix} -\\frac{1}{2} & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix},\\; \\mathbf{E}_2 = \\begin{pmatrix} 1 & 0 & 0 \\\\ -4 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}, \\; \\mathbf{E}_3 = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 0 & 1 \\\\ 0 & 1 & 0 \\end{pmatrix}$$How do we form an equation connecting $\\mathbf{A, R, E}_1, \\mathbf{E}_2$ and $\\mathbf{E}_3$?",
         "next": "Checkpoint1_default_23"
     },
     "Checkpoint1_default_23": {
         "type": "plain",
-        "content": "Recall that EROs can be written as elementary matrices and the order of premultiplying them is the same as the order in which the row operations are applied!<br><br>Order of ERO operation: $E_2$, $E_3$, $E_1$<br>Therefore: $E_1\\space E_3\\space E_2 \\space A = B$",
+        "content": "Recall that EROs can be written as elementary matrices and the order of premultiplying them is the same as the order in which the row operations are applied!<br><br>Elementary matrices in order of EROs: $\\mathbf{E}_2, \\mathbf{E}_3, \\mathbf{E}_1$<br>Therefore: $\\mathbf{E}_1\\space \\mathbf{E}_3\\space \\mathbf{E}_2 \\space \\mathbf{A = R}$<br>We can also apply the reverse EROs: $\\mathbf{E}^{-1}_2\\space \\mathbf{E}^{-1}_3\\space \\mathbf{E}^{-1}_1 \\space \\mathbf{R} = \\mathbf{A}$",
         "next": "Checkpoint1_default_24"
     },
     "Checkpoint1_default_24": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "15",
-            "1": "-15",
+            "0": "$1522$",
+            "1": "$-1522$",
             "2": "No idea..."
         },
         "answersIdx": [
             1
         ],
-        "content": "Now you are given that $\\det(A) = -3$, what is $\\det(B)$?",
+        "content": "Now you are given:$$\\mathbf{R} = \\left(\\begin{array}{ccc}-1 & 5 & 2 \\\\ 0 & 1 & 2 \\\\ 0&0 &761\\end{array}\\right)$$What is $\\det(\\mathbf{A})$?",
         "next": "Checkpoint1_default_25"
     },
     "Checkpoint1_default_25": {
         "type": "plain",
-        "content": "Recall that $\\det(B)$ is just the multiplication of $\\det(A)$ and $\\det(\\text{Elementary Matrices})$<br><br>Therefore:<br>$\\det(B) = \\det(E_1)\\det(E_3) \\det(E_2) \\det(A) \\\\= (-5)(-1)(1)(-3) \\\\= -15$",
+        "content": "Recall that the determinant of a triangular matrix is the product of its diagonal entries, so $\\det(\\mathbf{R}) = -1(1)(761)=-761$.<br>Then, $\\det(\\mathbf{A})$ is just the product of the determinants of $\\mathbf{R}$ and the inverse elementary matrices.<br><br>Therefore:<br>$\\det(\\mathbf{A}) = \\det(\\mathbf{E}^{-1}_2)\\det(\\mathbf{E}^{-1}_3) \\det(\\mathbf{E}^{-1}_1) \\det(\\mathbf{R}) \\\\= (-2)(-1)(1)(-761) \\\\= 1522$",
         "next": "Checkpoint1_default_26"
     },
     "Checkpoint1_default_26": {
