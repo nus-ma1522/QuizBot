@@ -20,7 +20,7 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_5"
     },
     "Checkpoint1_default_5": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$\\det(\\mathbf{A}) = 1$",
             "1": "$\\det(\\mathbf{A}) = 0$",
@@ -45,7 +45,7 @@ const dialogueSystem = {
     "Checkpoint1_default_8": {
         "type": "tex",
         "important": true,
-        "content": "The determinant of $\\mathbf{A}$ for an order $n$ square matrix is defined to be<br>$$\\begin{align}\\det(\\mathbf{A})&=a_{i1}A_{i1}+a_{i2}A_{i2}+\\cdots+a_{in}A_{in}=\\sum_{k=1}^na_{ik}A_{ik}\\quad \\quad \\\\&=a_{1j}A_{1j}+a_{2j}A_{2j}+\\cdots+a_{nj}A_{nj}=\\sum_{k=1}^na_{kj}A_{kj}\\quad \\quad\\end{align}$$where<br>$$A_{ij}=(-1)^{i+j}\\det(\\mathbf{M}_{ij})$$<br>is the $(i,j)$ cofactor of $\\mathbf{A}$, and $\\mathbf{M}_{ij}$, the $(i,j)$ matrix minor of $\\mathbf{A}$, obtained from $\\mathbf{A}$ by deleting the $i$-th row and $j$-th column.<br><br>This is called the cofactor expansion along<br><br>$$\\begin{cases}\\text{row } i & (1) \\\\[6pt]\\text{column } j & (2)\\end{cases}$$",
+        "content": "$$\\textbf{\\Large Determinant by Cofactor Expansion (1/2)}$$The determinant of $\\mathbf{A}$ for an order $n$ square matrix is defined to be:<br>$$\\begin{align*}\\det(\\mathbf{A})&=a_{i1}A_{i1}+a_{i2}A_{i2}+\\cdots+a_{in}A_{in}=\\sum_{k=1}^na_{ik}A_{ik}\\quad \\quad \\\\&=a_{1j}A_{1j}+a_{2j}A_{2j}+\\cdots+a_{nj}A_{nj}=\\sum_{k=1}^na_{kj}A_{kj},\\quad \\quad\\end{align*}$$where<br>$$A_{ij}=(-1)^{i+j}\\det(\\mathbf{M}_{ij})$$is the $(i,j)$ cofactor of $\\mathbf{A}$, and $\\mathbf{M}_{ij}$, the $(i,j)$ matrix minor of $\\mathbf{A}$,<br>obtained from $\\mathbf{A}$ by deleting the $i$-th row and $j$-th column.<br><br>This is called the cofactor expansion along<br><br>$$\\begin{cases}\\text{row } i & (1) \\\\[6pt]\\text{column } j & (2)\\end{cases}$$",
         "next": "start-branch"
     },
     "start-branch": {
@@ -70,7 +70,7 @@ const dialogueSystem = {
         "next": "expand_r1_2"
     },
     "expand_r1_2": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$(a)$",
             "1": "$(b)$",
@@ -80,16 +80,16 @@ const dialogueSystem = {
         "answersIdx": [
             3
         ],
-        "content": "<b>Step 1:</b> Find the $(1, 1)$ matrix minor of $\\mathbf{A}$.$$\\begin{pmatrix}a & b \\\\c & d\\end{pmatrix}\\quad\\text{Remove row 1, Remove column 1}$$Since we are finding the matrix minor at $(1, 1)$, we remove row 1 and column 1. The remaining elements form a 'sub-matrix', which is the <b>matrix minor</b>! What is the resulting matrix?",
+        "content": "<b>Step 1:</b> Find the $(1, 1)$ matrix minor of $\\mathbf{A}, \\mathbf{M}_{11}$.<br>Since we are finding the matrix minor at $(1, 1)$, we remove row 1 and column 1.$$\\begin{pmatrix}\\cancel{a} & \\cancel{b} \\\\\\cancel{c} & d\\end{pmatrix}$$The remaining elements form a 'sub-matrix', which is the <b>matrix minor</b>! What is the resulting matrix?",
         "next": "expand_r1_3"
     },
     "expand_r1_3": {
         "type": "plain",
-        "content": "After removing $R_1$ and $C_1$, all that's left is $d$! So the matrix minor will be $(d)$!",
+        "content": "After removing $R_1$ and $C_1$, all that's left is $d$! So $\\mathbf{M}_{11}=(d)$!",
         "next": "expand_r1_4"
     },
     "expand_r1_4": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$a$",
             "1": "$b$",
@@ -99,16 +99,16 @@ const dialogueSystem = {
         "answersIdx": [
             3
         ],
-        "content": "<b>Step 2:</b> Find the determinant of the matrix minor above.",
+        "content": "<b>Step 2:</b> Find the determinant of $\\mathbf{M}_{11}$.",
         "next": "expand_r1_5"
     },
     "expand_r1_5": {
         "type": "plain",
-        "content": "Determinant of matrix minor $(d)$ is just the entry inside. Hence, $\\det((d)) = d$.",
+        "content": "As $\\mathbf{M_{11}}$ is $1 \\times 1$, the determinant is just the entry inside.<br>Hence, $\\det(\\mathbf{M_{11}}) = d$.",
         "next": "expand_r1_6"
     },
     "expand_r1_6": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$d$",
             "1": "$-d$",
@@ -127,7 +127,7 @@ const dialogueSystem = {
         "next": "expand_r1_8"
     },
     "expand_r1_8": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$-ad$",
             "1": "$ad$",
@@ -151,7 +151,7 @@ const dialogueSystem = {
         "next": "expand_r1_11"
     },
     "expand_r1_11": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$-bc$",
             "1": "$bc$",
@@ -166,11 +166,11 @@ const dialogueSystem = {
     },
     "expand_r1_12": {
         "type": "plain",
-        "content": "Let's run through the steps quickly!<br><br><b>Step 1:</b> $(1, 2)$ matrix minor of $\\mathbf{A}$: $(c)$ (Remove Row 1 and Column 2)<br><b>Step 2:</b> $\\det((c)) = c$<br><b>Step 3:</b> $A_{12} = -c$ (Applying checkerboard of signs)<br><b>Step 4:</b> $a_{12} A_{12} = -bc$",
+        "content": "Let's run through the steps quickly!<br><br><b>Step 1:</b> $(1, 2)$ matrix minor: $\\mathbf{M}_{12}=(c)$ (Remove Row 1 and Column 2)<br><b>Step 2:</b> $\\det(\\mathbf{M}_{12}) = c$<br><b>Step 3:</b> $A_{12} = -c$ (Applying checkerboard of signs)<br><b>Step 4:</b> $a_{12} A_{12} = -bc$",
         "next": "expand_r1_13"
     },
     "expand_r1_13": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$ab - cd$",
             "1": "$ad + bc$",
@@ -206,7 +206,7 @@ const dialogueSystem = {
         "next": "expand_r2_2"
     },
     "expand_r2_2": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$(a)$",
             "1": "$(c)$",
@@ -216,16 +216,16 @@ const dialogueSystem = {
         "answersIdx": [
             3
         ],
-        "content": "<b>Step 1:</b> Find the $(2, 1)$ matrix minor of $\\mathbf{A}$.<br>$$\\begin{pmatrix}a & b \\\\c & d\\end{pmatrix}\\quad\\text{Remove row 2, Remove column 1}$$Since we are finding the matrix minor at $(2, 1)$, we remove row 2 and column 1. The remaining elements form a 'sub-matrix', which is the <b>matrix minor</b>! What is the resulting matrix?",
+        "content": "<b>Step 1:</b> Find the $(2, 1)$ matrix minor of $\\mathbf{A}, \\mathbf{M}_{21}$.<br>Since we are finding the matrix minor at $(2, 1)$, we remove row 2 and column 1.$$\\begin{pmatrix}\\cancel{a} & b \\\\\\cancel{c} & \\cancel{d}\\end{pmatrix}$$The remaining elements form a 'sub-matrix', which is the <b>matrix minor</b>! What is the resulting matrix?",
         "next": "expand_r2_3"
     },
     "expand_r2_3": {
         "type": "plain",
-        "content": "After removing $R_2$ and $C_1$, all that's left is $b$! So the matrix minor will be $(b)$!",
+        "content": "After removing $R_2$ and $C_1$, all that's left is $b$! So $\\mathbf{M}_{21}=(b)$!",
         "next": "expand_r2_4"
     },
     "expand_r2_4": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$a$",
             "1": "$c$",
@@ -235,16 +235,16 @@ const dialogueSystem = {
         "answersIdx": [
             3
         ],
-        "content": "<b>Step 2:</b> Find the determinant of the matrix minor above.",
+        "content": "<b>Step 2:</b> Find the determinant of $\\mathbf{M}_{21}$.",
         "next": "expand_r2_5"
     },
     "expand_r2_5": {
         "type": "plain",
-        "content": "Determinant of matrix minor $(b)$ is just the entry inside. Hence, $\\det((b)) = b$.",
+        "content": "As $\\mathbf{M}_{21}$ is $1 \\times 1$, the determinant is just the entry inside.<br>Hence, $\\det(\\mathbf{M}_{21}) = b$.",
         "next": "expand_r2_6"
     },
     "expand_r2_6": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$b$",
             "1": "$-b$",
@@ -263,7 +263,7 @@ const dialogueSystem = {
         "next": "expand_r2_8"
     },
     "expand_r2_8": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$bc$",
             "1": "$-bc$",
@@ -287,7 +287,7 @@ const dialogueSystem = {
         "next": "expand_r2_11"
     },
     "expand_r2_11": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$ad$",
             "1": "$-ad$",
@@ -302,11 +302,11 @@ const dialogueSystem = {
     },
     "expand_r2_12": {
         "type": "plain",
-        "content": "Let's run through the steps quickly!<br><br><b>Step 1:</b> $(2, 2)$ matrix minor of $\\mathbf{A} = (a)$ (Remove Row 2 and Column 2)<br><b>Step 2:</b> $\\det((a)) = a$<br><b>Step 3:</b> $A_{22} = a$ (Applying checkerboard of signs)<br><b>Step 4:</b> $a_{22} A_{22} = ad$",
+        "content": "Let's run through the steps quickly!<br><br><b>Step 1:</b> $(2, 2)$ matrix minor: $\\mathbf{M}_{22} = (a)$ (Remove Row 2 and Column 2)<br><b>Step 2:</b> $\\det(\\mathbf{M}_{22}) = a$<br><b>Step 3:</b> $A_{22} = a$ (Applying checkerboard of signs)<br><b>Step 4:</b> $a_{22} A_{22} = ad$",
         "next": "expand_r2_13"
     },
     "expand_r2_13": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$ab - cd$",
             "1": "$ad + bc$",
@@ -342,7 +342,7 @@ const dialogueSystem = {
         "next": "expand_c1_2"
     },
     "expand_c1_2": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$(a)$",
             "1": "$(b)$",
@@ -352,16 +352,16 @@ const dialogueSystem = {
         "answersIdx": [
             3
         ],
-        "content": "<b>Step 1:</b> Find the $(1, 1)$ matrix minor of $\\mathbf{A}$.$$\\begin{pmatrix}a & b \\\\c & d\\end{pmatrix}\\quad\\text{Remove row 1, Remove column 1}$$Since we are finding the matrix minor at $(1, 1)$, we remove row 1 and column 1. The remaining elements form a 'sub-matrix', which is the <b>matrix minor</b>! What is the resulting matrix?",
+        "content": "<b>Step 1:</b> Find the $(1, 1)$ matrix minor of $\\mathbf{A}, \\mathbf{M}_{11}$.<br>>Since we are finding the matrix minor at $(1, 1)$, we remove row 1 and column 1.$$\\begin{pmatrix}\\cancel{a} & \\cancel{b} \\\\ \\cancel{c} & d\\end{pmatrix}$$The remaining elements form a 'sub-matrix', which is the <b>matrix minor</b>! What is the resulting matrix?",
         "next": "expand_c1_3"
     },
     "expand_c1_3": {
         "type": "plain",
-        "content": "After removing $R_1$ and $C_1$, all that's left is $d$! So the matrix minor will be $(d)$!",
+        "content": "After removing $R_1$ and $C_1$, all that's left is $d$! So $\\mathbf{M}_{11}=(d)$!",
         "next": "expand_c1_4"
     },
     "expand_c1_4": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$a$",
             "1": "$b$",
@@ -371,16 +371,16 @@ const dialogueSystem = {
         "answersIdx": [
             3
         ],
-        "content": "<b>Step 2:</b> Find the determinant of the matrix minor above.",
+        "content": "<b>Step 2:</b> Find the determinant of $\\mathbf{M}_{11}$.",
         "next": "expand_c1_5"
     },
     "expand_c1_5": {
         "type": "plain",
-        "content": "Determinant of matrix minor $(d)$ is just the entry inside. Hence, $\\det((d)) = d$.",
+        "content": "As $\\mathbf{M}_{11}$ is $1 \\times 1$, the determinant is just the entry inside.<br>Hence, $\\det(\\mathbf{M}_{11}) = d$.",
         "next": "expand_c1_6"
     },
     "expand_c1_6": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$d$",
             "1": "$-d$",
@@ -399,7 +399,7 @@ const dialogueSystem = {
         "next": "expand_c1_8"
     },
     "expand_c1_8": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$-ad$",
             "1": "$ad$",
@@ -423,7 +423,7 @@ const dialogueSystem = {
         "next": "expand_c1_11"
     },
     "expand_c1_11": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$-bc$",
             "1": "$bc$",
@@ -438,11 +438,11 @@ const dialogueSystem = {
     },
     "expand_c1_12": {
         "type": "plain",
-        "content": "Let's run through the steps quickly!<br><br><b>Step 1:</b> $(2, 1)$ matrix minor of $\\mathbf{A} = (b)$ (Remove Row 2 and Column 1)<br><b>Step 2:</b> $\\det((b)) = b$<br><b>Step 3:</b> $A_{21} = -b$ (Applying checkerboard of signs)<br><b>Step 4:</b> $a_{21} A_{21} = -bc$",
+        "content": "Let's run through the steps quickly!<br><br><b>Step 1:</b> $(2, 1)$ matrix minor: $\\mathbf{M}_{21} = (b)$ (Remove Row 2 and Column 1)<br><b>Step 2:</b> $\\det(\\mathbf{M}_{21}) = b$<br><b>Step 3:</b> $A_{21} = -b$ (Applying checkerboard of signs)<br><b>Step 4:</b> $a_{21} A_{21} = -bc$",
         "next": "expand_c1_13"
     },
     "expand_c1_13": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$ab - cd$",
             "1": "$ad + bc$",
@@ -478,7 +478,7 @@ const dialogueSystem = {
         "next": "expand_c2_2"
     },
     "expand_c2_2": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$(a)$",
             "1": "$(b)$",
@@ -488,16 +488,16 @@ const dialogueSystem = {
         "answersIdx": [
             3
         ],
-        "content": "<b>Step 1:</b> Find the $(1, 2)$ matrix minor of $\\mathbf{A}$.<br>$$\\begin{pmatrix}a & b \\\\c & d\\end{pmatrix}\\quad\\text{Remove row 1, Remove column 2}$$Since we are finding the matrix minor at $(1, 2)$, we remove row 1 and column 2. The remaining elements form a 'sub-matrix', which is the <b>matrix minor</b>! What is the resulting matrix?",
+        "content": "<b>Step 1:</b> Find the $(1, 2)$ matrix minor of $\\mathbf{A}, \\mathbf{M}_{12}$.<br>Since we are finding the matrix minor at $(1, 2)$, we remove row 1 and column 2.$$\\begin{pmatrix}\\cancel{a} & \\cancel{b} \\\\c & \\cancel{d}\\end{pmatrix}$$The remaining elements form a 'sub-matrix', which is the <b>matrix minor</b>! What is the resulting matrix?",
         "next": "expand_c2_3"
     },
     "expand_c2_3": {
         "type": "plain",
-        "content": "After removing $R_1$ and $C_2$, all that's left is $c$! So the matrix minor will be $(c)$!",
+        "content": "After removing $R_1$ and $C_2$, all that's left is $c$! So $\\mathbf{M}_{12}=(c)$!",
         "next": "expand_c2_4"
     },
     "expand_c2_4": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$a$",
             "1": "$b$",
@@ -507,16 +507,16 @@ const dialogueSystem = {
         "answersIdx": [
             3
         ],
-        "content": "<b>Step 2:</b> Find the determinant of the matrix minor above.",
+        "content": "<b>Step 2:</b> Find the determinant of $\\mathbf{M}_{12}$.",
         "next": "expand_c2_5"
     },
     "expand_c2_5": {
         "type": "plain",
-        "content": "Determinant of matrix minor $(c)$ is just the entry inside. Hence, $\\det((c)) = c$.",
+        "content": "As $\\mathbf{M}_{12}$ is $1 \\times 1$, the determinant is just the entry inside.<br>Hence, $\\det(\\mathbf{M}_{12}) = c$.",
         "next": "expand_c2_6"
     },
     "expand_c2_6": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$c$",
             "1": "$-c$",
@@ -535,7 +535,7 @@ const dialogueSystem = {
         "next": "expand_c2_8"
     },
     "expand_c2_8": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$bc$",
             "1": "$-bc$",
@@ -559,7 +559,7 @@ const dialogueSystem = {
         "next": "expand_c2_11"
     },
     "expand_c2_11": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$ad$",
             "1": "$-ad$",
@@ -574,11 +574,11 @@ const dialogueSystem = {
     },
     "expand_c2_12": {
         "type": "plain",
-        "content": "Let's run through the steps quickly!<br><br><b>Step 1:</b> $(2, 2)$ matrix minor of $\\mathbf{A} = (a)$ (Remove Row 2 and Column 2)<br><b>Step 2:</b> $\\det((a)) = a$<br><b>Step 3:</b> $A_{22} = a$ (Applying checkerboard of signs)<br><b>Step 4:</b> $a_{22} A_{22} = ad$",
+        "content": "Let's run through the steps quickly!<br><br><b>Step 1:</b> $(2, 2)$ matrix minor: $\\mathbf{M}_{22}= (a)$ (Remove Row 2 and Column 2)<br><b>Step 2:</b> $\\det(\\mathbf{M}_{22}) = a$<br><b>Step 3:</b> $A_{22} = a$ (Applying checkerboard of signs)<br><b>Step 4:</b> $a_{22} A_{22} = ad$",
         "next": "expand_c2_13"
     },
     "expand_c2_13": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$ab - cd$",
             "1": "$ad + bc$",
@@ -624,7 +624,7 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_11"
     },
     "Checkpoint1_default_11": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$\\begin{pmatrix}0 & 4 \\\\ 5 & 6\\end{pmatrix}$",
             "1": "$\\begin{pmatrix}0 & 3 \\\\ 5 & 0\\end{pmatrix}$",
@@ -638,7 +638,7 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_12"
     },
     "Checkpoint1_default_12": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$18$",
             "1": "$-18$",
@@ -657,7 +657,7 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_14"
     },
     "Checkpoint1_default_14": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$-18$",
             "1": "$10$",
@@ -676,7 +676,7 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_16"
     },
     "Checkpoint1_default_16": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$18$",
             "1": "$40$",
@@ -695,17 +695,17 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_18"
     },
     "Checkpoint1_default_18": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
-            "0": "1026",
-            "1": "-5",
-            "2": "0",
+            "0": "$1026$",
+            "1": "$-5$",
+            "2": "$0$",
             "3": "It's too big, I gotta matlab it..."
         },
         "answersIdx": [
             2
         ],
-        "content": "Let's try another example:<br>$$\\mathbf{A} = \\begin{pmatrix} 54 & 3 & 0 \\\\ 9 & 5 & 0 \\\\ 4 & -19 & 0 \\end{pmatrix}$$Find $|A|$.",
+        "content": "Let's try another example:<br>$$\\mathbf{A} = \\begin{pmatrix} 54 & 3 & 0 \\\\ 9 & 5 & 0 \\\\ 4 & -19 & 0 \\end{pmatrix}$$Find $\\det(\\mathbf{A})$.",
         "next": "Checkpoint1_default_19"
     },
     "Checkpoint1_default_19": {
@@ -714,7 +714,7 @@ const dialogueSystem = {
         "next": "Checkpoint1_default_20"
     },
     "Checkpoint1_default_20": {
-        "type": "mcq",
+        "type": "single-mcq",
         "options": {
             "0": "$0$",
             "1": "$adf$",
@@ -735,12 +735,12 @@ const dialogueSystem = {
     "Checkpoint1_default_22": {
         "type": "tex",
         "important": true,
-        "content": "In fact, the determinant of any triangular matrix is the product of its diagonal entries. That is, if  $\\mathbf{A}$ is triangular, then<br><br>$$\\det(\\mathbf{A}) = a_{11} a_{22} \\ldots a_{nn} = \\prod_{k=1}^{n} a_{kk}.$$",
+        "content": "$$\\textbf{\\Large Determinant by Cofactor Expansion (2/2)}$$In fact, the determinant of any triangular matrix is the product of its diagonal entries.<br>That is, if  $\\mathbf{A}$ is triangular, then:$$\\det(\\mathbf{A}) = a_{11} a_{22} \\ldots a_{nn} = \\prod_{k=1}^{n} a_{kk}.$$",
         "next": "Checkpoint1_default_23"
     },
     "Checkpoint1_default_23": {
         "type": "plain",
-        "content": "Does this result work for a lower triangular matrix? Convince yourself by working it out manually!<br><br>That's it!! You have learnt <b>cofactor expansion</b>, the first of the two main ways to find a determinant!$$",
+        "content": "Does this result work for a lower triangular matrix? Convince yourself by working it out manually!<br><br>That's it!! You have learnt <b>cofactor expansion</b>, the first of the two main ways to find a determinant!",
         "systemMessage": "🎉Congratulations! You have reached the end of Interactive 2.8!🎉"
     }
 };
