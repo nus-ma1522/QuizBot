@@ -22,7 +22,7 @@ const dialogueSystem = {
     },
     "reply": {
         "type": "plain",
-        "content": "You are asking the right questions! The proof to this is not trivial and for the sake of sanity 😭, it will not be covered here. Feel free to discuss this in the telegram chat though!",
+        "content": "Great question! The full proof is tricky, so we won’t cover it 😭. The best way to get a feel for it is to try examples: take a matrix $\\mathbf{A}$, apply an ERO to get $\\mathbf{B}$, and use cofactor expansion to see how the determinant changes.<br>Feel free to discuss this in the telegram group though!",
         "next": "Checkpoint1_default_3"
     },
     "Checkpoint1_default_3": {
