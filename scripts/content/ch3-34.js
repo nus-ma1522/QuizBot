@@ -125,7 +125,7 @@ const dialogueSystem = {
     },
     "Spans_default_4": {
         "type": "tex",
-        "content": "$$\\textbf{Span of Vector Set} \\\\ $$<br> $$\\text{For a set } S = \\{\\mathbf{u}_1,\\dots,\\mathbf{u}_k\\},\\mathrm{span}(S)=\\{c_1\\mathbf{u}_1+\\cdots+c_k\\mathbf{u}_k \\mid c_1,\\dots c_k \\in \\mathbb{R}\\}$$",
+        "content": "$$\\textbf{Span of Vector Set} \\\\ $$<br> $$\\text{For a set } S = \\{\\mathbf{u}_1,\\dots,\\mathbf{u}_k\\},$$<br> $$\\mathrm{span}(S)=\\{c_1\\mathbf{u}_1+\\cdots+c_k\\mathbf{u}_k \\mid c_1,\\dots c_k \\in \\mathbb{R}\\}$$",
         "next": "Spans_default_5"
     },
     "Spans_default_5": {
@@ -134,13 +134,20 @@ const dialogueSystem = {
             "0": "Like what?"
         },
         "respondToIdx": {
-            "0": "theWhat"
+            "0": "theWhat_desmos"
         },
         "content": "The vector space structure is exactly that provided to you by vector addition and scalar multiplication, preserving some of the basic intuitions one might have about space (the concept in general)."
     },
+    "theWhat_desmos": { 
+        "type": "embed",
+        "content": "https://www.desmos.com/3d/3jckodutdj",
+        "previewText": "Use me to validate your intuitions!",
+        "previewImage": "images/desmos_thumbnail.jpg",
+        "next": "theWhat"
+    },
     "theWhat": {
         "type": "plain",
-        "content": "In particular, <b>you can't move or stretch out of a space</b>, despite what the Backrooms lore tells you.<br> So no matter how many steps you can in whichever directions you desire, you will always stay within $span(S)$. Try it!",
+        "content": "In particular, <b>you can't move or stretch out of a space</b>, despite what the Backrooms lore tells you.<br> So no matter how many steps you can in whichever directions you desire, you will always stay within $span(S)$. Try it with the interactive above!",
         "next": "Spans_default_6"
     },
     "Spans_default_6": {
