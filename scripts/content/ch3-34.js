@@ -7,6 +7,13 @@ const dialogueSystem = {
     "Linear_default_2": {
         "type": "plain",
         "content": "You should know by now that vectors have two principal operations: vector addition, and scalar multiplication.",
+        "next": "Linear_desmos_1"
+    },
+    "Linear_desmos_1": {
+        "type": "embed",
+        "content": "https://www.desmos.com/3d/cf0bbfxdsm",
+        "previewText": "Visualize the vector operations in 3D space!",
+        "previewImage": "images/desmos_thumbnail.jpg",
         "next": "Linear_default_3"
     },
     "Linear_default_3": {
@@ -39,7 +46,14 @@ const dialogueSystem = {
     },
     "iLiedHaha": {
         "type": "plain",
-        "content": "Notice how the operations fundamentally build upon \"anchoring\" vectors to create new directions in which you can move within a vector space.<br> <br> To see what I mean, riddle me this:",
+        "content": "In the same interactive, notice how the operations fundamentally build upon \"anchoring\" vectors to create new directions in which you can move within a vector space.<br> <br>",
+        "next": "Linear_desmos_2"
+    },
+    "Linear_desmos_2": {
+        "type": "embed",
+        "content": "https://www.desmos.com/3d/3jckodutdj",
+        "previewText": "Try to create a vector going along the z-axis!",
+        "previewImage": "images/desmos_thumbnail.jpg",
         "next": "Linear_default_6"
     },
     "Linear_default_6": {
@@ -51,7 +65,7 @@ const dialogueSystem = {
         "answersIdx": [
             1
         ],
-        "content": "Clearly in $\\mathbb{R}^3$ I can move along the z-axis. But using only $\\left(\\begin{matrix} 1 \\\\ 0 \\\\ 0 \\end{matrix}\\right)$ and $\\left(\\begin{matrix} 0 \\\\ 1 \\\\ 0 \\end{matrix}\\right)$, can our vector operations ever give us the vector $\\left(\\begin{matrix} 0 \\\\ 0 \\\\ 1 \\end{matrix}\\right)$?",
+        "content": "Clearly in $\\mathbb{R}^3$ I should be able to move along the z-axis. But using only $\\left(\\begin{matrix} 1 \\\\ 0 \\\\ 0 \\end{matrix}\\right)$ and $\\left(\\begin{matrix} 0 \\\\ 1 \\\\ 0 \\end{matrix}\\right)$, can our vector operations ever give us the vector $\\left(\\begin{matrix} 0 \\\\ 0 \\\\ 1 \\end{matrix}\\right)$?",
         "next": "Linear_default_7"
     },
     "Linear_default_7": {
@@ -164,9 +178,9 @@ const dialogueSystem = {
     "spansInDetail": {
         "type": "plain",
         "content": "Let's explore spans in greater detail!",
-        "next": "A_default_1"
+        "next": "spansInDetail1"
     },
-    "A_default_1": {
+    "spansInDetail1": {
         "type": "dialogue",
         "options": {
             "0": "Oh, I have!",
@@ -186,9 +200,9 @@ const dialogueSystem = {
     "continueVectorSpaces": {
         "type": "plain",
         "content": "That's because <b>not all vector spaces are built the same</b>.",
-        "next": "A_default_2"
+        "next": "spansInDetail2"
     },
-    "A_default_2": {
+    "spansInDetail2": {
         "type": "mcq",
         "options": {
             "0": "Two",
@@ -200,19 +214,19 @@ const dialogueSystem = {
             1
         ],
         "content": "Consider just $\\mathbb{R}^3$, your usual 3D Euclidean space. How many lines and planes can we have in that Euclidean space which pass through the origin?",
-        "next": "A_default_3"
+        "next": "spansInDetail3"
     },
-    "A_default_3": {
+    "spansInDetail3": {
         "type": "plain",
         "content": "Already we have infinitely many lines (spaces in $\\mathbb{R}^3$ spanned by one vector), and infinitely many planes (ditto, but spanned by two vectors)! What's mindblowing is that <b>all of them</b> are spaces in their own rights! 🤯",
-        "next": "A_default_4"
+        "next": "spansInDetail4"
     },
-    "A_default_4": {
+    "spansInDetail4": {
         "type": "plain",
         "content": "Most of the time, these spaces have nothing in common except the origin!<br> <br> Consider for example  $\\mathrm{span}\\left(\\left\\{\\left(\\begin{matrix} 1 \\\\ 0 \\\\ 0 \\end{matrix}\\right)\\right\\}\\right)$ and $\\mathrm{span}\\left(\\left\\{\\left(\\begin{matrix} 0 \\\\ 1 \\\\ 0 \\end{matrix}\\right)\\right\\}\\right)$",
-        "next": "A_default_5"
+        "next": "spansInDetail5"
     },
-    "A_default_5": {
+    "spansInDetail5": {
         "type": "dialogue",
         "options": {
             "0": "Go on...",
@@ -239,24 +253,24 @@ const dialogueSystem = {
     "checkSameSpan2": {
         "type": "plain",
         "content": "Well, if and only if $V_1 \\subseteq V_2$, every $\\mathbf{u}_k$ is by definition of a span equivalent to some linear combination of $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_j\\}$",
-        "next": "A_default_6"
+        "next": "spansInDetail6"
     },
-    "A_default_6": {
+    "spansInDetail6": {
         "type": "plain",
         "content": "☝️🤓 So this is where the magical tool comes back to help us!",
-        "next": "A_default_7"
+        "next": "spansInDetail7"
     },
-    "A_default_7": {
+    "spansInDetail7": {
         "type": "tex",
         "content": "$$\\textbf{Alternative Linear Combination} \\\\ $$<br> $$\\mathbf{v} = \\left(\\begin{array}{c|c|c|c} \\mathbf{u}_1 & \\mathbf{u}_2 &  \\dots &\\mathbf{u}_k \\end{array}\\right) \\left(\\begin{array}{c} c_1 \\\\ c_2 \\\\ \\vdots \\\\ c_k\\end{array}\\right) \\\\ $$",
-        "next": "A_default_8"
+        "next": "spansInDetail8"
     },
-    "A_default_8": {
+    "spansInDetail8": {
         "type": "plain",
         "content": "👩🏻‍🎓 Since every $\\mathbf{u}_k$ is some linear combination of $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_j\\}$, we can write<br> $\\mathbf{u}_k = \\left(\\begin{array}{c|c|c|c} \\mathbf{v}_1 & \\mathbf{v}_2 &  \\dots &\\mathbf{v}_j \\end{array}\\right) \\left(\\begin{array}{c} c_{1,k} \\\\ c_{2,k} \\\\ \\vdots \\\\ c_{j,k}\\end{array}\\right)$<br> <br> Hence by block multiplication, we can also write<br> $$\\left(\\begin{array}{c|c|c|c} \\mathbf{v}_1 & \\mathbf{v}_2 &  \\dots &\\mathbf{v}_j \\end{array}\\right) \\left(\\begin{array}{cccc} c_{1,1} & c_{1,2} & \\dots & c_{1,i} \\\\ c_{2,1} & c_{2,2} & \\dots & c_{2, i} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ c_{j,1} & c_{j,2} & \\dots & c_{j,i}\\end{array}\\right) = \\left(\\begin{array}{c|c|c|c} \\mathbf{u}_1 & \\mathbf{u}_2 &  \\dots &\\mathbf{u}_i \\end{array}\\right)$$",
-        "next": "A_default_9"
+        "next": "spansInDetail9"
     },
-    "A_default_9": {
+    "spansInDetail9": {
         "type": "mcq",
         "options": {
             "0": "Multiple matrix-vector equations",
@@ -268,14 +282,14 @@ const dialogueSystem = {
             1
         ],
         "content": "Now! What does this look like to you?",
-        "next": "A_default_10"
+        "next": "spansInDetail10"
     },
-    "A_default_10": {
+    "spansInDetail10": {
         "type": "plain",
         "content": "☝️🤓 *minecraft villager noises*... there are ackchually multiple ways to view this equation.",
-        "next": "A_default_11"
+        "next": "spansInDetail11"
     },
-    "A_default_11": {
+    "spansInDetail11": {
         "type": "dialogue",
         "options": {
             "0": "</b>PAUSE</b>. Why must solution(s) exist for $c_{a,b}$?",
@@ -295,9 +309,9 @@ const dialogueSystem = {
     "endingQuestions": {
         "type": "plain",
         "content": "Wonderful. Now let's test your understanding again:",
-        "next": "A_default_12"
+        "next": "spansInDetail12"
     },
-    "A_default_12": {
+    "spansInDetail12": {
         "type": "mcq",
         "options": {
             "0": "Yes",
@@ -307,14 +321,14 @@ const dialogueSystem = {
             1
         ],
         "content": "If two sets of vectors have the same cardinality (\"size\"), must their spans describe the same vector spaces?",
-        "next": "A_default_13"
+        "next": "spansInDetail13"
     },
-    "A_default_13": {
+    "spansInDetail13": {
         "type": "plain",
         "content": "No. Remember that not all vector spaces are built the same!",
-        "next": "A_default_14"
+        "next": "spansInDetail14"
     },
-    "A_default_14": {
+    "spansInDetail14": {
         "type": "mcq",
         "options": {
             "0": "Yes",
@@ -324,14 +338,14 @@ const dialogueSystem = {
             0
         ],
         "content": "Suppose $V_1$ and $V_2$ were as before. Then is it possible to have multiple solutions to<br> $\\mathbf{u}_k = \\left(\\begin{array}{c|c|c|c} \\mathbf{v}_1 & \\mathbf{v}_2 &  \\dots &\\mathbf{v}_j \\end{array}\\right) \\left(\\begin{array}{c} c_{1,k} \\\\ c_{2,k} \\\\ \\vdots \\\\ c_{j,k}\\end{array}\\right)$?",
-        "next": "A_default_15"
+        "next": "spansInDetail15"
     },
-    "A_default_15": {
+    "spansInDetail15": {
         "type": "plain",
         "content": "Yes. (Sneak peek into Chapter 3.5 and beyond)",
-        "next": "A_default_16"
+        "next": "spansInDetail16"
     },
-    "A_default_16": {
+    "spansInDetail16": {
         "type": "mcq",
         "options": {
             "0": "Yes",
@@ -341,14 +355,14 @@ const dialogueSystem = {
             1
         ],
         "content": "Suppose further $V_1 \\subset V_2$. Can I find constants for all $\\mathbf{v}_i$ to demonstrate that $\\mathbf{v}_i$ is a linear combination of $\\{\\mathbf{u}_1, \\dots, \\mathbf{u}_i\\}$? (Note that I swapped the roles of $\\mathbf{u}$ and $\\mathbf{v}$!)",
-        "next": "A_default_17"
+        "next": "spansInDetail17"
     },
-    "A_default_17": {
+    "spansInDetail17": {
         "type": "plain",
         "content": "Nope! No you can't.",
-        "next": "A_default_18"
+        "next": "spansInDetail18"
     },
-    "A_default_18": {
+    "spansInDetail18": {
         "type": "mcq",
         "options": {
             "0": "For some $1 \\leq k \\leq i$, $\\mathbf{u}_k$ cannot be expressed as the linear combination of vectors in $\\mathbb{R}^n$.",
@@ -375,7 +389,7 @@ const dialogueSystem = {
             "1": "Err... what?"
         },
         "respondToIdx": {
-            "0": "refresherSpace",
+            "0": "differentSubspaces",
             "1": "refresherSpace"
         },
         "content": "Remember when I said that not all (vector) spaces are built the same?"
@@ -386,18 +400,94 @@ const dialogueSystem = {
             "0": "Yep..."
         },
         "respondToIdx": {
-            "0": "continueSubspace"
+            "0": "differentSubspaces"
         },
         "content": "Recall in our previous conversations I mentioned that even in Euclidean 3D space, you have infinitely many lines (1D) and planes (2D) passing through the origin, all of which can <b>span</b> many different directions."
     },
-    "continueSubspace": {
+    "differentSubspaces": {
         "type": "plain",
-        "content": "But one thing is common about all of them: These are bona fide vector spaces embedded in another vector space! In other words, they are <b>subspaces</b>.",
+        "content": "Yeah! They look very different in reality as well! In fact, have a look for yourself in this Desmos graph!",
+        "next": "differentSubspaces_desmos"
+    },
+    "differentSubspaces_desmos": {
+        "type": "embed",
+        "content": "https://www.desmos.com/3d/vpwhd6wkr6",
+        "previewText": "Look at all these different lines and planes in 3D Space!",
+        "previewImage": "images/desmos_thumbnail.jpg",
+        "next": "continueVecSets"
+    },
+    "continueVecSets": {
+        "type": "mcq",
+        "content": "Let's focus on the planes in the graphic. If each plane represented a set of vectors, are they each a subset of $\\mathbb{R}^3$?",
+        "options": {
+            "0": "Yes",
+            "1": "No"
+        },
+        "answersIdx": [
+            0
+        ],
+        "next": "planesAre2D"
+    },
+    "planesAre2D": {
+        "type": "mcq",
+        "content": "What is the dimension of each plane?",
+        "options": {
+            "0": "1D",
+            "1": "2D",
+            "2": "3D"
+        },
+        "answersIdx": [
+            1
+        ],
+        "next": "areVectorSpaces"
+    },
+    "areVectorSpaces": {
+        "type": "mcq",
+        "content": "Furthermore, are the planes each a vector space in their own right?",
+        "options": {
+            "0": "Yes",
+            "1": "No"
+        },
+        "answersIdx": [
+            0
+        ],
+        "next": "explainAreVectorSpaces"
+    },
+    "explainAreVectorSpaces": {
+        "type": "plain",
+        "content": "Yes! All the planes are vector spaces in their own right!",
+        "next": "explainAreVectorSpaces2"
+    },
+    "explainAreVectorSpaces2": {
+        "type": "plain",
+        "content": "In fact, so are all the lines in the graphic!",
+        "next": "introduceSubspace"
+    },
+    "introduceSubspace": {
+        "type": "plain",
+        "content": "All the objects drawn are hence lesser-dimensional objects stuck in 3D space. While they may look very very different, one thing is common about all of them: These are bona fide vector spaces embedded in another vector space! In other words, they are <b>subspaces</b>.",
         "next": "Subspaces_default_3"
     },
     "Subspaces_default_3": {
         "type": "plain",
         "content": "To put it formally, let $V$ be a vector space. A set $U$ is a subspace of $V$ iff $U \\subseteq V$ AND $U$ is a vector space.",
+        "next": "elaborateSubspace"
+    },
+    "elaborateSubspace": {
+        "type": "plain",
+        "content": "To give you a better idea, recall the graphic above. Each plane is a subspace of $\\mathbb{R}^3$ because it occupies a small, 2D slice of $\\mathbb{R}^3$, and for any choice of vectors in the plane, their linear combinations will also lie in the same plane.<br> The same logic applies to the lines as well.",
+        "next": "elaborateSubspace_desmos"
+    },
+    "elaborateSubspace_desmos": {
+        "type": "embed",
+        "content": "https://www.desmos.com/3d/4zma6pwkzu",
+        "previewText": "Pan around and see how vector operations keep you in the same plane!",
+        "previewImage": "images/desmos_thumbnail.jpg",
+        "next": "subspacePreamble"
+    },
+    "subspacePreamble": {
+        "type": "plain",
+        "content": "We've got so much to learn about subspaces and their place in linear algebra. They are everywhere!",
         "next": "Subspaces_default_4"
     },
     "Subspaces_default_4": {
@@ -408,7 +498,7 @@ const dialogueSystem = {
         "respondToIdx": {
             "0": "solnSpaces"
         },
-        "content": "One of the most common subspaces we'll learn about is <b>solution spaces</b>!"
+        "content": "In fact, one of the most common subspaces we'll learn about is <b>solution spaces</b>!"
     },
     "solnSpaces": {
         "type": "plain",
