@@ -71,10 +71,11 @@
     Valid quiz names must match one of the following patterns:
     - "demo"
     - "ch<number>-<number>" where <number> is one or more digits
+    - Only alphanumeric characters as a suffix
     */
     const quizWhitelistRegexes = [
       /^demo$/,
-      /^ch(\d+)-(\d+).*$/,
+      /^ch(\d+)-(\d+)[a-zA-Z0-9]+$/,
     ];
 
     // Load quiz based on URL parameter
