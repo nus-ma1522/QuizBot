@@ -115,7 +115,7 @@ const dialogueSystem = {
     },
     "Spans_default_2": {
         "type": "plain",
-        "content": "Unsurprisingly, it can! (Proof left as exercise for you :3)",
+        "content": "The answer is: yes, it can! (Proof left as exercise for you :3)",
         "next": "Spans_default_3"
     },
     "Spans_default_3": {
