@@ -111,17 +111,17 @@ const dialogueSystem = {
         "respondToIdx": {
             "0": "Spans_default_2"
         },
-        "content": "On the topic of mathematical structures, do you think that the set of linear combinations of any (possibly empty) set of vectors in $\\mathbb{R}^n$ form a subspace of $\\mathbb{R}^n$?<br> <br> Formally, will $\\{c_1 \\mathbf{u}_1 + c_2 \\mathbf{u}_2 + \\dots + c_k \\mathbf{u}_k, \\mid c_1,\\dots c_k \\in \\mathbb{R}\\}$ always form a subspace of $\\mathbb{R}^n$?"
+        "content": "On the topic of mathematical structures, do you think that $\\{c_1 \\mathbf{u}_1 + c_2 \\mathbf{u}_2 + \\dots + c_k \\mathbf{u}_k, \\mid c_1,\\dots c_k \\in \\mathbb{R}\\}$ always contains the origin, and all linear combinations of $\\{\\mathbf{u}_1, \\mathbf{u}_2, \\dots, \\mathbf{u}_k\\}$?"
     },
     "Spans_default_2": {
         "type": "plain",
-        "content": "The answer is: yes, it can! (Proof left as exercise for you :3)",
-        "systemMessage": "Note: Yes, even the empty set of vectors spans the zero vector, which is a subspace.",
+        "content": "The answer is: Yes! And so the set $\\{c_1 \\mathbf{u}_1 + c_2 \\mathbf{u}_2 + \\dots + c_k \\mathbf{u}_k, \\mid c_1,\\dots c_k \\in \\mathbb{R}\\}$ is intuitively a vector space!",
+        "systemMessage": "You can try proving all 10 axioms with Chapter 3, Slide 7 (out of syllabus).",
         "next": "Spans_default_3"
     },
     "Spans_default_3": {
         "type": "plain",
-        "content": "This allows us to define vector spans in the alternative manner below:",
+        "content": "This allows us to define vector spaces in this alternative manner below:",
         "next": "Spans_default_4"
     },
     "Spans_default_4": {
@@ -137,7 +137,7 @@ const dialogueSystem = {
         "respondToIdx": {
             "0": "theWhat_desmos"
         },
-        "content": "The subspace structure is exactly that provided to you by vector addition and scalar multiplication, preserving some of the basic intuitions one might have about space (the concept in general)."
+        "content": "The vector space structure is exactly that provided to you by vector addition and scalar multiplication, preserving some of the basic intuitions one might have about space (the concept in general)."
     },
     "theWhat_desmos": { 
         "type": "embed",
@@ -478,7 +478,7 @@ const dialogueSystem = {
     },
     "Subspaces_default_3": {
         "type": "tex",
-        "content": "$$\\textbf{Definition of Subspace} \\\\ $$<br> A set $U$ is a subspace of $\\mathbb{R}^n \\iff U \\subseteq \\mathbb{R}^n$.",
+        "content": "$$\\textbf{Definition of Subspace} \\\\ $$<br> Any subset $U$ of $\\mathbb{R}^n$ which is also a vector space is called a subspace of $\\mathbb{R}^n$.",
         "next": "elaborateSubspace"
     },
     "elaborateSubspace": {
