@@ -80,12 +80,12 @@ const dialogueSystem = {
     },
     "Linear_default_9": {
         "type": "plain",
-        "content": "With that in mind, let's introduce <b>linear combinations</b> to help us keep a mental note of this structure:<br> <br> A linear combination of the (non-empty) set of vectors $\\{\\mathbf{u}_1, \\dots, \\mathbf{u}_k\\}$ is any vector $\\mathbf{v}$ satisfying",
+        "content": "With that in mind, let's introduce <b>linear combinations</b> to help us keep a mental note of this structure:<br> <br> A linear combination of the (non-empty) set of vectors $\\{\\mathbf{u}_1, \\dots, \\mathbf{u}_k\\} \\subseteq \\mathbb{R}^n$ is any vector $\\mathbf{v}$ satisfying",
         "next": "Linear_default_10"
     },
     "Linear_default_10": {
         "type": "tex",
-        "content": "$$\\textbf{Linear Combination of }\\{\\mathbf{u}_1, \\dots, \\mathbf{u}_k\\} \\\\ $$<br> $$\\mathbf{v} = c_1 \\mathbf{u}_1 + c_2 \\mathbf{u}_2 + \\dots + c_k \\mathbf{u}_k, \\newline c_1, \\dots c_k \\in \\mathbb{R}$$",
+        "content": "$$\\textbf{Linear Combination of }\\{\\mathbf{u}_1, \\dots, \\mathbf{u}_k\\} \\\\ $$<br> $$\\mathbf{v} = c_1 \\mathbf{u}_1 + c_2 \\mathbf{u}_2 + \\dots + c_k \\mathbf{u}_k,$$ <br> for some fixed $c_1, \\dots c_k \\in \\mathbb{R}$",
         "next": "Linear_default_11"
     },
     "Linear_default_11": {
@@ -111,16 +111,17 @@ const dialogueSystem = {
         "respondToIdx": {
             "0": "Spans_default_2"
         },
-        "content": "On the topic of mathematical structures, do you think that the set of linear combinations of any (non-empty) set of vectors form a vector space?<br> <br> Formally, will $\\{c_1 \\mathbf{u}_1 + c_2 \\mathbf{u}_2 + \\dots + c_k \\mathbf{u}_k, \\mid c_1,\\dots c_k \\in \\mathbb{R}\\}$ always form a vector space (if I equip it with vector addition and scalar multiplication)?"
+        "content": "On the topic of mathematical structures, do you think that the set of linear combinations of any (possibly empty) set of vectors in $\\mathbb{R}^n$ form a subspace of $\\mathbb{R}^n$?<br> <br> Formally, will $\\{c_1 \\mathbf{u}_1 + c_2 \\mathbf{u}_2 + \\dots + c_k \\mathbf{u}_k, \\mid c_1,\\dots c_k \\in \\mathbb{R}\\}$ always form a subspace of $\\mathbb{R}^n$?"
     },
     "Spans_default_2": {
         "type": "plain",
         "content": "The answer is: yes, it can! (Proof left as exercise for you :3)",
+        "systemMessage": "Note: Yes, even the empty set of vectors spans the zero vector, which is a subspace.",
         "next": "Spans_default_3"
     },
     "Spans_default_3": {
         "type": "plain",
-        "content": "This allows us to define vector spaces in the alternative manner below:",
+        "content": "This allows us to define vector spans in the alternative manner below:",
         "next": "Spans_default_4"
     },
     "Spans_default_4": {
@@ -136,7 +137,7 @@ const dialogueSystem = {
         "respondToIdx": {
             "0": "theWhat_desmos"
         },
-        "content": "The vector space structure is exactly that provided to you by vector addition and scalar multiplication, preserving some of the basic intuitions one might have about space (the concept in general)."
+        "content": "The subspace structure is exactly that provided to you by vector addition and scalar multiplication, preserving some of the basic intuitions one might have about space (the concept in general)."
     },
     "theWhat_desmos": { 
         "type": "embed",
@@ -472,12 +473,12 @@ const dialogueSystem = {
     },
     "introduceSubspace": {
         "type": "plain",
-        "content": "All the objects drawn are hence lesser-dimensional objects stuck in 3D space. While they may look very very different, one thing is common about all of them: These are bona fide vector spaces embedded in another vector space! In other words, they are <b>subspaces</b>.",
+        "content": "All the objects drawn are hence lesser-dimensional objects stuck in 3D space. While they may look very very different, one thing is common about all of them: These are bona fide vector spaces embedded in another vector space! In other words, they are <b>subspaces</b>. To put it formally: ",
         "next": "Subspaces_default_3"
     },
     "Subspaces_default_3": {
-        "type": "plain",
-        "content": "To put it formally, let $V$ be a vector space. A set $U$ is a subspace of $V$ iff $U \\subseteq V$ AND $U$ is a vector space.",
+        "type": "tex",
+        "content": "$$\\textbf{Definition of Subspace} \\\\ $$<br> A set $U$ is a subspace of $\\mathbb{R}^n \\iff U \\subseteq \\mathbb{R}^n$.",
         "next": "elaborateSubspace"
     },
     "elaborateSubspace": {
@@ -594,11 +595,22 @@ const dialogueSystem = {
     "affineSpace": {
         "type": "plain",
         "content": "It's true! While they <b>cannot</b> be called vector spaces, these spaces nevertheless pop up frequently enough that we give them their own name: <b>affine spaces</b>.<br> <br> There are so many more spaces (vector or otherwise) that you will come across as you continue journeying through linear algebra.<br> For example, you have the <b>zero vector space</b>, which only contains the <b>zero</b> vector, the vector space of polynomials (up to degree n), and even the dual- oh wait, I'm not supposed to tell you about any non-Euclidean spaces yet :P",
+        "next": "affineDefinition"
+    },
+    "affineDefinition": {
+        "type": "tex",
+        "content": "$$\\textbf{Definition of Affine Space} \\\\ $$<br> A set $W$ is an affine space of $\\mathbb{R}^n \\iff$ we can find $\\mathbf{v} \\in$ $\\mathbb{R}^n$ and a subspace $U$ of $\\mathbb{R}^n$ <br> such that $W = \\{\\mathbf{v} + \\mathbf{u} \\mid \\mathbf{u} \\in U\\}$, or $W = \\mathbf{v} + U$.",
+        "systemMessage": "Note: All vector spaces are also affine spaces, but not all affine spaces are vector spaces.",
         "next": "plain_default_1"
     },
     "plain_default_1": {
         "type": "plain",
-        "content": "In any case, this is the just the bare minimum that you should know for now.<br> I encourage you to think more about the geometric meaning of vectors and matrices, and I'm excited to see what you'll be able to cook up as the weeks go by in this course!"
+        "content": "In any case, this is all you have to know for now.<br> Even so, I encourage you to think more about the geometric meaning of vectors and matrices, and I'm excited to see what you'll be able to cook up as the weeks go by in this course!",
+        "next": "minecraft_4d_preamble"
+    },
+    "minecraft_4d_preamble": {
+        "type": "plain",
+        "content": "Right! I almost forgot! Here's a fun little video to end off these 2 topics. It's about... <a href='https://www.youtube.com/watch?v=u8LMyWcKL_c'>Minecraft in 4D</a>?!"
     }
 };
 
