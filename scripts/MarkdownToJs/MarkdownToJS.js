@@ -110,6 +110,9 @@ function parseMarkdown(mdContent) {
                 compulsoryMessages.push(key);
                 compulsoryMessageCount += 1;
             }
+            if (type === 'embed') {
+                currentEntry.previewImage = "images/desmos_thumbnail.jpg";
+            }
             currentEntry.content = "";
             continue;
         }
@@ -144,6 +147,15 @@ function parseMarkdown(mdContent) {
 	            }
 
 	            nonContentMatch = true;
+            }
+        }
+
+        if(currentEntry.type === 'embed') {
+            if (line.trim().charAt(0) === '-') {
+      
+                currentEntry.previewText = line.substring(2).trim();
+
+                nonContentMatch = true;
             }
         }
 
