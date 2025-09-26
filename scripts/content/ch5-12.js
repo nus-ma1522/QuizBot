@@ -293,7 +293,7 @@ const dialogueSystem = {
     },
     "VectorProjection_default_3": {
         "type": "plain",
-        "content": "First, the direction. Ideally, we want a unit vector for that, and hence we use $\\frac{1}{|u|}u$.<br><br>Next, the length of $w_p$. Since $\\theta$ is the angle between $w$ and $u$, the length of $w_p$ is $w\\cos\\theta$<br><br>We know that $u \\cdot w = |u||w|\\cos\\theta \\implies |w|\\cos\\theta = \\frac{u\\cdot w}{|u|}$<br><br>Putting everything together, we have that $w_p = (\\frac{u\\cdot w}{|u|})(\\frac{1}{|u|}u) = \\frac{u\\cdot w}{|u|^2}u$",
+        "content": "First, the direction. Ideally, we want a unit vector for that, and hence we use $\\frac{1}{|u|}u$.<br><br>Next, the length of $w_p$. Since $\\theta$ is the angle between $w$ and $u$, the length of $w_p$ is $w\\cos\\theta$<br><br>We know that $u \\cdot w = |u||w|\\cos\\theta \\implies |w|\\cos\\theta = \\frac{u\\cdot w}{|u|}$<br><br>Putting everything together, we have that $w_p = \\left( \\frac{u\\cdot w}{|u|} \\right) \\left(\\frac{1}{|u|}u \\right) = \\frac{u\\cdot w}{|u|^2}u$",
         "next": "VectorProjection_default_4"
     },
     "VectorProjection_default_4": {
@@ -308,7 +308,7 @@ const dialogueSystem = {
     },
     "OrthogonalMatricesStart": {
         "type": "plain",
-        "content": "Let's consider an orthonormal basis $S = \\{u_1, u_2, u_3\\}$ for $\\mathbb{R}^3$. Let's denote $u_1 = \\left(\\begin{array}{c} a \\\\ b \\\\ c \\\\\\end{array}\\right)$, $u_2 = \\left(\\begin{array}{c} d \\\\ e \\\\ f \\\\\\end{array}\\right)$, $u_3 = \\left(\\begin{array}{c} g \\\\ h \\\\ i \\\\\\end{array}\\right)$<br><br>Now, let's make a matrix $Q = (u_1 \\space \\space u_2 \\space \\space u_3) = \\left(\\begin{array}{c c c} a & d & g \\\\ b & e & h \\\\ c & f & i \\\\\\end{array}\\right)$<br><br>The transpose of $Q$ is as follows: $Q^T = (u_1 \\space \\space u_2 \\space \\space u_3) = \\left(\\begin{array}{c c c} a & b & c \\\\ d & e & f \\\\ g & h & i \\\\\\end{array}\\right)$<br><br>I know the transpose here is kind of out of nowhere, so bear with me for a bit we'll see where this takes us.",
+        "content": "Let's consider an orthonormal basis $S = \\{u_1, u_2, u_3\\}$ for $\\mathbb{R}^3$. Let's denote $u_1 = \\left(\\begin{array}{c} a \\\\ b \\\\ c \\\\\\end{array}\\right)$, $u_2 = \\left(\\begin{array}{c} d \\\\ e \\\\ f \\\\\\end{array}\\right)$, $u_3 = \\left(\\begin{array}{c} g \\\\ h \\\\ i \\\\\\end{array}\\right)$<br><br>Now, let's make a matrix $Q = (u_1 \\space \\space u_2 \\space \\space u_3) = \\left(\\begin{array}{c c c} a & d & g \\\\ b & e & h \\\\ c & f & i \\\\\\end{array}\\right)$<br><br>The transpose of $Q$ is as follows: $Q^T = (u_1 \\space \\space u_2 \\space \\space u_3)^T = \\left(\\begin{array}{c c c} a & b & c \\\\ d & e & f \\\\ g & h & i \\\\\\end{array}\\right)$<br><br>I know the transpose here is kind of out of nowhere, so bear with me for a bit we'll see where this takes us.",
         "next": "plain"
     },
     "plain": {
@@ -359,9 +359,7 @@ const dialogueSystem = {
             "2": "$\\left(\\begin{array}{c} 0 \\\\ 0 \\\\ 0 \\\\\\end{array}\\right)$"
         },
         "answersIdx": [
-            0,
-            1,
-            2
+            1
         ],
         "content": "Now, try to work out what $Q^Tu_2$ should be:",
         "next": "OrthogonalMatrices_default_5"
@@ -373,7 +371,7 @@ const dialogueSystem = {
     },
     "OrthogonalMatrices_default_6": {
         "type": "plain",
-        "content": "Putting all of this together, we have:<br><br>$$Q^T(u_1 \\space \\space u_2 \\space \\space u_3) = Q^TQ = \\left(\\begin{array}{c c c} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\\\\\end{array}\\right)$$<br><br>And voila! This also means that $Q^T = Q^{-1}$, i.e. $Q$'s inverse is also its transpose.<br><br>Matrices such as $Q$ are called **Orthogonal Matrices**",
+        "content": "Putting all of this together, we have:<br><br>$$Q^T(u_1 \\space \\space u_2 \\space \\space u_3) = Q^TQ = \\left(\\begin{array}{c c c} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\\\\\end{array}\\right)$$<br><br>And voila! This also means that $Q^T = Q^{-1}$, i.e. $Q$'s inverse is also its transpose.<br><br>Matrices such as $Q$ are called <b>Orthogonal Matrices</b>",
         "next": "OrthogonalMatrices_default_7"
     },
     "OrthogonalMatrices_default_7": {
