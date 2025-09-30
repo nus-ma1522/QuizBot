@@ -323,7 +323,7 @@ const dialogueSystem = {
             1,
             2
         ],
-        "content": "Let's try to evaluate $Q^Tu_1$<br><br>$$Q^Tu_1 = \\left(\\begin{array}{c c c} a & b & c \\\\ d & e & f \\\\ g & h & i \\\\\\end{array}\\right)\\left(\\begin{array}{c} a \\\\ b \\\\ c \\\\\\end{array}\\right)$$<br><br>$Q^Tu_1$ is a vector of 3 rows. How do we get the first entry of $Qu_1$?",
+        "content": "Let's try to evaluate $Q^Tu_1$<br><br>$$Q^Tu_1 = \\left(\\begin{array}{c c c} a & b & c \\\\ d & e & f \\\\ g & h & i \\\\\\end{array}\\right)\\left(\\begin{array}{c} a \\\\ b \\\\ c \\\\\\end{array}\\right)$$<br><br>$Q^Tu_1$ is a vector of 3 rows. How do we get the first entry of $Q^Tu_1$?",
         "next": "OrthogonalMatrices_default_1"
     },
     "OrthogonalMatrices_default_1": {
@@ -366,7 +366,7 @@ const dialogueSystem = {
     },
     "OrthogonalMatrices_default_5": {
         "type": "plain",
-        "content": "And by a similar logic, $Qu_3$ should give us $\\left(\\begin{array}{c} 0 \\\\ 0 \\\\ 1 \\\\\\end{array}\\right)$.",
+        "content": "And by a similar logic, $Q^Tu_3$ should give us $\\left(\\begin{array}{c} 0 \\\\ 0 \\\\ 1 \\\\\\end{array}\\right)$.",
         "next": "OrthogonalMatrices_default_6"
     },
     "OrthogonalMatrices_default_6": {
