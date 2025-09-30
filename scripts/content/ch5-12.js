@@ -25,7 +25,7 @@ const dialogueSystem = {
     },
     "ProjectionRecap_default_4": {
         "type": "plain",
-        "content": "The dot product of $w$ and $u$ can be defined as $w\\cdot u =w_1u_1 + w_2u_2 \\dots w_nu_n$.<br><br>It can also be defined as $w\\cdot u =|w||u|\\cos\\theta$, where $\\theta$ is the angle between the two vectors.",
+        "content": "The dot product of $w$ and $u$ can be defined as $w\\cdot u =w_1u_1 + w_2u_2 \\dots w_nu_n$.<br><br>It can also be defined as $w\\cdot u =|w||u|\\cos\\theta$, where $\\theta$ is the angle between the two vectors.<br><br>Note that the second definition only works if $u$ and $w$ are both non-zero, as the angle between vectors $\\theta$ isn't defined for zero vectors.",
         "next": "ProjectionRecap_default_5"
     },
     "ProjectionRecap_default_5": {
@@ -52,7 +52,7 @@ const dialogueSystem = {
     },
     "ProjectionRecap_default_8": {
         "type": "plain",
-        "content": "Let's go back to the discussion of the angle between $w$ and $u$ again.<br><br>If $\\theta = 0$ or $\\theta = 180^\\circ$, $w$ and $u$ point in a \"100% related\" direction, that is $w$ is a multiple of $u$.<br><br>If $\\theta = 90^\\circ$, then they point in a \"0% related\" direction, that is they are orthogonal to each other.",
+        "content": "Let's go back to the discussion of the angle between $w$ and $u$ again. We assume that $w$ and $u$ are both non-zero.<br><br>If $\\theta = 0$ or $\\theta = 180^\\circ$, $w$ and $u$ point in a \"100% related\" direction, that is $w$ is a multiple of $u$.<br><br>If $\\theta = 90^\\circ$, then they point in a \"0% related\" direction, that is they are orthogonal to each other.",
         "next": "ProjectionRecap_default_9"
     },
     "ProjectionRecap_default_9": {
@@ -80,7 +80,7 @@ const dialogueSystem = {
     "ProjectionRecap_default_13": {
         "type": "tex",
         "important": true,
-        "content": "$$\\textbf{Orthogonal Set} \\\\ $$<br><br>A set $S = {u_1, u_2, ..., u_k}$ of vectors in $R_n$ of vectors is orthogonal if $u_i · u_j = 0$ for every $i \\neq j$<br><br>$$\\textbf{Orthonormal Set} \\\\ $$<br><br>A set $S = {u_1, u_2, ..., u_k}$ of vectors in $R_n$ of vectors is orthornomal if it is orthogonal and all vectors are unit vectors.",
+        "content": "$$\\textbf{Orthogonal Set} \\\\ $$<br><br>A set $S = \\{u_1, u_2, ..., u_k\\}$ of vectors in $R_n$ of vectors is orthogonal if $u_i · u_j = 0$ for every $i \\neq j$<br><br>$$\\textbf{Orthonormal Set} \\\\ $$<br><br>A set $S = \\{u_1, u_2, ..., u_k\\}$ of vectors in $R_n$ of vectors is orthornomal if it is orthogonal and all vectors are unit vectors.",
         "next": "ProjectionRecap_default_14"
     },
     "ProjectionRecap_default_14": {
@@ -381,6 +381,28 @@ const dialogueSystem = {
         "next": "OrthogonalMatrices_default_8"
     },
     "OrthogonalMatrices_default_8": {
+        "type": "mcq",
+        "options": {
+            "0": "$\\left(\\begin{array}{c c c} 0 & 1 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & -1 \\\\\\end{array}\\right)$",
+            "1": "$\\left(\\begin{array}{c c c} 0 & 2 & 0 \\\\ 0.5 & 0 & 0 \\\\ 0 & 0 & 1 \\\\\\end{array}\\right)$",
+            "2": "$\\left(\\begin{array}{c c c} 1 & 0 & 0 \\\\ 0 & \\frac{1}{\\sqrt 2} & \\frac{1}{\\sqrt 2} \\\\ 0 & \\frac{1}{\\sqrt 2} & -\\frac{1}{\\sqrt 2} \\\\\\end{array}\\right)$",
+            "3": "$\\left(\\begin{array}{c c c} 1 & 0 & 0 \\\\ 0 & -\\frac{1}{\\sqrt 2} & \\frac{1}{\\sqrt 2} \\\\ 0 & \\frac{1}{\\sqrt 2} & -\\frac{1}{\\sqrt 2} \\\\\\end{array}\\right)$",
+            "4": "$\\left(\\begin{array}{c c c} \\frac{1}{3} & \\frac{2}{3} & \\frac{2}{3} \\\\ \\frac{2}{3} & \\frac{1}{3} & -\\frac{2}{3} \\\\ \\frac{2}{3} & -\\frac{2}{3} & \\frac{1}{3}\\\\\\end{array}\\right)$"
+        },
+        "answersIdx": [
+            0,
+            2,
+            4
+        ],
+        "content": "Let's do a quick quiz! Which of the following matrices are orthogonal?",
+        "next": "OrthogonalMatrices_default_9"
+    },
+    "OrthogonalMatrices_default_9": {
+        "type": "plain",
+        "content": "The most direct way to check whether a matrix $Q$ is orthogonal is by checking whether $Q^TQ = I$ in matlab.<br><br>If you prefer, you can also verify that each pair of vectors are orthogonal to one another, and that each column of the $Q$ is a unit vector",
+        "next": "OrthogonalMatrices_default_10"
+    },
+    "OrthogonalMatrices_default_10": {
         "type": "plain",
         "content": "That's a wrap! We will continue exploring the projection onto a subspace in the next interactive :)"
     }
