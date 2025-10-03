@@ -111,7 +111,7 @@ const dialogueSystem = {
     },
     "GramSchmidtProcess_default_6": {
         "type": "plain",
-        "content": "When we add $u_2$ to the basis, the line exapnds into a plane as it is able to explore a second dimension now.",
+        "content": "When we add $u_2$ to the basis, the line expands into a plane as it is able to explore a second dimension now.",
         "next": "GramSchmidtProcess_default_7"
     },
     "GramSchmidtProcess_default_7": {
@@ -149,7 +149,7 @@ const dialogueSystem = {
             0,
             1
         ],
-        "content": "$v_1$ is quite stragithforward. We can let $v_1 = u_1$.<br><br>How about $v_2$, what properties of $v_2$ must hold?",
+        "content": "$v_1$ is quite straightforward. We can let $v_1 = u_1$.<br><br>How about $v_2$, what properties of $v_2$ must hold?",
         "next": "GramSchmidtProcess_default_11"
     },
     "GramSchmidtProcess_default_11": {
@@ -235,7 +235,7 @@ const dialogueSystem = {
     "GramSchmidtProcess_default_19": {
         "type": "mcq",
         "options": {
-            "0": "$\\left(\\begin{array}{c} 0 \\\\ 0 \\\\ 0 \\\\\\end{array}\\right)$"
+            "0": "$0$"
         },
         "answersIdx": [
             0
@@ -390,7 +390,7 @@ const dialogueSystem = {
         "answersIdx": [
             1
         ],
-        "content": "Now, let the matrix $Q = \\left(q_1 \\space \\space q_2 \\space \\space \\dots q_n\\right)$<br><br>Let's suppose that we have some vector $r_1$, such that $a_1 = Qr_1$.<br><br>How many non-zero rows must $r_1$ have?",
+        "content": "Now, let the matrix $Q = \\left(q_1 \\space \\space q_2 \\space \\space \\dots q_n\\right)$<br><br>Let's suppose that we have some vector $r_1$, such that $a_1 = Qr_1$.<br><br>How many non-zero entries must the vector $r_1$ have?",
         "next": "QRFact_default_5"
     },
     "QRFact_default_5": {
@@ -404,24 +404,11 @@ const dialogueSystem = {
         "next": "QRFact_default_7"
     },
     "QRFact_default_7": {
-        "type": "mcq",
-        "options": {
-            "0": "$0$",
-            "1": "$1$",
-            "2": "$2$"
-        },
-        "answersIdx": [
-            2
-        ],
-        "content": "Now, suppose that we have some vector $r_2$, such that $a_1 = Qr_2$.<br><br>How many non-zero rows must $r_2$ have?",
+        "type": "plain",
+        "content": "Now, suppose that we have some vector $r_2$, such that $a_2 = Qr_2$.<br><br>By similar logic as above, $a_2$ is dependent only on $q_1, q_2$. Hence, $r_2$ can only have non-zero entries in the first two rows, and everything else must be zero.<br><br>Repeating this logic, we have that $r_n$ in general has $n$ non-zero rows from the top.",
         "next": "QRFact_default_8"
     },
     "QRFact_default_8": {
-        "type": "plain",
-        "content": "Indeed, by similar logic as above, $a_2$ is dependent only on $q_1, q_2$. Hence, $r_2$ only has the first two rows be non-zero.<br><br>Repeating this logic, we have that $r_n$ in general has $n$ non-zero rows from the top.",
-        "next": "QRFact_default_9"
-    },
-    "QRFact_default_9": {
         "type": "mcq",
         "options": {
             "0": "Upper Triangular",
@@ -433,24 +420,24 @@ const dialogueSystem = {
             0
         ],
         "content": "Now, let $R = \\left(r_1 \\space \\space r_2 \\space \\space \\dots r_n\\right)$. What type of matrix is $R$?",
+        "next": "QRFact_default_9"
+    },
+    "QRFact_default_9": {
+        "type": "plain",
+        "content": "Well, it is upper triangular because the number of non-zero rows from the top decreases as we go down.",
         "next": "QRFact_default_10"
     },
     "QRFact_default_10": {
         "type": "plain",
-        "content": "Well, it is upper triangular because the number of non-zero rows from the top decreases as we go down.",
+        "content": "Anyways, let $A = \\left(a_1 \\space \\space a_2 \\space \\space \\dots a_n\\right)$<br><br>We have that $a_k = Qr_k$ for all $k$<br><br>Hence by block multiplication (which can be thought of here as gluing of $a$ and $r$ together), we have $A = QR$.",
         "next": "QRFact_default_11"
     },
     "QRFact_default_11": {
         "type": "plain",
-        "content": "Anyways, let $A = \\left(a_1 \\space \\space a_2 \\space \\space \\dots a_n\\right)$<br><br>We have that $a_k = Qr_k$ for all $k$<br><br>Hence by block multiplication (which can be thought of here as gluing of $a$ and $r$ together), we have $A = QR$.",
+        "content": "This is known as the QR factorization of a matrix",
         "next": "QRFact_default_12"
     },
     "QRFact_default_12": {
-        "type": "plain",
-        "content": "This is known as the QR factorization of a matrix",
-        "next": "QRFact_default_13"
-    },
-    "QRFact_default_13": {
         "type": "mcq",
         "options": {
             "0": "Yes",
@@ -460,9 +447,9 @@ const dialogueSystem = {
             1
         ],
         "content": "Question! Is $Q$ an orthogonal matrix?",
-        "next": "QRFact_default_14"
+        "next": "QRFact_default_13"
     },
-    "QRFact_default_14": {
+    "QRFact_default_13": {
         "type": "dialogue",
         "options": {
             "0": "oh...",
@@ -477,9 +464,9 @@ const dialogueSystem = {
     "afterTrick": {
         "type": "plain",
         "content": "Remember that an orthogonal matrix must be a square matrix! In this case, the orignal matrix $A$ may not even be square.",
-        "next": "QRFact_default_15"
+        "next": "QRFact_default_14"
     },
-    "QRFact_default_15": {
+    "QRFact_default_14": {
         "type": "mcq",
         "options": {
             "0": "Yes",
@@ -489,20 +476,20 @@ const dialogueSystem = {
             0
         ],
         "content": "However... is it true that $Q^TQ = I$?",
+        "next": "QRFact_default_15"
+    },
+    "QRFact_default_15": {
+        "type": "plain",
+        "content": "The reason is exactly the same as why orthogonal matrices also have this $Q^TQ = I$ property.<br><br>Anyways, here's the definition for QR Factorization:",
         "next": "QRFact_default_16"
     },
     "QRFact_default_16": {
-        "type": "plain",
-        "content": "The reason is exactly the same as why orthogonal matrices also have this $Q^TQ = I$ property.<br><br>Anyways, here's the definition for QR Factorization:",
-        "next": "QRFact_default_17"
-    },
-    "QRFact_default_17": {
         "type": "tex",
         "important": true,
         "content": "$$\\textbf{QR Factorization} \\\\ $$<br><br>Given a $m \\times n$ matrix A, we may write:<br><br>$$\\mathbf{A} \\space \\space= \\space \\space\\begin{pmatrix}\\mathbf{a}_1 \\space \\space\\mathbf{a}_2 \\space \\space\\cdots \\space \\space\\mathbf{a}_n\\end{pmatrix}$$<br>$$= \\begin{pmatrix}\\mathbf{q}_1 \\space \\space\\mathbf{q}_2 \\cdots \\space \\space\\mathbf{q}_n\\end{pmatrix}\\begin{pmatrix}r_{11} & r_{12} & \\cdots & r_{1n}\\\\0 & r_{22} & \\cdots & r_{2n}\\\\\\vdots & \\vdots & \\ddots& \\vdots\\\\0 & 0 &\\cdots & r_{nn}\\end{pmatrix}$$<br>$$= \\space \\space \\mathbf{QR}$$<br><br>for some $m\\times n$ matrix $\\mathbf{Q}$ with orthonormal columns, and a upper triangular $n\\times n$ matrix $\\mathbf{R}$.<br><br>Because the columns of $\\mathbf{Q}$ are orthonormal, $\\mathbf{Q}^T\\mathbf{Q} = I$",
-        "next": "QRFact_default_18"
+        "next": "QRFact_default_17"
     },
-    "QRFact_default_18": {
+    "QRFact_default_17": {
         "type": "dialogue",
         "options": {
             "0": "We can compute it during the gram-schmidt process",
@@ -522,9 +509,9 @@ const dialogueSystem = {
     "QRGoodWay": {
         "type": "plain",
         "content": "There is indeed a better way.",
-        "next": "QRFact_default_19"
+        "next": "QRFact_default_18"
     },
-    "QRFact_default_19": {
+    "QRFact_default_18": {
         "type": "mcq",
         "options": {
             "0": "pre-multiply by $Q^{-1}$",
@@ -534,14 +521,14 @@ const dialogueSystem = {
             1
         ],
         "content": "Let's consider the equation $A = QR$.<br><br>How do we extract the $R$ out?",
+        "next": "QRFact_default_19"
+    },
+    "QRFact_default_19": {
+        "type": "plain",
+        "content": "Well, the inverse idea is there. But $Q$ may not even have an inverse as it's not square.<br><br>Instead, we can make use of the fact that $\\mathbf{Q}^T\\mathbf{Q} = I$. Premultiplyng by $Q^{T}$ on both sides, we have $Q^{T}A = Q^{T}QR = R$.<br><br>Hence, to get $R$, we just need to multiply $Q^{T}$ and $A$! Pretty simple right?",
         "next": "QRFact_default_20"
     },
     "QRFact_default_20": {
-        "type": "plain",
-        "content": "Well, the inverse idea is there. But $Q$ may not even have an inverse as it's not square.<br><br>Instead, we can make use of the fact that $\\mathbf{Q}^T\\mathbf{Q} = I$. Premultipling by $Q^{T}$ on both sides, we have $Q^{T}A = Q^{T}QR = R$.<br><br>Hence, to get $R$, we just need to mulitply $Q^{T}$ and $A$! Pretty simple right?",
-        "next": "QRFact_default_21"
-    },
-    "QRFact_default_21": {
         "type": "plain",
         "content": "And that's a wrap!"
     }
@@ -549,7 +536,7 @@ const dialogueSystem = {
 
 const compulsoryMessages = [
     "GramSchmidtProcess_default_33",
-    "QRFact_default_17"
+    "QRFact_default_16"
 ];
 
 const checkpoints = [
