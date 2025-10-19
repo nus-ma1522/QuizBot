@@ -498,7 +498,10 @@ const dialogueSystem = {
     },
     "Checkpoint_default_60": {
         "type": "plain",
-        "content": "Take the exact same steps as earlier, basically finding $\\operatorname{Null}(3\\mathbf{I} - \\mathbf{A})$.",
+        "content": "Take the exact same steps as earlier, basically finding $\\operatorname{Null}(3\\mathbf{I} - \\mathbf{A})$.<br><br>" +
+        "$\\mathbf{3I - A} = \\begin{pmatrix}1 & -1 \\\\ -1 & 1\\end{pmatrix}$<br>" +
+        "RREF gives us $\\left(\\begin{array}{cc|c} 1 & -1 & 0  \\\\ 0 & 0 & 0 \\end{array}\\right)$<br>" +
+        "Finally, parameterising gives us $\\mathbf{E_3} = \\text{span}\\left\\{\\begin{pmatrix}1 \\\\ 1 \\end{pmatrix}\\right\\}$",
         "next": "Checkpoint_default_61"
     },
     "Checkpoint_default_61": {
@@ -595,6 +598,7 @@ const checkpoints = [
         "label": "Eigenvalues and Eigenvectors",
         "showCompulsoryMessages": 0,
         "id": "Checkpoint_default_1"
-    }
+    },
+
 
 ];
