@@ -9,7 +9,7 @@ const dialogueSystem = {
             0
         ],
         "content": "Before we dive into 6.2, let's have a quick revision of 6.1. Can you find eigenvalues and eigenvectors of $\\mathbf{A}$, where $\\mathbf{A}=\\left(\\begin{array}{c c c} 3&1&-1\\\\1&3&-1\\\\0&0&2\\\\\\end{array}\\right)$",
-        "next": "Diagonalization_default_2"
+        "next": "Diagonalization_default_17"
     },
     "Diagonalization_default_2": {
         "type": "plain",
@@ -59,7 +59,7 @@ const dialogueSystem = {
     },
     "Diagonalization_default_7": {
         "type": "plain",
-        "content": "Actually this is related to what we are learning today!<br>:smile_cat:",
+        "content": "Actually this is related to what we are learning today!😸",
         "next": "Diagonalization_default_8"
     },
     "Diagonalization_default_8": {
@@ -69,9 +69,11 @@ const dialogueSystem = {
     },
     "Diagonalization_default_9": {
         "type": "dialogue",
-        "options": {},
-        "respondToIdx": {},
-        "content": "Can you prove that $\\mathbf{A}\\mathbf{P}=\\mathbf{P}\\mathbf{D}$?<br><br>* Give it a try!"
+        "options": {
+            "0": "Give it a try!"
+        },
+        "respondToIdx": {0 : "Diagonalization_default_10"},
+        "content": "Can you prove that $\\mathbf{A}\\mathbf{P}=\\mathbf{P}\\mathbf{D}$?"
     },
     "Diagonalization_default_10": {
         "type": "mcq",
@@ -88,7 +90,7 @@ const dialogueSystem = {
         "type": "mcq",
         "options": {
             "0": "$\\mu_1\\mathbf{u_1}$",
-            "1": "I don't know :face_in_clouds:"
+            "1": "I don't know 🫠"
         },
         "answersIdx": [
             0
@@ -100,7 +102,7 @@ const dialogueSystem = {
         "type": "mcq",
         "options": {
             "0": "$(\\mu_1\\mathbf{u_1}\\,\\mu_2\\mathbf{u_2}\\,\\dots\\,\\mu_n\\mathbf{u_n})$",
-            "1": "Whelp :face_with_cowboy_hat:"
+            "1": "Whelp 🥹"
         },
         "answersIdx": [
             0
@@ -111,12 +113,11 @@ const dialogueSystem = {
     "Diagonalization_default_13": {
         "type": "mcq",
         "options": {
-            "0": "$(\\mathbf{u_1}\\,\\mathbf{u_2}\\,\\dots\\,\\mathbf{u_n})\\begin{pmatrix}"
-        },
+    "0": "$(\\mathbf{u_1}\\,\\mathbf{u_2}\\,\\dots\\,\\mathbf{u_n})\\begin{pmatrix}\\\mu_1 & 0 & \\cdots & 0 \\\\0 & \\mu_2 & \\cdots & 0 \\\\\\vdots & \\ddots & \\ddots & \\vdots \\\\0 & 0 & \\cdots & \\mu_n\\\end{pmatrix}$"},
         "answersIdx": [
             0
         ],
-        "content": "What is $\\mathbf{P}\\mathbf{D}$？<br>\\mu_1 & 0 & \\cdots & 0 \\\\0 & \\mu_2 & \\cdots & 0 \\\\\\vdots & \\ddots & \\ddots & \\vdots \\\\0 & 0 & \\cdots & \\mu_n\\end{pmatrix}$",
+        "content": "What is $\\mathbf{P}\\mathbf{D}$？",
         "next": "Diagonalization_default_14"
     },
     "Diagonalization_default_14": {
@@ -132,7 +133,7 @@ const dialogueSystem = {
     },
     "Diagonalization_default_15": {
         "type": "plain",
-        "content": "Well done! Just by observation you can see that $\\mathbf{A}\\mathbf{P}=\\mathbf{P}\\mathbf{D}$! Now let's continue with diagonalization :smiling_face_with_3_hearts:",
+        "content": "Well done! Just by observation you can see that $\\mathbf{A}\\mathbf{P}=\\mathbf{P}\\mathbf{D}$! Now let's continue with diagonalization 😊",
         "next": "Diagonalization_default_16"
     },
     "Diagonalization_default_16": {
@@ -161,58 +162,7 @@ const dialogueSystem = {
     },
     "Diagonalization_default_19": {
         "type": "plain",
-        "content": "The $\\mathbf{A}$ you saw just now is diagonalizable,$$\\left(\\begin{array}{c c c} 3&1&-1\\\\1&3&-1\\\\0&0&2\\\\\\end{array}\\right)=\\left(\\begin{array}{c c c} 1&0&1\\\\0&1&1\\\\1&1&0\\\\\\end{array}\\right) \\left(\\begin{array}{c c c} 2&0&0\\\\0&2&0\\\\0&0&4\\\\\\end{array}\\right) \\left(\\begin{array}{c c c} 1&0&1\\\\0&1&1\\\\1&1&0\\\\\\end{array}\\right)^{-1}$$<br><br><!-- ### mcq<br><br>Do you notice something from the matrices used to represent $\\mathbf{A}$?<br><br>* Yes! Columns of $\\left(\\begin{array}{c c c} 1&0&1\\\\0&1&1\\\\1&1&0\\\\\\end{array}\\right)$ consist of eigenvectors of $\\mathbf{A}$ and diagonal entries of $\\left(\\begin{array}{c c c} 2&0&0\\\\0&2&0\\\\0&0&4\\\\\\end{array}\\right)$ consist of eigenvalues of $\\mathbf{A}$! --><br><br><!-- ### plain<br>Generalizing from this specific example, we say that $\\mathbf{A}$ is diagonalizable if and only if we can find $\\mathbf{P}=(\\mathbf{u_1}\\,\\mathbf{u_2}\\,\\dots\\,\\mathbf{u_n})$, and $\\mathbf{D}=\\begin{pmatrix}\\mu_1 & 0 & \\cdots & 0 \\\\0 & \\mu_2 & \\cdots & 0 \\\\\\vdots & \\ddots & \\ddots & \\vdots \\\\0 & 0 & \\cdots & \\mu_n\\end{pmatrix}$ where $\\mu_i$ is the eigenvalue corresponded to eigenvector $\\mathbf{\\mu_i}$, $i=1,\\dots,n$, $\\mathbf{A}\\mathbf{u_i}=\\mu_i\\mathbf{u_i}$ such that $\\mathbf{A}=\\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$. Note that $\\mu_i$ may not be distinct. --><br><br><!-- ### mcq<br><br>But where does $\\mathbf{P}^{-1}\\mathbf{A}\\mathbf{P}=\\mathbf{D}$ (OR $\\mathbf{A}=\\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$) come from at the first place?<br><br>* $\\mathbf{A}\\mathbf{P}=\\mathbf{P}\\mathbf{D}$<br>- I don't know :face_exhaling:  --><br><br><!-- ### plain<br><br>Hmm...why $\\mathbf{A}\\mathbf{P}=\\mathbf{P}\\mathbf{D}$? --><br><br><!-- ### mcq<br><br>What is $\\mathbf{A}\\mathbf{P}$?<br><br>* $\\mathbf{A}\\mathbf{P}=(\\mathbf{A}\\mathbf{u_1}\\,\\mathbf{A}\\mathbf{u_2}\\,\\dots\\,\\mathbf{A}\\mathbf{u_n})$",
-        "next": "Diagonalization_default_20"
-    },
-    "Diagonalization_default_20": {
-        "type": "mcq",
-        "options": {
-            "0": "$\\mu_1\\mathbf{u_1}$",
-            "1": "I don't know :face_in_clouds:"
-        },
-        "answersIdx": [
-            0
-        ],
-        "content": "What is $\\mathbf{A}\\mathbf{u_1}$?",
-        "next": "Diagonalization_default_21"
-    },
-    "Diagonalization_default_21": {
-        "type": "mcq",
-        "options": {
-            "0": "$(\\mu_1\\mathbf{u_1}\\,\\mu_2\\mathbf{u_2}\\,\\dots\\,\\mu_n\\mathbf{u_n})$",
-            "1": "Whelp :face_with_cowboy_hat:"
-        },
-        "answersIdx": [
-            0
-        ],
-        "content": "So $(\\mathbf{A}\\mathbf{u_1}\\,\\mathbf{A}\\mathbf{u_2}\\,\\dots\\,\\mathbf{A}\\mathbf{u_n})=$?",
-        "next": "Diagonalization_default_22"
-    },
-    "Diagonalization_default_22": {
-        "type": "mcq",
-        "options": {
-            "0": "$(\\mathbf{u_1}\\,\\mathbf{u_2}\\,\\dots\\,\\mathbf{u_n})\\begin{pmatrix}"
-        },
-        "answersIdx": [
-            0
-        ],
-        "content": "What is $\\mathbf{P}\\mathbf{D}$？<br>\\mu_1 & 0 & \\cdots & 0 \\\\0 & \\mu_2 & \\cdots & 0 \\\\\\vdots & \\ddots & \\ddots & \\vdots \\\\0 & 0 & \\cdots & \\mu_n\\end{pmatrix}$",
-        "next": "Diagonalization_default_23"
-    },
-    "Diagonalization_default_23": {
-        "type": "mcq",
-        "options": {
-            "0": "$(\\mu_1\\mathbf{u_1}\\,\\mu_2\\mathbf{u_2}\\,\\dots\\,\\mu_n\\mathbf{u_n})$"
-        },
-        "answersIdx": [
-            0
-        ],
-        "content": "And what will it give you?",
-        "next": "Diagonalization_default_24"
-    },
-    "Diagonalization_default_24": {
-        "type": "plain",
-        "content": "Congrats! You just proved $\\mathbf{A}\\mathbf{P}=\\mathbf{P}\\mathbf{D}$ by using knowledge you learned from 6.1! Now let's continue with diagonalization :smiling_face_with_3_hearts:  -->",
+        "content": "The $\\mathbf{A}$ you saw just now is diagonalizable,$$\\left(\\begin{array}{c c c} 3&1&-1\\\\1&3&-1\\\\0&0&2\\\\\\end{array}\\right)=\\left(\\begin{array}{c c c} 1&0&1\\\\0&1&1\\\\1&1&0\\\\\\end{array}\\right) \\left(\\begin{array}{c c c} 2&0&0\\\\0&2&0\\\\0&0&4\\\\\\end{array}\\right) \\left(\\begin{array}{c c c} 1&0&1\\\\0&1&1\\\\1&1&0\\\\\\end{array}\\right)^{-1}$$",
         "next": "Diagonalization_default_25"
     },
     "Diagonalization_default_25": {
@@ -319,7 +269,7 @@ const dialogueSystem = {
     },
     "Diagonalization_default_36": {
         "type": "plain",
-        "content": "That's the end of 6.2! If you are interested in the proof for any theorem, please refer to notes and appendix (at the end of each chapter notes) See you in 6.3! :smile:"
+        "content": "That's the end of 6.2! If you are interested in the proof for any theorem, please refer to notes and appendix (at the end of each chapter notes) See you in 6.3! :D"
     }
 };
 
@@ -330,7 +280,7 @@ const compulsoryMessages = [
 
 const checkpoints = [
     {
-        "label": "",
+        "label": "Diagonalization",
         "showCompulsoryMessages": 0,
         "id": "Diagonalization_default_1"
     }
