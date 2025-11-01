@@ -9,7 +9,7 @@ const dialogueSystem = {
             0
         ],
         "content": "Before we dive into 6.2, let's have a quick revision of 6.1. Can you find eigenvalues and eigenvectors of $\\mathbf{A}$, where $\\mathbf{A}=\\left(\\begin{array}{c c c} 3&1&-1\\\\1&3&-1\\\\0&0&2\\\\\\end{array}\\right)$",
-        "next": "Diagonalization_default_17"
+        "next": "Diagonalization_default_2"
     },
     "Diagonalization_default_2": {
         "type": "plain",
