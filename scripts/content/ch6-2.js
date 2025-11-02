@@ -30,7 +30,7 @@ const dialogueSystem = {
         "answersIdx": [
             0
         ],
-        "content": "What's $\\left(\\begin{array}{c c c} 3&1&-1\\\\1&3&-1\\\\0&0&2\\\\\\end{array}\\right)\\left(\\begin{array}{c c c} 1&0&1\\\\0&1&1\\\\1&1&0\\\\\\end{array}\\right)$? (Hint: We stack eigenvectors of $\\mathbf{A}$ together, use blockmultiplication!)",
+        "content": "What's $\\left(\\begin{array}{c c c} 3&1&-1\\\\1&3&-1\\\\0&0&2\\\\\\end{array}\\right)\\left(\\begin{array}{c c c} 1&0&1\\\\0&1&1\\\\1&1&0\\\\\\end{array}\\right)$? (Hint: We stack eigenvectors of $\\mathbf{A}$ together, use block multiplication!)",
         "next": "Diagonalization_default_5"
     },
     "Diagonalization_default_5": {
@@ -212,7 +212,7 @@ const dialogueSystem = {
         "answersIdx": [
             0
         ],
-        "content": "Quick quiz! What can we say about the set consisting of all eigenvectors  $\\{\\mathbf{u_1},\\mathbf{u_2},\\dots,\\mathbf{u_n}\\}$?",
+        "content": "Quick quiz! What can we say about the set consisting of $n$ linearly independent eigenvectors  $\\{\\mathbf{u_1},\\mathbf{u_2},\\dots,\\mathbf{u_n}\\}$?",
         "next": "Diagonalization_default_30"
     },
     "Diagonalization_default_30": {
